@@ -3,7 +3,7 @@ import { VaultConfig } from './types'
 
 const vaults: VaultConfig[] = [
      {
-    pid: 17,
+    pid: 0,
     lpSymbol: 'QUICK - USDC',  // Always write the token with a farm first. This is used for price calculation. Better method to be implemented later
 	exchange: 'Quickswap',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/add/0x831753DD7087CaC61aB5644b308642cc1c33Dc13/0x9Bbcda2606e616659b118399A2823E8a392f55DA',

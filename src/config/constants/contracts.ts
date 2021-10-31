@@ -12,7 +12,7 @@ export default {
     80001: '',
   },
   vaultChef: {
-    137: '0xDf1b5a548D2B3870E01Ff561A5d2aa154eA97c8B',
+    137: '0x2e620B2844E43004d095959A31B7ae9f9dbbb830',
     80001: '',
   },
   chainlinkOracle: {

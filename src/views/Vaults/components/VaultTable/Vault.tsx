@@ -17,6 +17,7 @@ export interface VaultProps {
   isSingle: boolean
   isBurning: boolean
   exchange: string
+  platform: string
 }
 
 const LabelTag = styled(Tag)`
@@ -43,7 +44,7 @@ const TokenWrapper = styled.div`
   }
 `
 
-const Vault: React.FunctionComponent<VaultProps> = ({ token, quoteToken, label, pid, isSingle, isBurning, exchange }) => {
+const Vault: React.FunctionComponent<VaultProps> = ({ token, quoteToken, label, pid, isSingle, isBurning, exchange, platform }) => {
   const { stakedBalance} = useVaultUser(pid)
   const { t } = useTranslation()
   const rawStakedBalance = getBalanceNumber(stakedBalance)
@@ -75,7 +76,7 @@ const Vault: React.FunctionComponent<VaultProps> = ({ token, quoteToken, label, 
             <BurningTag/> :null
         }
         <br/>
-        <LabelTag variant="secondary">{exchange}</LabelTag>
+        <LabelTag variant="secondary">{platform}</LabelTag>
       </div>
     </Container>
   )

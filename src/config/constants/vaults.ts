@@ -92,6 +92,36 @@ const vaults: VaultConfig[] = [
 	lpRewardsApr:1.5,
 	platform: 'Mai',
   },
+  {
+    pid: 4,
+    lpSymbol: 'MATIC-QI',  
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#/add/ETH/0x580A84C73811E1839F75d86d75d88cCa0c241fF4',
+	strategyAddress:{
+		137: '0x7f3e907AB4a4458bB34F20fd1A8268933abCE0ac',
+		80001: '',
+	},
+    lpAddresses: {
+      137: '0x9A8b2601760814019B7E6eE0052E25f1C623D1E6',
+      80001: '',
+    },
+	masterChefAddress:{
+		137: '0x574Fe4E8120C4Da1741b5Fd45584de7A5b521F0F',
+		80001: '',
+	},
+	spid: 4,
+    token: tokens.qi,
+    quoteToken: tokens.wmatic,
+	rewardToken: tokens.qi,
+	emissionFunctionName: 'rewardPerBlock',
+	emissionMultiplier: 1,
+	isArchived: false,
+	isSingle:false,
+	isBurning:false,
+	allocPointName:'lastRewardTime',
+	lpRewardsApr:1.84,
+	platform: 'Mai',
+  },
 ]
 
 export default vaults

@@ -60,7 +60,7 @@ export interface VaultConfig {
   emissionFunctionName: string
   emissionMultiplier: number
   exchange: string
-  platform:string
+  platform: string
   baseLiquidityUrl?: string
   allocPointName: string
   lpRewardsApr:number

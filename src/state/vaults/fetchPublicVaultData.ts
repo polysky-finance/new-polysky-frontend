@@ -162,9 +162,15 @@ export const fetchVaultQuick = async (vault: Vault): Promise<PublicVaultData> =>
       address: getAddress(quoteToken.address),
       name: 'decimals',
     }, 
+    // Quick per 10000 dQuick
+    {
+      address: '0xf28164A485B0B2C90639E47b0f377b4a438a16B1',
+      name: 'dQUICKForQUICK',
+      params: [10000],
+    }
   ]
   
-  const [tokenBalanceLP  , quoteTokenBalanceLP , lpTotalSupply  , tokenDecimals, quoteTokenDecimals  ] =
+  const [tokenBalanceLP  , quoteTokenBalanceLP , lpTotalSupply  , tokenDecimals, quoteTokenDecimals, quickPer10000dQuick] =
     await multicall(erc20, calls)
 
   // Balance of LP tokens being compounded by the strategy contract
@@ -211,7 +217,7 @@ export const fetchVaultQuick = async (vault: Vault): Promise<PublicVaultData> =>
 //  const pw = poolWeight.toJSON()
 //  const tp =quoteTokenAmountTotal.div(tokenAmountTotal).toJSON()
 
-  const emission = new BigNumber(emissionMC)
+  const emission = new BigNumber(emissionMC).times(quickPer10000dQuick).div(new BigNumber(10000))
   return {
     tokenAmountMc: tokenAmountMc.toJSON(),
     quoteTokenAmountMc: quoteTokenAmountMc.toJSON(),

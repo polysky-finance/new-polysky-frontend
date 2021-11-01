@@ -192,19 +192,19 @@ const priceHelperLps: FarmConfig[] = [
     token: tokens.fish,
     quoteToken: tokens.usdc,
   },
-   {
+  {
     pid: null,
-    lpSymbol: 'FISH - USDC LP',
+    lpSymbol: 'WMATIC-QI',
 	exchange: 'Quickswap',
 	baseLiquidityUrl: 'https://quickswap.exchange/#',
     lpAddresses: {
-      137: '0x0df9e46c0eaedf41b9d4bbe2cea2af6e8181b033',
+      137: '0x9a8b2601760814019b7e6ee0052e25f1c623d1e6',
       80001: '',
     },
 	multiplier:'0X',
 	harvest: true,
-    token: tokens.fish,
-    quoteToken: tokens.usdc,
+    token: tokens.qi,
+    quoteToken: tokens.wmatic,
   },
 ]
 

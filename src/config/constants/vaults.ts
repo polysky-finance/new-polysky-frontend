@@ -122,6 +122,36 @@ const vaults: VaultConfig[] = [
 	lpRewardsApr:1.84,
 	platform: 'Mai',
   },
+  {
+    pid: 5,
+    lpSymbol: 'WMATIC - BANANA',  
+	exchange: 'Apeswap',
+	baseLiquidityUrl: 'https://app.apeswap.finance/add/ETH/0x5d47baba0d66083c52009271faf3f50dcc01023c',
+	strategyAddress:{
+		137: '0x490cDACea9a68E0305f613c50AFEA464c09af79C',
+		80001: '',
+	},
+    lpAddresses: {
+      137: '0x034293f21f1cce5908bc605ce5850df2b1059ac0',
+      80001: '',
+    },
+	masterChefAddress:{
+		137: '0x54aff400858Dcac39797a81894D9920f16972D1D',
+		80001: '',
+	},
+	spid: 0,
+    token: tokens.banana,
+    quoteToken: tokens.wmatic,
+	rewardToken: tokens.banana,
+	emissionFunctionName: 'bananaPerSecond',
+	emissionMultiplier: 2,
+	isArchived: false,
+	isSingle:false,
+	allocPointName: 'allocPoint',
+	lpRewardsApr:5.82,
+	isBurning:false,
+	platform: 'Apeswap',
+  },
 ]
 
 export default vaults

@@ -196,6 +196,24 @@ const tokens = {
     decimals: 9,
     projectLink: 'https://kogefarm.io/',
   },
+  mai: {
+    symbol: 'MAI',
+    address: {
+      137: '0xa3Fa99A148fA48D14Ed51d610c367C61876997F1',
+      80001: '',
+    },
+    decimals: 9,
+    projectLink: 'https://app.mai.finance/farm',
+  },
+  qi: {
+    symbol: 'QI',
+    address: {
+      137: '0x580A84C73811E1839F75d86d75d88cCa0c241fF4',
+      80001: '',
+    },
+    decimals: 9,
+    projectLink: 'https://app.mai.finance/farm',
+  },
 }
 
 export default tokens

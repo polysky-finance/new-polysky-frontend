@@ -62,6 +62,36 @@ const vaults: VaultConfig[] = [
 	lpRewardsApr:26,
 	platform: 'Quickswap',
   },
+  {
+    pid: 3,
+    lpSymbol: 'USDC-MAI',  
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#/add/0xa3Fa99A148fA48D14Ed51d610c367C61876997F1/0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174',
+	strategyAddress:{
+		137: '0x60543048F48b924892CbAF686274513Bb3dca30E',
+		80001: '',
+	},
+    lpAddresses: {
+      137: '0x160532D2536175d65C03B97b0630A9802c274daD',
+      80001: '',
+    },
+	masterChefAddress:{
+		137: '0x574Fe4E8120C4Da1741b5Fd45584de7A5b521F0F',
+		80001: '',
+	},
+	spid: 1,
+    token: tokens.mai,
+    quoteToken: tokens.usdc,
+	rewardToken: tokens.qi,
+	emissionFunctionName: 'rewardPerBlock',
+	emissionMultiplier: 1,
+	isArchived: false,
+	isSingle:false,
+	isBurning:false,
+	allocPointName:'lastRewardTime',
+	lpRewardsApr:1.5,
+	platform: 'Mai',
+  },
 ]
 
 export default vaults

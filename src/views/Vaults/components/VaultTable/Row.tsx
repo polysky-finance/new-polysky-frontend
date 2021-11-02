@@ -7,6 +7,7 @@ import useDelayedUnmount from 'hooks/useDelayedUnmount'
 import { useVaultUser } from 'state/hooks'
 import {Vault as VaultType} from 'state/types'
 import Apr, { AprProps } from './Apr'
+import Apy, { ApyProps } from './Apy'
 import Vault, { VaultProps } from './Vault'
 import Details from './Details'
 import Liquidity, { LiquidityProps } from './Liquidity'
@@ -27,6 +28,7 @@ export interface MultiplierProps {
 
 export interface RowProps {
   apr: AprProps
+  apy: ApyProps
   vault: VaultProps
   earned?: EarnedProps
   multiplier: MultiplierProps
@@ -40,6 +42,7 @@ interface RowPropsWithLoading extends RowProps {
 
 const cells = {
   apr: Apr,
+  apy: Apy,
   earned: Earned,
   vault: Vault,
   details: Details,
@@ -124,6 +127,16 @@ const Row: React.FunctionComponent<RowPropsWithLoading> = (props) => {
                     </CellInner>
                   </td>
                 )
+                case 'apy':
+                  return (
+                    <td key={key}>
+                      <CellInner>
+                        <CellLayout label={t(tableSchema[columnIndex].label)}>
+                          <Apy {...props.apy} />
+                        </CellLayout>
+                      </CellInner>
+                    </td>
+                  )
               case 'liquidity':
                 return (
                   <td key={key}>

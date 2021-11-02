@@ -75,6 +75,12 @@ export const DesktopColumnSchema: ColumnsDefTypes[] = [
     label: 'Daily',
   },
   {
+    id: 5,
+    name: 'apy',
+    sortable: true,
+    label: 'APY',
+  },
+  {
     id: 4,
     name: 'details',
     sortable: true,

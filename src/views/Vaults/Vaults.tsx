@@ -110,6 +110,20 @@ const getDisplayApr = (siriusRewardsApr?: number, lpRewardsApr?: number) => {
   return null
 }
 
+const getDisplayApy = (siriusRewardsApr?: number, lpRewardsApr?: number) => {
+  if (siriusRewardsApr && lpRewardsApr) {
+    const exponent = (1+(siriusRewardsApr + lpRewardsApr)/36500)**365;
+    const apy = (exponent -1)*100;
+    return (apy).toLocaleString('en-US', { maximumFractionDigits: 2 })
+  }
+  if (siriusRewardsApr) {
+    const exponent = (1+(siriusRewardsApr)/36500)**365;
+    const apy = (exponent -1)*100;
+    return (apy).toLocaleString('en-US', { maximumFractionDigits: 2 })
+  }
+  return null
+}
+
 const Vaults: React.FC = () => {
   const { path } = useRouteMatch()
   const { pathname } = useLocation()
@@ -269,6 +283,15 @@ const Vaults: React.FC = () => {
     const row: RowProps = {
       apr: {
         value: getDisplayApr(vault.apr, vault.lpRewardsApr),
+        multiplier: vault.multiplier,
+        lpLabel,
+        tokenAddress,
+        quoteTokenAddress,
+        siriusPrice,
+        originalValue: vault.apr,
+      },
+      apy: {
+        value: getDisplayApy(vault.apr, vault.lpRewardsApr),
         multiplier: vault.multiplier,
         lpLabel,
         tokenAddress,

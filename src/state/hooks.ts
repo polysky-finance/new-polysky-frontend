@@ -431,18 +431,22 @@ export const useBuybackAmount = () : BigNumber => {
   let value = new BigNumber(0);
   const { data: vaultsLP } = useVaults()
   for(let i=0; i < vaultsLP.length; i++){
-    if (vaultsLP[i].lpTotalInQuoteToken && vaultsLP[i].quoteToken.usdcPrice) {
+    if (vaultsLP[i].lpTotalInQuoteToken && vaultsLP[i].quoteToken.usdcPrice) {        
         const vault = vaultsLP[i]
-        const totalLiquidity = new BigNumber(vault.lpTotalInQuoteToken).times(vault.quoteToken.usdcPrice)
-        const rewardTokenPrice = new BigNumber(vault.rewardToken.usdcPrice)
-        const rewardPerBlock = new BigNumber(vault.emission).times(new BigNumber(vault.emissionMultiplier)).div(BIG_TEN.pow(vault.rewardToken.decimals))
-        const masterLiquidity = totalLiquidity.times(new BigNumber(vault.masterChefBalanceRatio))
-
-        const { siriusRewardsApr, lpRewardsApr } = getVaultApr(new BigNumber(vault.poolWeight), rewardTokenPrice, masterLiquidity, vault.lpAddresses[ChainId.MAINNET], rewardPerBlock, vault.lpRewardsApr)
-
-        const factor = vaultsLP[i].isBurning ? new BigNumber(80): new BigNumber(1)
-          const buyback = new BigNumber(vaultsLP[i].lpTotalInQuoteToken).times(vaultsLP[i].quoteToken.usdcPrice).times(siriusRewardsApr).times(factor).div(new BigNumber(3650000));
-          value = value.plus(buyback);
+        if(vault.isBurning)
+        {
+            const totalLiquidity = new BigNumber(vault.lpTotalInQuoteToken).times(vault.quoteToken.usdcPrice)
+            const rewardTokenPrice = new BigNumber(vault.rewardToken.usdcPrice)
+            const rewardPerBlock = new BigNumber(vault.emission).times(new BigNumber(vault.emissionMultiplier)).div(BIG_TEN.pow(vault.rewardToken.decimals))
+            const masterLiquidity = totalLiquidity.times(new BigNumber(vault.masterChefBalanceRatio))
+  
+            const { siriusRewardsApr, lpRewardsApr } = getVaultApr(new BigNumber(vault.poolWeight), rewardTokenPrice, masterLiquidity, vault.lpAddresses[ChainId.MAINNET], rewardPerBlock, vault.lpRewardsApr)
+  
+            const factor = new BigNumber(80);
+            const buyback = new BigNumber(vaultsLP[i].lpTotalInQuoteToken).times(vaultsLP[i].quoteToken.usdcPrice).times(siriusRewardsApr).times(factor).div(new BigNumber(3650000));
+            value = value.plus(buyback);
+        }
+        
       }
       if(!vaultsLP[i].lpTotalInQuoteToken || !vaultsLP[i].quoteToken.usdcPrice)
       {

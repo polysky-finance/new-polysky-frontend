@@ -1,8 +1,7 @@
 import BigNumber from 'bignumber.js'
 import masterchefABI from 'config/abi/masterchefStandard.json'
-import quickswapABI from 'config/abi/quickswapAbi.json'
 import erc20 from 'config/abi/erc20.json'
-import { getAddress, getVaultChefAddress } from 'utils/addressHelpers'
+import { getAddress} from 'utils/addressHelpers'
 import { BIG_ONE, BIG_TEN, BIG_ZERO } from 'utils/bigNumber'
 import multicall from 'utils/multicall'
 import { Vault, SerializedBigNumber } from '../types'
@@ -55,41 +54,33 @@ export const fetchVaultLP = async (vault: Vault): Promise<PublicVaultData> => {
       address: getAddress(quoteToken.address),
       name: 'decimals',
     }, 
+    {
+      address: masterAddress,
+      name: 'userInfo',
+      params: [spid, getAddress(strategyAddress)],
+    },
+    {
+      address: masterAddress,
+      name: 'totalAllocPoint',
+    },
+    {
+      address: masterAddress,
+      name: 'poolInfo',
+      params: [spid],
+    },
+    {
+      address: masterAddress,
+      name: emissionFunctionName,
+    },
+    {
+      address: lpAddress,
+      name: 'balanceOf',
+      params: [masterAddress],
+    },
   ]
   
-  const [tokenBalanceLP  , quoteTokenBalanceLP , lpTotalSupply  , tokenDecimals, quoteTokenDecimals  ] =
+  const [tokenBalanceLP  , quoteTokenBalanceLP , lpTotalSupply  , tokenDecimals, quoteTokenDecimals, lpTokenBalanceStrategy, totalAllocPoint, info, emissionMC, lpTokenBalanceMasterChef  ] =
     await multicall(erc20, calls)
-
-  // Balance of LP tokens being compounded by the strategy contract
-  const [lpTokenBalanceStrategy, totalAllocPoint, info, emissionMC] = 
-  (await multicall(masterchefABI, [
-    {
-    address: masterAddress,
-    name: 'userInfo',
-    params: [spid, getAddress(strategyAddress)],
-  },
-  {
-    address: masterAddress,
-    name: 'totalAllocPoint',
-  },
-  {
-    address: masterAddress,
-    name: 'poolInfo',
-    params: [spid],
-  },
-  {
-    address: masterAddress,
-    name: emissionFunctionName,
-  },
-]))
-
-  const [lpTokenBalanceMasterChef] = (await multicall(erc20, [
-      {
-        address: lpAddress,
-        name: 'balanceOf',
-        params: [masterAddress],
-      },
-    ]))
       
   const masterChefBalanceRatio = new BigNumber(lpTokenBalanceMasterChef).div(new BigNumber(lpTokenBalanceStrategy.amount._hex))
 
@@ -167,33 +158,25 @@ export const fetchVaultQuick = async (vault: Vault): Promise<PublicVaultData> =>
       address: '0xf28164A485B0B2C90639E47b0f377b4a438a16B1',
       name: 'dQUICKForQUICK',
       params: [10000],
+    },
+    {
+      address: masterAddress,
+      name: 'balanceOf',
+      params: [getAddress(strategyAddress)],
+    },
+    {
+      address: masterAddress,
+      name: emissionFunctionName,
+    },
+    {
+      address: lpAddress,
+      name: 'balanceOf',
+      params: [masterAddress],
     }
   ]
   
-  const [tokenBalanceLP  , quoteTokenBalanceLP , lpTotalSupply  , tokenDecimals, quoteTokenDecimals, quickPer10000dQuick] =
+  const [tokenBalanceLP  , quoteTokenBalanceLP , lpTotalSupply  , tokenDecimals, quoteTokenDecimals, quickPer10000dQuick, lpTokenBalanceStrategy, emissionMC, lpTokenBalanceMasterChef] =
     await multicall(erc20, calls)
-
-  // Balance of LP tokens being compounded by the strategy contract
-  const [lpTokenBalanceStrategy, emissionMC] = 
-  (await multicall(quickswapABI, [
-    {
-    address: masterAddress,
-    name: 'balanceOf',
-    params: [getAddress(strategyAddress)],
-  },
-  {
-    address: masterAddress,
-    name: emissionFunctionName,
-  },
-]))
-
-  const [lpTokenBalanceMasterChef] = (await multicall(erc20, [
-      {
-        address: lpAddress,
-        name: 'balanceOf',
-        params: [masterAddress],
-      },
-    ]))
       
   const masterChefBalanceRatio = new BigNumber(lpTokenBalanceMasterChef).div(new BigNumber(lpTokenBalanceStrategy))
 
@@ -248,49 +231,46 @@ export const fetchVaultSingle = async (vault: Vault): Promise<PublicVaultData> =
       address: getAddress(token.address),
       name: 'decimals',
     },
+    {
+      address: masterAddress,
+      name: 'userInfo',
+      params: [spid, getAddress(strategyAddress)],
+    },
+    {
+      address: masterAddress,
+      name: 'totalAllocPoint',
+    },
+    {
+      address: masterAddress,
+      name: 'poolInfo',
+      params: [spid],
+    },
+    {
+      address: masterAddress,
+      name: emissionFunctionName,
+    },
+    {
+      address: lpAddress,
+      name: 'balanceOf',
+      params: [masterAddress],
+    },
+    // Quote token decimals
+    {
+      address: lpAddress,
+      name: 'decimals',
+    },
+    {
+      address: lpAddress,
+      name: 'balanceOf',
+      params: [masterAddress],
+    },
   ]
   
-  const [lpTotalSupply, tokenDecimals] = await multicall(erc20, calls)
+  const [lpTotalSupply, tokenDecimals, lpTokenBalanceStrategy, totalAllocPoint,  info, emissionMC, lpTokenBalanceMasterChef] = await multicall(erc20, calls)
+  
   const quoteTokenBalanceLP = lpTotalSupply
   const quoteTokenDecimals = tokenDecimals
   const tokenBalanceLP = lpTotalSupply
-
-  // Balance of LP tokens being compounded by the strategy contract
-  const [lpTokenBalanceStrategy, totalAllocPoint,  info, emissionMC] = 
-  (await multicall(masterchefABI, [
-    {
-    address: masterAddress,
-    name: 'userInfo',
-    params: [spid, getAddress(strategyAddress)],
-  },
-  {
-    address: masterAddress,
-    name: 'totalAllocPoint',
-  },
-  {
-    address: masterAddress,
-    name: 'poolInfo',
-    params: [spid],
-  },
-  {
-    address: masterAddress,
-    name: emissionFunctionName,
-  }, 
-]))
-
-  
-  const [lpTokenBalanceMasterChef] = (await multicall(erc20, [
-      {
-        address: lpAddress,
-        name: 'balanceOf',
-        params: [masterAddress],
-      },
-      // Quote token decimals
-      {
-        address: lpAddress,
-        name: 'decimals',
-      },
-    ]))
       
   const masterChefBalanceRatio = new BigNumber(lpTokenBalanceMasterChef).div(new BigNumber(lpTokenBalanceStrategy.amount._hex))
 

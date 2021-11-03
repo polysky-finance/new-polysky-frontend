@@ -106,7 +106,7 @@ export const fetchVaultQuick = async (vault: Vault,
   }
 }
 
-export const fetchVaultSingle = async (vault: Vault, lpTotalSupply: any,tokenDecimals: any,
+export const fetchVaultSingle = async(vault: Vault, lpTotalSupply: any,tokenDecimals: any,
   lpTokenBalanceMasterChef:any, lpTokenBalanceStrategy:any, info: any, totalAllocPoint:any,
   emissionMC: any): Promise<PublicVaultData> => { 
   

@@ -9,28 +9,22 @@ export const tokenBalancesLP = async (vaultsToFetch: VaultConfig[]) => {
   const calls = vaultsToFetch.map((vault) => {
     const lpAddresses = vault.lpAddresses
     const lpAddress = getAddress(lpAddresses)
-    return { address: getAddress(vault.token.address), name: 'allowance', params: [lpAddress] }
+    return { address: getAddress(vault.token.address), name: 'balanceOf', params: [lpAddress] }
   })
 
   const rawLpAllowances = await multicall(erc20, calls)
-  const parsedLpAllowances = rawLpAllowances.map((lpBalance) => {
-    return new BigNumber(lpBalance)
-  })
-  return parsedLpAllowances
+  return rawLpAllowances
 }
 
 export const quoteTokenBalancesLP = async (vaultsToFetch: VaultConfig[]) => {
   const calls = vaultsToFetch.map((vault) => {
     const lpAddresses = vault.lpAddresses
     const lpAddress = getAddress(lpAddresses)
-    return { address: getAddress(vault.quoteToken.address), name: 'allowance', params: [lpAddress] }
+    return { address: getAddress(vault.quoteToken.address), name: 'balanceOf', params: [lpAddress] }
   })
 
   const rawLpAllowances = await multicall(erc20, calls)
-  const parsedLpAllowances = rawLpAllowances.map((lpBalance) => {
-    return new BigNumber(lpBalance)
-  })
-  return parsedLpAllowances
+  return rawLpAllowances
 }
 
 export const lpTotalSupplies = async (vaultsToFetch: VaultConfig[]) => {
@@ -41,10 +35,7 @@ export const lpTotalSupplies = async (vaultsToFetch: VaultConfig[]) => {
   })
 
   const rawLpAllowances = await multicall(erc20, calls)
-  const parsedLpAllowances = rawLpAllowances.map((lpBalance) => {
-    return new BigNumber(lpBalance)
-  })
-  return parsedLpAllowances
+  return rawLpAllowances
 }
 
 export const tokenDecimals = async (vaultsToFetch: VaultConfig[]) => {
@@ -53,10 +44,7 @@ export const tokenDecimals = async (vaultsToFetch: VaultConfig[]) => {
   })
 
   const rawLpAllowances = await multicall(erc20, calls)
-  const parsedLpAllowances = rawLpAllowances.map((lpBalance) => {
-    return new BigNumber(lpBalance)
-  })
-  return parsedLpAllowances
+  return rawLpAllowances
 }
 
 export const quoteTokenDecimals = async (vaultsToFetch: VaultConfig[]) => {
@@ -65,10 +53,7 @@ export const quoteTokenDecimals = async (vaultsToFetch: VaultConfig[]) => {
   })
 
   const rawLpAllowances = await multicall(erc20, calls)
-  const parsedLpAllowances = rawLpAllowances.map((lpBalance) => {
-    return new BigNumber(lpBalance)
-  })
-  return parsedLpAllowances
+  return rawLpAllowances
 }
 
 export const lpTokenBalanceStrategies = async (vaultsToFetch: VaultConfig[]) => {
@@ -78,10 +63,7 @@ export const lpTokenBalanceStrategies = async (vaultsToFetch: VaultConfig[]) => 
   })
 
   const rawLpAllowances = await multicall(erc20, calls)
-  const parsedLpAllowances = rawLpAllowances.map((lpBalance) => {
-    return new BigNumber(lpBalance)
-  })
-  return parsedLpAllowances
+  return rawLpAllowances
 }
 
 export const totalAllocPoints = async (vaultsToFetch: VaultConfig[]) => {
@@ -91,10 +73,7 @@ export const totalAllocPoints = async (vaultsToFetch: VaultConfig[]) => {
   })
 
   const rawLpAllowances = await multicall(erc20, calls)
-  const parsedLpAllowances = rawLpAllowances.map((lpBalance) => {
-    return new BigNumber(lpBalance)
-  })
-  return parsedLpAllowances
+  return rawLpAllowances
 }
 
 export const infos = async (vaultsToFetch: VaultConfig[]) => {
@@ -104,10 +83,7 @@ export const infos = async (vaultsToFetch: VaultConfig[]) => {
   })
 
   const rawLpAllowances = await multicall(erc20, calls)
-  const parsedLpAllowances = rawLpAllowances.map((lpBalance) => {
-    return new BigNumber(lpBalance)
-  })
-  return parsedLpAllowances
+  return rawLpAllowances
 }
 
 export const emissionMCs = async (vaultsToFetch: VaultConfig[]) => {
@@ -117,10 +93,7 @@ export const emissionMCs = async (vaultsToFetch: VaultConfig[]) => {
   })
 
   const rawLpAllowances = await multicall(erc20, calls)
-  const parsedLpAllowances = rawLpAllowances.map((lpBalance) => {
-    return new BigNumber(lpBalance)
-  })
-  return parsedLpAllowances
+  return rawLpAllowances
 }
 
 export const lpTokenBalanceMasterChefs = async (vaultsToFetch: VaultConfig[]) => {
@@ -132,10 +105,7 @@ export const lpTokenBalanceMasterChefs = async (vaultsToFetch: VaultConfig[]) =>
   })
 
   const rawLpAllowances = await multicall(erc20, calls)
-  const parsedLpAllowances = rawLpAllowances.map((lpBalance) => {
-    return new BigNumber(lpBalance)
-  })
-  return parsedLpAllowances
+  return rawLpAllowances
 }
 
 export const quickPer10000dQuicks = async (vaultsToFetch: VaultConfig[]) => {
@@ -144,10 +114,7 @@ export const quickPer10000dQuicks = async (vaultsToFetch: VaultConfig[]) => {
   })
 
   const rawLpAllowances = await multicall(erc20, calls)
-  const parsedLpAllowances = rawLpAllowances.map((lpBalance) => {
-    return new BigNumber(lpBalance)
-  })
-  return parsedLpAllowances
+  return rawLpAllowances
 }
 
 const fetchVaults = async (vaultsToFetch: VaultConfig[]) => {
@@ -155,7 +122,7 @@ const fetchVaults = async (vaultsToFetch: VaultConfig[]) => {
   const quoteTokenBalances = await quoteTokenBalancesLP(vaultsToFetch);
   const lpTotalSupply = await lpTotalSupplies(vaultsToFetch);
   const tokenDecimal = await tokenDecimals(vaultsToFetch)
-  const quoteTokenDecimal = await quoteTokenBalancesLP(vaultsToFetch)  
+  const quoteTokenDecimal = await quoteTokenDecimals(vaultsToFetch)  
   const lpTokenBalanceMasterChef = await lpTokenBalanceMasterChefs(vaultsToFetch)
   const lpTokenBalanceStrategy = await lpTokenBalanceStrategies(vaultsToFetch);
   const totalAllocs = await totalAllocPoints(vaultsToFetch)
@@ -163,24 +130,30 @@ const fetchVaults = async (vaultsToFetch: VaultConfig[]) => {
   const emissionMC = await emissionMCs(vaultsToFetch)
   const quickPer10000dQuick = await quickPer10000dQuicks(vaultsToFetch)
  
-  return vaultsToFetch.map((vault, index)=>
+  const vaults =await Promise.all(vaultsToFetch.map(async (vault, index)=>
   {
+    let v =null
       if(vault.isSingle)
       {
-         return fetchVaultSingle(vault, lpTotalSupply[index],tokenDecimal[index],
+         v = await fetchVaultSingle(vault, lpTotalSupply[index],tokenDecimal[index],
           lpTokenBalanceMasterChef[index], lpTokenBalanceStrategy[index],info[index], totalAllocs[index], emissionMC[index])
       }
-      if(vault.isQuickswap)
+      else if(vault.isQuickswap)
       {
-        return fetchVaultQuick(vault, lpTokenBalanceMasterChef[index],lpTokenBalanceStrategy[index],
+        v= await fetchVaultQuick(vault, lpTokenBalanceMasterChef[index],lpTokenBalanceStrategy[index],
           lpTotalSupply[index], tokenBalances[index], tokenDecimal[index], quoteTokenBalances[index], quoteTokenDecimal[index],
           emissionMC[index], quickPer10000dQuick[index] )
       }
-      return fetchVaultLP(vault, lpTokenBalanceMasterChef[index],lpTokenBalanceStrategy[index],
-        lpTotalSupply[index], tokenBalances[index], tokenDecimal[index], quoteTokenBalances[index], quoteTokenDecimal[index],
-        info[index],totalAllocs[index],
-        emissionMC[index] )
-  })
+      else
+      {
+        v =await fetchVaultLP(vault, lpTokenBalanceMasterChef[index],lpTokenBalanceStrategy[index],
+          lpTotalSupply[index], tokenBalances[index], tokenDecimal[index], quoteTokenBalances[index], quoteTokenDecimal[index],
+          info[index],totalAllocs[index],
+          emissionMC[index] )
+      }
+        return {...vault, ...v};
+  }))
+  return vaults
 }
 
 export default fetchVaults

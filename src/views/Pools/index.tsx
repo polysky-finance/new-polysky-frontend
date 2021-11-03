@@ -240,9 +240,6 @@ const Pools: React.FC = () => {
             <Heading as="h1" scale="xxl" color="secondary" mb="24px">
               {t('Pools')}
             </Heading>
-			<Heading scale="md" color="#8B0000">
-              {t('All non-native pools stop distributing from 28-Sep-2021. Please unstake from the Finished tab.')}
-            </Heading>
           </Flex>
         </Flex>
       </PageHeader>

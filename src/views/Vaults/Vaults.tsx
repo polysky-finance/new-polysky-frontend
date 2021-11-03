@@ -6,12 +6,12 @@ import { Flex, Image, Heading, RowType, Toggle, Text, Box } from '@polysky-libs/
 import { ChainId } from '@polysky-libs/sdk'
 import styled from 'styled-components'
 import {VaultWithStakedValue} from 'views/Vaults/components/VaultTable/Row'
+import { getBalanceAmount, getBalanceNumber, getFullDisplayBalance } from 'utils/formatBalance'
 import Page from 'components/Layout/Page'
 import { usePollFarmsDataSubset, useVaults, usePollVaultsData, usePriceSiriusUsdc } from 'state/hooks'
 import { Vault } from 'state/types'
 import { getVaultApr } from 'utils/apr'
 import { useTranslation } from 'contexts/Localization'
-import { getBalanceNumber } from 'utils/formatBalance'
 import { orderBy } from 'lodash'
 import { latinise } from 'utils/latinise'
 import PageHeader from 'components/PageHeader'
@@ -22,7 +22,7 @@ import Table from './components/VaultTable/VaultTable'
 import VaultTabButtons from './components/VaultTabButtons'
 import { RowProps } from './components/VaultTable/Row'
 import { DesktopColumnSchema} from './components/types'
-import { BIG_TEN } from '../../utils/bigNumber'
+import { BIG_TEN, BIG_ZERO, BIG_ONE } from '../../utils/bigNumber'
 import FeesMessage from './components/FeesMessage'
 import BuybackCard from './components/BuybackCard'
 
@@ -130,7 +130,7 @@ const Vaults: React.FC = () => {
   const { t } = useTranslation()
 // const { data: farmsLP} = useFarms()
   const { data: vaultsLP, userDataLoaded } = useVaults()
-  const siriusPrice = usePriceSiriusUsdc()
+  const siriusPrice = usePriceSiriusUsdc()  
   const [query, setQuery] = useState('')
   const { account } = useWeb3React()
   const [sortOption, setSortOption] = useState('hot')
@@ -279,6 +279,17 @@ const Vaults: React.FC = () => {
     const tokenAddress = token.address
     const quoteTokenAddress = quoteToken.address
     const lpLabel = vault.lpSymbol;// && vault.lpSymbol.split(' ')[0].toUpperCase().replace('PANCAKE', '')
+    let lpPrice = BIG_ZERO
+
+    if (vault.lpTotalSupply && vault.lpTotalInQuoteToken) {
+      // Total value of base token in LP
+      const valueOfBaseTokenInVault = new BigNumber(vault.token.usdcPrice).times(vault.tokenAmountTotal)
+      // Double it to get overall value in LP
+      const overallValueOfAllTokensInVault =vault.isSingle? valueOfBaseTokenInVault: valueOfBaseTokenInVault.times(2)
+      // Divide total value of all tokens, by the number of LP tokens
+      const totalLpTokens = getBalanceAmount(new BigNumber(vault.lpTotalSupply))
+      lpPrice = getBalanceAmount(overallValueOfAllTokensInVault.div(totalLpTokens))
+    }
 
     const row: RowProps = {
       apr: {
@@ -318,6 +329,12 @@ const Vaults: React.FC = () => {
       },
       multiplier: {
         multiplier: vault.multiplier,
+      },
+      wallet:{
+        wallet: !userDataLoaded ? undefined: new BigNumber(vault.userData.tokenBalance).times(lpPrice),
+      },
+      staked:{
+        wallet: !userDataLoaded ? undefined: new BigNumber(vault.userData.stakedBalance).times(lpPrice),
       },
       details: vault,
     }

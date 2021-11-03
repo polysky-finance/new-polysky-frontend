@@ -11,6 +11,7 @@ import Apy, { ApyProps } from './Apy'
 import Vault, { VaultProps } from './Vault'
 import Details from './Details'
 import Liquidity, { LiquidityProps } from './Liquidity'
+import Wallet, { WalletProps } from './Wallet'
 import ActionPanel from './Actions/ActionPanel'
 import CellLayout from './CellLayout'
 import { DesktopColumnSchema, MobileColumnSchema } from '../types'
@@ -33,6 +34,8 @@ export interface RowProps {
   earned?: EarnedProps
   multiplier: MultiplierProps
   liquidity: LiquidityProps
+  wallet: WalletProps
+  staked: WalletProps
   details: VaultWithStakedValue
 }
 
@@ -47,6 +50,8 @@ const cells = {
   vault: Vault,
   details: Details,
   liquidity: Liquidity,
+  wallet: Wallet,
+  staked: Wallet,
 }
 
 const CellInner = styled.div`
@@ -147,6 +152,26 @@ const Row: React.FunctionComponent<RowPropsWithLoading> = (props) => {
                     </CellInner>
                   </td>
                 )
+                case 'wallet':
+                  return (
+                    <td key={key}>
+                      <CellInner>
+                        <CellLayout label={t(tableSchema[columnIndex].label)}>
+                          {React.createElement(cells[key], { ...props[key], userDataReady })}
+                        </CellLayout>
+                      </CellInner>
+                    </td>
+                  )
+                  case 'staked':
+                    return (
+                      <td key={key}>
+                        <CellInner>
+                          <CellLayout label={t(tableSchema[columnIndex].label)}>
+                            {React.createElement(cells[key], { ...props[key], userDataReady })}
+                          </CellLayout>
+                        </CellInner>
+                      </td>
+                    )
                 case 'liquidityHeading':
                 return (
                   <td key={key}>

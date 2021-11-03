@@ -54,6 +54,7 @@ export interface Vault extends VaultConfig {
     allowance: string
     tokenBalance: string
     stakedBalance: string
+    currentBalance: string
   }
 }
 

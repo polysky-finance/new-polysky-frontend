@@ -21,66 +21,9 @@ type PublicVaultData = {
   masterChefBalanceRatio: SerializedBigNumber
 }
 
-export const fetchVaultLP = async (vault: Vault): Promise<PublicVaultData> => {
-  const { spid, lpAddresses, token, quoteToken, strategyAddress, masterChefAddress, emissionFunctionName, allocPointName} = vault
-  const lpAddress = getAddress(lpAddresses)
-  const masterAddress = getAddress(masterChefAddress)
-  const calls = [
-    // Balance of token in the LP contract
-    {
-      address: getAddress(token.address),
-      name: 'balanceOf',
-      params: [lpAddress],
-    },
-    // Balance of quote token on LP contract
-    {
-      address: getAddress(quoteToken.address),
-      name: 'balanceOf',
-      params: [lpAddress],
-    },
-
-    // Total supply of LP tokens
-    {
-      address: lpAddress,
-      name: 'totalSupply',
-    },
-    // Token decimals
-    {
-      address: getAddress(token.address),
-      name: 'decimals',
-    },
-    // Quote token decimals
-    {
-      address: getAddress(quoteToken.address),
-      name: 'decimals',
-    }, 
-    {
-      address: masterAddress,
-      name: 'userInfo',
-      params: [spid, getAddress(strategyAddress)],
-    },
-    {
-      address: masterAddress,
-      name: 'totalAllocPoint',
-    },
-    {
-      address: masterAddress,
-      name: 'poolInfo',
-      params: [spid],
-    },
-    {
-      address: masterAddress,
-      name: emissionFunctionName,
-    },
-    {
-      address: lpAddress,
-      name: 'balanceOf',
-      params: [masterAddress],
-    },
-  ]
+export const fetchVaultLP = async (vault: Vault, lpTokenBalanceMasterChef:any, lpTokenBalanceStrategy:any,lpTotalSupply:any,
+  tokenBalanceLP:any, tokenDecimals:any, quoteTokenBalanceLP:any,quoteTokenDecimals:any, info, totalAllocPoint, emissionMC ): Promise<PublicVaultData> => {
   
-  const [tokenBalanceLP  , quoteTokenBalanceLP , lpTotalSupply  , tokenDecimals, quoteTokenDecimals, lpTokenBalanceStrategy, totalAllocPoint, info, emissionMC, lpTokenBalanceMasterChef  ] =
-    await multicall(erc20, calls)
       
   const masterChefBalanceRatio = new BigNumber(lpTokenBalanceMasterChef).div(new BigNumber(lpTokenBalanceStrategy.amount._hex))
 
@@ -99,7 +42,7 @@ export const fetchVaultLP = async (vault: Vault): Promise<PublicVaultData> => {
   const lpTotalInQuoteToken = quoteTokenAmountMc.times(new BigNumber(2))
 
 //  const names = vault.lpSymbol
-  const allocPoint =  info ? new BigNumber(info[allocPointName]?._hex) : BIG_ZERO
+  const allocPoint =  info ? new BigNumber(info[vault.allocPointName]?._hex) : BIG_ZERO
   const poolWeight =  totalAllocPoint ? allocPoint.div(new BigNumber(totalAllocPoint)) : BIG_ZERO
 //  const pw = poolWeight.toJSON()
 //  const tp =quoteTokenAmountTotal.div(tokenAmountTotal).toJSON()
@@ -120,63 +63,10 @@ export const fetchVaultLP = async (vault: Vault): Promise<PublicVaultData> => {
   }
 }
 
-export const fetchVaultQuick = async (vault: Vault): Promise<PublicVaultData> => {
-  const { spid, lpAddresses, token, quoteToken, strategyAddress, masterChefAddress, emissionFunctionName, allocPointName} = vault
-  const lpAddress = getAddress(lpAddresses)
-  const masterAddress = getAddress(masterChefAddress)
-  const calls = [
-    // Balance of token in the LP contract
-    {
-      address: getAddress(token.address),
-      name: 'balanceOf',
-      params: [lpAddress],
-    },
-    // Balance of quote token on LP contract
-    {
-      address: getAddress(quoteToken.address),
-      name: 'balanceOf',
-      params: [lpAddress],
-    },
-
-    // Total supply of LP tokens
-    {
-      address: lpAddress,
-      name: 'totalSupply',
-    },
-    // Token decimals
-    {
-      address: getAddress(token.address),
-      name: 'decimals',
-    },
-    // Quote token decimals
-    {
-      address: getAddress(quoteToken.address),
-      name: 'decimals',
-    }, 
-    // Quick per 10000 dQuick
-    {
-      address: '0xf28164A485B0B2C90639E47b0f377b4a438a16B1',
-      name: 'dQUICKForQUICK',
-      params: [10000],
-    },
-    {
-      address: masterAddress,
-      name: 'balanceOf',
-      params: [getAddress(strategyAddress)],
-    },
-    {
-      address: masterAddress,
-      name: emissionFunctionName,
-    },
-    {
-      address: lpAddress,
-      name: 'balanceOf',
-      params: [masterAddress],
-    }
-  ]
-  
-  const [tokenBalanceLP  , quoteTokenBalanceLP , lpTotalSupply  , tokenDecimals, quoteTokenDecimals, quickPer10000dQuick, lpTokenBalanceStrategy, emissionMC, lpTokenBalanceMasterChef] =
-    await multicall(erc20, calls)
+export const fetchVaultQuick = async (vault: Vault,
+  lpTokenBalanceMasterChef:any, lpTokenBalanceStrategy:any,lpTotalSupply:any,
+  tokenBalanceLP:any,tokenDecimals:any, quoteTokenBalanceLP:any,
+  quoteTokenDecimals:any, emissionMC:any, quickPer10000dQuick:any): Promise<PublicVaultData> => {
       
   const masterChefBalanceRatio = new BigNumber(lpTokenBalanceMasterChef).div(new BigNumber(lpTokenBalanceStrategy))
 
@@ -216,57 +106,9 @@ export const fetchVaultQuick = async (vault: Vault): Promise<PublicVaultData> =>
   }
 }
 
-export const fetchVaultSingle = async (vault: Vault): Promise<PublicVaultData> => {
-  const { spid, lpAddresses, token, quoteToken, strategyAddress, masterChefAddress, emissionFunctionName, allocPointName} = vault
-  const lpAddress = getAddress(lpAddresses)
-  const masterAddress = getAddress(masterChefAddress)
-  const calls = [
-    // Total supply of LP tokens
-    {
-      address: lpAddress,
-      name: 'totalSupply',
-    },
-    // Token decimals
-    {
-      address: getAddress(token.address),
-      name: 'decimals',
-    },
-    {
-      address: masterAddress,
-      name: 'userInfo',
-      params: [spid, getAddress(strategyAddress)],
-    },
-    {
-      address: masterAddress,
-      name: 'totalAllocPoint',
-    },
-    {
-      address: masterAddress,
-      name: 'poolInfo',
-      params: [spid],
-    },
-    {
-      address: masterAddress,
-      name: emissionFunctionName,
-    },
-    {
-      address: lpAddress,
-      name: 'balanceOf',
-      params: [masterAddress],
-    },
-    // Quote token decimals
-    {
-      address: lpAddress,
-      name: 'decimals',
-    },
-    {
-      address: lpAddress,
-      name: 'balanceOf',
-      params: [masterAddress],
-    },
-  ]
-  
-  const [lpTotalSupply, tokenDecimals, lpTokenBalanceStrategy, totalAllocPoint,  info, emissionMC, lpTokenBalanceMasterChef] = await multicall(erc20, calls)
+export const fetchVaultSingle = async (vault: Vault, lpTotalSupply: any,tokenDecimals: any,
+  lpTokenBalanceMasterChef:any, lpTokenBalanceStrategy:any, info: any, totalAllocPoint:any,
+  emissionMC: any): Promise<PublicVaultData> => { 
   
   const quoteTokenBalanceLP = lpTotalSupply
   const quoteTokenDecimals = tokenDecimals
@@ -288,7 +130,7 @@ export const fetchVaultSingle = async (vault: Vault): Promise<PublicVaultData> =
   // Total staked in LP, in quote token value
   const lpTotalInQuoteToken = quoteTokenAmountMc // .times(new BigNumber(2))
 
-  const allocPoint =  info ? new BigNumber(info[allocPointName]?._hex) : BIG_ZERO
+  const allocPoint =  info ? new BigNumber(info[vault.allocPointName]?._hex) : BIG_ZERO
   const poolWeight =  totalAllocPoint ? allocPoint.div(new BigNumber(totalAllocPoint)) : BIG_ZERO
 
   const emission = new BigNumber(emissionMC)

@@ -250,6 +250,15 @@ const tokens = {
     decimals: 18,
     projectLink: 'https://aave.com/',
   },
+  ftm: {
+    symbol: 'FTM',
+    address: {
+      137: '0xb85517b87bf64942adf3a0b9e4c71e4bc5caa4e5',
+      80001: '',
+    },
+    decimals: 18,
+    projectLink: 'https://fantom.foundation',
+  },
 }
 
 export default tokens

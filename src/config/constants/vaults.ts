@@ -124,7 +124,7 @@ const vaults: VaultConfig[] = [
   },
   {
     pid: 5,
-    lpSymbol: 'WMATIC - BANANA',  
+    lpSymbol: 'MATIC - BANANA',  
 	exchange: 'Apeswap',
 	baseLiquidityUrl: 'https://app.apeswap.finance/add/ETH/0x5d47baba0d66083c52009271faf3f50dcc01023c',
 	strategyAddress:{
@@ -154,7 +154,7 @@ const vaults: VaultConfig[] = [
   },
   {
     pid: 6,
-    lpSymbol: 'WMATIC - WETH',  
+    lpSymbol: 'MATIC - WETH',  
 	exchange: 'Apeswap',
 	baseLiquidityUrl: 'https://app.apeswap.finance/add/ETH/0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619',
 	strategyAddress:{
@@ -184,7 +184,7 @@ const vaults: VaultConfig[] = [
   },
   {
     pid: 7,
-    lpSymbol: 'WMATIC - DAI',  
+    lpSymbol: 'MATIC - DAI',  
 	exchange: 'Apeswap',
 	baseLiquidityUrl: 'https://app.apeswap.finance/add/ETH/0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063',
 	strategyAddress:{
@@ -214,7 +214,7 @@ const vaults: VaultConfig[] = [
   },
   {
     pid: 8,
-    lpSymbol: 'WMATIC - USDT',  
+    lpSymbol: 'MATIC - USDT',  
 	exchange: 'Apeswap',
 	baseLiquidityUrl: 'https://app.apeswap.finance/add/ETH/0xc2132D05D31c914a87C6611C10748AEb04B58e8F',
 	strategyAddress:{
@@ -244,7 +244,7 @@ const vaults: VaultConfig[] = [
   },
   {
     pid: 9,
-    lpSymbol: 'WMATIC - WBTC',  
+    lpSymbol: 'MATIC - WBTC',  
 	exchange: 'Apeswap',
 	baseLiquidityUrl: 'https://app.apeswap.finance/add/ETH/0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6',
 	strategyAddress:{
@@ -304,7 +304,7 @@ const vaults: VaultConfig[] = [
   },
   {
     pid: 11,
-    lpSymbol: 'WMATIC - BNB',  
+    lpSymbol: 'MATIC - BNB',  
 	exchange: 'Apeswap',
 	baseLiquidityUrl: 'https://app.apeswap.finance/add/ETH/0xA649325Aa7C5093d12D6F98EB4378deAe68CE23F',
 	strategyAddress:{
@@ -826,6 +826,37 @@ const vaults: VaultConfig[] = [
 	isBurning:false,
 	allocPointName: 'lastRewardTime',
 	lpRewardsApr:4.12,
+	platform: 'Quickswap',
+  },
+  {
+    pid: 30,
+    lpSymbol: 'FTM - MATIC',  
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#/add/ETH/0xb85517b87bf64942adf3a0b9e4c71e4bc5caa4e5',
+	strategyAddress:{
+		137: '0x524F49fE7c919587c4950eF7454E5aD1eb1bD608',
+		80001: '',
+	},
+    lpAddresses: {
+      137: '0xd2b61a42d3790533fedc2829951a65120624034a',
+      80001: '',
+    },
+	masterChefAddress:{
+		137: '0xf81e664c8277d461df561b353d50c4b698144664',
+		80001: '',
+	},
+	spid: 0,
+    token: tokens.ftm,
+    quoteToken: tokens.wmatic,
+	rewardToken: tokens.quick,
+	emissionFunctionName: 'rewardRate',
+	emissionMultiplier: 2,
+	isArchived: false,
+	isSingle:false,
+	isQuickswap:true,
+	isBurning:false,
+	allocPointName: 'lastRewardTime',
+	lpRewardsApr:18.12,
 	platform: 'Quickswap',
   },
 ]

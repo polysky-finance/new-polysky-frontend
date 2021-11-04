@@ -56,6 +56,7 @@ export interface VaultConfig {
   rewardToken: Token
   isArchived: boolean
   isSingle: false
+  isStable: false
   isQuickswap?: boolean
   emissionFunctionName: string
   emissionMultiplier: number

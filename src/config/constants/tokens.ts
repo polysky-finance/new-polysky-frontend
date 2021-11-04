@@ -259,6 +259,15 @@ const tokens = {
     decimals: 18,
     projectLink: 'https://fantom.foundation',
   },
+  pbrew: {
+    symbol: 'pBREW',
+    address: {
+      137: '0xb5106a3277718ecad2f20ab6b86ce0fee7a21f09',
+      80001: '',
+    },
+    decimals: 18,
+    projectLink: 'https://fantom.foundation',
+  },
 }
 
 export default tokens

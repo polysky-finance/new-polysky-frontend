@@ -135,6 +135,7 @@ const Vaults: React.FC = () => {
   const { account } = useWeb3React()
   const [sortOption, setSortOption] = useState('hot')
   const [platformOption, setPlatformOption] = useState('All')
+  const [typeOption, setTypeOption] = useState('All')
   const [showBurning, setShowBurning] = useState(true)
 
   const isArchived = pathname.includes('archived')
@@ -153,7 +154,30 @@ const Vaults: React.FC = () => {
     setStakedOnly(!isActive)
   }, [isActive])
 
-  const pVaultsLP = vaultsLP.filter(v=> (platformOption === "All" || v.platform === platformOption) && (showBurning || !v.isBurning))
+  const pVaultsLP = vaultsLP.filter(v=> {
+	  if(!showBurning && v.isBurning)
+	  {
+		   return false;
+	  }
+	  if(platformOption !== "All" && v.platform !== platformOption)
+	  {
+		  return false;
+	  }
+	  if(typeOption === "Single" && !v.isSingle)
+	  {
+		  return false;
+	  }
+	  if(typeOption === "Pair" && v.isSingle)
+	  {
+		  return false;
+	  }
+	  if(typeOption === "Stable" && !v.isStable)
+	  {
+		  return false;
+	  }
+	  return true;
+//	  return (platformOption === "All" || v.platform === platformOption) && (showBurning || !v.isBurning)
+  })
 
   const activeVaults = pVaultsLP.filter((vault) =>  !vault.isArchived)
   const inactiveVaults = pVaultsLP.filter((vault) =>  vault.isArchived)
@@ -380,6 +404,10 @@ const Vaults: React.FC = () => {
   const handlePlatformOptionChange = (option: OptionProps): void => {
     setPlatformOption(option.value)
   }
+  
+  const handleTypeOptionChange = (option: OptionProps): void => {
+    setTypeOption(option.value)
+  }
 
   return (
     <>
@@ -446,6 +474,10 @@ const Vaults: React.FC = () => {
                     label: t('Quickswap'),
                     value: 'Quickswap',
                   },
+				  {
+                    label: t('Cafeswap'),
+                    value: 'Cafeswap',
+                  },
                 ]}
                 onChange={handlePlatformOptionChange}
               />
@@ -474,6 +506,32 @@ const Vaults: React.FC = () => {
                   },
                 ]}
                 onChange={handleSortOptionChange}
+              />
+            </LabelWrapper>            
+          </FilterContainer>
+		  <FilterContainer style={{ marginLeft: 16 }}>
+            <LabelWrapper>
+              <Text textTransform="uppercase">{t('Asset Type')}</Text>
+              <Select
+                options={[
+                  {
+                    label: t('All'),
+                    value: 'All',
+                  },
+                  {
+                    label: t('Single'),
+                    value: 'Single',
+                  },
+                  {
+                    label: t('Pair'),
+                    value: 'Pair',
+                  },
+                  {
+                    label: t('Stable'),
+                    value: 'Stable',
+                  },
+                ]}
+                onChange={handleTypeOptionChange}
               />
             </LabelWrapper>            
           </FilterContainer>

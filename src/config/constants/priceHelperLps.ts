@@ -206,6 +206,34 @@ const priceHelperLps: FarmConfig[] = [
     token: tokens.qi,
     quoteToken: tokens.wmatic,
   },
+  {
+    pid: null,
+    lpSymbol: 'SOL - MATIC',
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0x898386dd8756779a4ba4f1462891b92dd76b78ef',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.sol,
+    quoteToken: tokens.wmatic,
+  },
+  {
+    pid: null,
+    lpSymbol: 'AVAX - MATIC',
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0xeb477ae74774b697b5d515ef8ca09e24fee413b5',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.avax,
+    quoteToken: tokens.wmatic,
+  },
 ]
 
 export default priceHelperLps

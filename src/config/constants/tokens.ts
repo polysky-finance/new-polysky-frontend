@@ -214,6 +214,33 @@ const tokens = {
     decimals: 18,
     projectLink: 'https://app.mai.finance/farm',
   },
+  avax: {
+    symbol: 'AVAX',
+    address: {
+      137: '0x2c89bbc92bd86f8075d1decc58c7f4e0107f286b',
+      80001: '',
+    },
+    decimals: 18,
+    projectLink: 'https://www.avax.network/',
+  },
+  uni: {
+    symbol: 'UNI',
+    address: {
+      137: '0xb33eaad8d922b1083446dc23f610c2567fb5180f',
+      80001: '',
+    },
+    decimals: 18,
+    projectLink: 'https://uniswap.org/',
+  },
+  sol: {
+    symbol: 'SOL',
+    address: {
+      137: '0x7dff46370e9ea5f0bad3c4e29711ad50062ea7a4',
+      80001: '',
+    },
+    decimals: 18,
+    projectLink: 'https://solana.com/',
+  },
 }
 
 export default tokens

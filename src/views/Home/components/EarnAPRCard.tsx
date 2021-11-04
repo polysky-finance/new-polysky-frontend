@@ -76,7 +76,7 @@ const EarnAPRCard = () => {
 
 
 // Fetch vault data once to get the max APR
-useEffect(() => {
+ useEffect(() => {
   const fetchVaultData = async () => {
     try {
       await dispatch(fetchVaultsPublicDataAsync(nonArchivedVaults.map((nonArchivedVault) => nonArchivedVault.pid)))

@@ -3,7 +3,7 @@ import { Router, Redirect, Route, Switch } from 'react-router-dom'
 import { ResetCSS } from '@polysky-libs/uikit'
 import BigNumber from 'bignumber.js'
 import useEagerConnect from 'hooks/useEagerConnect'
-import { usePollCoreFarmData,usePollCoreVaultData, usePollBlockNumber } from 'state/hooks'
+// import { usePollCoreFarmData,usePollCoreVaultData, usePollBlockNumber } from 'state/hooks'
 import { DatePickerPortal } from 'components/DatePicker'
 import GlobalStyle from './style/Global'
 import Menu from './components/Menu'
@@ -32,8 +32,8 @@ BigNumber.config({
 const App: React.FC = () => {
 //  usePollBlockNumber()
   useEagerConnect()
-  usePollCoreFarmData()
-  usePollCoreVaultData()
+//  usePollCoreFarmData()
+//  usePollCoreVaultData()
 
   return (
     <Router history={history}>

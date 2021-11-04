@@ -100,6 +100,7 @@ export const usePollVaultsData = (includeArchive = false) => {
  * 251 = CAKE-BNB LP
  * 252 = BUSD-BNB LP
  */
+/*
  export const usePollCoreVaultData = () => {
   const dispatch = useDispatch()
   const { fastRefresh } = useRefresh()
@@ -116,7 +117,7 @@ export const usePollCoreFarmData = () => {
   useEffect(() => {
     dispatch(fetchFarmsPublicDataAsync([251, 252]))
   }, [dispatch, fastRefresh])
-}
+} */
 
 export const usePollBlockNumber = () => {
   const dispatch = useDispatch()

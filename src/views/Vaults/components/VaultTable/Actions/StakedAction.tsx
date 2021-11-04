@@ -22,6 +22,7 @@ import useStakeVaults from '../../../hooks/useStakeVaults'
 import useApproveVault from '../../../hooks/useApproveVault'
 import { ActionContainer, ActionTitles, ActionContent, Earned } from './styles'
 
+
 const IconButtonWrapper = styled.div`
   display: flex;
 `

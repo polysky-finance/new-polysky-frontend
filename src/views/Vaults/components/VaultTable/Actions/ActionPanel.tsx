@@ -5,16 +5,20 @@ import { LinkExternal, Text } from '@polysky-libs/uikit'
 import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
 import { getAddress } from 'utils/addressHelpers'
 import { getPolygonScanAddressUrl } from 'utils/polygonscan'
+import { getBalanceAmount} from 'utils/formatBalance'
 import { CommunityTag, BurningTag, CoreTag, DualTag } from 'components/Tags'
 import BigNumber from 'bignumber.js'
+import { useVaults} from 'state/hooks'
+import { BIG_TEN, BIG_ZERO, BIG_ONE } from 'utils/bigNumber'
 import StakedAction from './StakedAction'
 import Apr, { AprProps } from '../Apr'
 import LiquidityDetails, { LiquidityProps } from '../LiquidityDetails'
+import Wallet, { WalletProps } from '../Wallet'
 
 
 declare const NewAPR: AprProps
 
-export interface VaultWithStakedValue extends Farm {
+export interface VaultWithStakedValue extends Vault {
   apr?: number
   lpRewardsApr?: number
   liquidity?: BigNumber
@@ -144,7 +148,7 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
 }) => {
   const vault = details
  // const apr2 = new BigNumber(apr.value).times(365).toJSON();
-
+  const { userDataLoaded } = useVaults()
   const { t } = useTranslation()
   const isActive = vault.isactive
   const lpLabel = vault.lpSymbol && vault.lpSymbol.toUpperCase().replace('POLYSKY', '')
@@ -154,9 +158,21 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
   const info = vault.isSingle?`https://info.quickswap.exchange/token/${lpAddress}`:`https://info.quickswap.exchange/pair/${lpAddress}`
   const label = lpLabel === 'AUTO SIRIUS'? 'SIRIUS':lpLabel;
   
+  let lpPrice = BIG_ZERO
 
+    if (vault.lpTotalSupply && vault.lpTotalInQuoteToken) {
+      // Total value of base token in LP
+      const valueOfBaseTokenInVault = new BigNumber(vault.token.usdcPrice).times(vault.tokenAmountTotal)
+      // Double it to get overall value in LP
+      const overallValueOfAllTokensInVault =vault.isSingle? valueOfBaseTokenInVault: valueOfBaseTokenInVault.times(2)
+      // Divide total value of all tokens, by the number of LP tokens
+      const totalLpTokens = getBalanceAmount(new BigNumber(vault.lpTotalSupply))
+      lpPrice = getBalanceAmount(overallValueOfAllTokensInVault.div(totalLpTokens))
+    }
+  const wallet= !userDataLoaded ? undefined: new BigNumber(vault.userData.tokenBalance).times(lpPrice)
+  const staked = !userDataLoaded ? undefined: new BigNumber(vault.userData.currentBalance).times(lpPrice)
   const aprval : AprProps ={ 
-    value: new BigNumber(apr.value).div(100).plus(1).pow(365).minus(1).times(100).decimalPlaces(2).toJSON(),
+    value: new BigNumber(apr.value).toJSON(), // .div(100).plus(1).pow(365).minus(1).times(100).decimalPlaces(2).toJSON(),
     multiplier: apr.multiplier,
     lpLabel: apr.lpLabel,
     tokenAddress: apr.tokenAddress,
@@ -183,8 +199,16 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
       </InfoContainer>
       <ValueContainer>
         <ValueWrapper>
-           <Text>{t('APY')}</Text>
+           <Text>{t('Daily')}</Text>
           <Apr {...aprval} /> 
+        </ValueWrapper>
+        <ValueWrapper>
+           <Text>{t('Wallet')}</Text>
+          <Wallet wallet={wallet}/>
+        </ValueWrapper>
+        <ValueWrapper>
+           <Text>{t('Staked')}</Text>
+          <Wallet wallet={staked}/>
         </ValueWrapper>
       </ValueContainer>
       <ActionContainer>

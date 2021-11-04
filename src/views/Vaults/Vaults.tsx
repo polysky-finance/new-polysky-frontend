@@ -334,7 +334,7 @@ const Vaults: React.FC = () => {
         wallet: !userDataLoaded ? undefined: new BigNumber(vault.userData.tokenBalance).times(lpPrice),
       },
       staked:{
-        wallet: !userDataLoaded ? undefined: new BigNumber(vault.userData.stakedBalance).times(lpPrice),
+        wallet: !userDataLoaded ? undefined: new BigNumber(vault.userData.currentBalance).times(lpPrice),
       },
       details: vault,
     }

@@ -41,10 +41,10 @@ export const MobileColumnSchema: ColumnsDefTypes[] = [
     label: 'TVL',
   },
   {
-    id: 3,
-    name: 'apr',
+    id: 5,
+    name: 'apy',
     sortable: true,
-    label: 'Daily',
+    label: 'APY',
   },
   {
     id: 4,

@@ -1,7 +1,7 @@
 import tokens from './tokens'
 import { VaultConfig } from './types'
 
-const vaults: VaultConfig[] = [
+const vaults: VaultConfig[] = [  
 {
     pid: 2,
     lpSymbol: 'SIRIUS',  
@@ -582,7 +582,7 @@ const vaults: VaultConfig[] = [
 	allocPointName: 'lastRewardTime',
 	lpRewardsApr:0.39,
 	platform: 'Quickswap',
-  },
+  }, 
   {
     pid: 22,
     lpSymbol: 'MATIC - USDT',  
@@ -613,7 +613,7 @@ const vaults: VaultConfig[] = [
 	allocPointName: 'lastRewardTime',
 	lpRewardsApr:25.4,
 	platform: 'Quickswap',
-  },
+  }, 
   {
     pid: 23,
     lpSymbol: 'MATIC - MAI',  
@@ -1014,7 +1014,38 @@ const vaults: VaultConfig[] = [
 	allocPointName:'lastRewardTime',
 	lpRewardsApr:0,
 	platform: 'Cafeswap',
-  },
+  }, 
+  {
+    pid: 36,
+    lpSymbol: 'USDT - USDC',  
+	exchange: 'Cafeswap',
+	baseLiquidityUrl: 'https://polygondex.cafeswap.finance/#/add/0x2791bca1f2de4661ed88a30c99a7a9449aa84174/0xc2132d05d31c914a87c6611c10748aeb04b58e8f',
+	strategyAddress:{
+		137: '0xe455BE4F595290AC019d28cB5E83863AF030106c',
+		80001: '',
+	},
+    lpAddresses: {
+      137: '0x7f4cdeA583b6c4dd3241fD6618236FF1fE57f549',
+      80001: '',
+    },
+	masterChefAddress:{
+		137: '0xca2DeAc853225f5a4dfC809Ae0B7c6e39104fCe5',
+		80001: '',
+	},
+	spid: 17,
+    token: tokens.usdt,
+    quoteToken: tokens.usdc,
+	rewardToken: tokens.pbrew,
+	emissionFunctionName: 'brewPerBlock',
+	emissionMultiplier: 1,
+	isArchived: false,
+	isSingle:false,
+	isBurning:false,
+	isStable: true,
+	allocPointName:'lastRewardTime',
+	lpRewardsApr:0,
+	platform: 'Cafeswap',
+  }, 
 ]
 
 export default vaults

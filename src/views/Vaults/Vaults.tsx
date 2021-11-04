@@ -110,6 +110,20 @@ const getDisplayApr = (siriusRewardsApr?: number, lpRewardsApr?: number) => {
   return null
 }
 
+const getApy = (siriusRewardsApr?: number, lpRewardsApr?: number) => {
+  if (siriusRewardsApr && lpRewardsApr) {
+    const exponent = (1+(siriusRewardsApr + lpRewardsApr)/36500)**365;
+    const apy = (exponent -1)*100;
+    return apy
+  }
+  if (siriusRewardsApr) {
+    const exponent = (1+(siriusRewardsApr)/36500)**365;
+    const apy = (exponent -1)*100;
+    return apy
+  }
+  return null
+}
+
 const getDisplayApy = (siriusRewardsApr?: number, lpRewardsApr?: number) => {
   if (siriusRewardsApr && lpRewardsApr) {
     const exponent = (1+(siriusRewardsApr + lpRewardsApr)/36500)**365;
@@ -201,16 +215,17 @@ const Vaults: React.FC = () => {
         if (!vault.lpTotalInQuoteToken || !vault.quoteToken.usdcPrice) {
           return vault;
         }
-        const totalLiquidity = new BigNumber(vault.lpTotalInQuoteToken).times(vault.quoteToken.usdcPrice)
+        const totalLiquidity =  (vault.isSingle? BIG_ONE:new BigNumber(2)).times(new BigNumber(vault.quoteTokenAmountTotal)).times(vault.quoteToken.usdcPrice)
+        const stratLiquidity = new BigNumber(vault.lpTotalInQuoteToken).times(vault.quoteToken.usdcPrice);
         const rewardTokenPrice = new BigNumber(vault.rewardToken.usdcPrice)
         const rewardPerBlock = new BigNumber(vault.emission).times(new BigNumber(vault.emissionMultiplier)).div(BIG_TEN.pow(vault.rewardToken.decimals))
-        const masterLiquidity = totalLiquidity.times(new BigNumber(vault.masterChefBalanceRatio))
+        const masterLiquidity = totalLiquidity.times(new BigNumber(vault.lpTokenBalanceMasterChef)).div(new BigNumber(vault.lpTotalSupply))
 
         const { siriusRewardsApr, lpRewardsApr } = isActive
           ? getVaultApr(new BigNumber(vault.poolWeight), rewardTokenPrice, masterLiquidity, vault.lpAddresses[ChainId.MAINNET], rewardPerBlock, vault.lpRewardsApr)
           : { siriusRewardsApr: 0, lpRewardsApr: 0 }
 
-        return { ...vault, apr: siriusRewardsApr, lpRewardsApr, liquidity: totalLiquidity }
+        return { ...vault, apr: siriusRewardsApr, lpRewardsApr, liquidity: stratLiquidity }
       })
 
       if (query) {
@@ -332,7 +347,7 @@ const Vaults: React.FC = () => {
         tokenAddress,
         quoteTokenAddress,
         siriusPrice,
-        originalValue: vault.apr,
+        originalValue: getApy(vault.apr, vault.lpRewardsApr),
       },
       vault: {
         label: lpLabel,

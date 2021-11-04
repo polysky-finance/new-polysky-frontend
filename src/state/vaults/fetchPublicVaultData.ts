@@ -19,6 +19,7 @@ type PublicVaultData = {
   poolWeight: SerializedBigNumber
   emission: SerializedBigNumber
   masterChefBalanceRatio: SerializedBigNumber
+  lpTokenBalanceMasterChef: SerializedBigNumber
 }
 
 export const fetchVaultLP = async (vault: Vault, lpTokenBalanceMasterChef:any, lpTokenBalanceStrategy:any,lpTotalSupply:any,
@@ -34,7 +35,7 @@ export const fetchVaultLP = async (vault: Vault, lpTokenBalanceMasterChef:any, l
   const tokenAmountTotal = new BigNumber(tokenBalanceLP).div(BIG_TEN.pow(tokenDecimals))
   const quoteTokenAmountTotal = new BigNumber(quoteTokenBalanceLP).div(BIG_TEN.pow(quoteTokenDecimals))
 
-  // Amount of token in the LP that are staked in the MC (i.e amount of token * lp ratio)
+  // Amount of token in the LP that are staked in the Strategy (i.e amount of token * lp ratio)
   const tokenAmountMc = tokenAmountTotal.times(lpTokenRatio)
   const quoteTokenAmountMc = quoteTokenAmountTotal.times(lpTokenRatio)
 
@@ -59,7 +60,8 @@ export const fetchVaultLP = async (vault: Vault, lpTokenBalanceMasterChef:any, l
     tokenPriceVsQuote: quoteTokenAmountTotal.div(tokenAmountTotal).toJSON(),
     poolWeight: poolWeight.toJSON(),
     emission: emission.toJSON(),
-    masterChefBalanceRatio: masterChefBalanceRatio.toJSON()
+    masterChefBalanceRatio: masterChefBalanceRatio.toJSON(),
+    lpTokenBalanceMasterChef: new BigNumber(lpTokenBalanceMasterChef).toJSON()
   }
 }
 
@@ -102,7 +104,8 @@ export const fetchVaultQuick = async (vault: Vault,
     tokenPriceVsQuote: quoteTokenAmountTotal.div(tokenAmountTotal).toJSON(),
     poolWeight: poolWeight.toJSON(),
     emission: emission.toJSON(),
-    masterChefBalanceRatio: masterChefBalanceRatio.toJSON()
+    masterChefBalanceRatio: masterChefBalanceRatio.toJSON(),
+    lpTokenBalanceMasterChef: new BigNumber(lpTokenBalanceMasterChef).toJSON()
   }
 }
 
@@ -145,7 +148,8 @@ export const fetchVaultSingle = async(vault: Vault, lpTotalSupply: any,tokenDeci
     tokenPriceVsQuote: quoteTokenAmountTotal.div(tokenAmountTotal).toJSON(),
     poolWeight: poolWeight.toJSON(),
     emission: emission.toJSON(),
-    masterChefBalanceRatio: masterChefBalanceRatio.toJSON()
+    masterChefBalanceRatio: masterChefBalanceRatio.toJSON(),
+    lpTokenBalanceMasterChef: new BigNumber(lpTokenBalanceMasterChef).toJSON()
   }
 }
 // export default fetchVaultLP

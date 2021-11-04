@@ -54,7 +54,12 @@ const Apr: React.FC<ApyProps> = ({
     <Container>
       {originalValue ? (
         <>
-          <AprWrapper>{value}%</AprWrapper>
+        {
+          originalValue > 1e6?
+          (<AprWrapper>Infitity%</AprWrapper>):
+          (<AprWrapper>{value}%</AprWrapper>)
+        }
+          
         </>
       ) : (
         <AprWrapper>

@@ -241,6 +241,15 @@ const tokens = {
     decimals: 18,
     projectLink: 'https://solana.com/',
   },
+  aave: {
+    symbol: 'AAVE',
+    address: {
+      137: '0xd6df932a45c0f255f85145f286ea0b292b21c90b',
+      80001: '',
+    },
+    decimals: 18,
+    projectLink: 'https://aave.com/',
+  },
 }
 
 export default tokens

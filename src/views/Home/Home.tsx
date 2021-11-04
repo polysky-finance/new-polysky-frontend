@@ -2,7 +2,9 @@ import React, { useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import { Heading, Text, BaseLayout } from '@polysky-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
+import { useWeb3React } from '@web3-react/core'
 import Page from 'components/Layout/Page'
+import { usePollFarmsData, usePollVaultsData, useFetchPublicPoolsData, usePools} from 'state/hooks'
 import FarmStakingCard from 'views/Home/components/FarmStakingCard'
 import CakeStats from 'views/Home/components/CakeStats'
 import UserStats from 'views/Home/components/UserStats'
@@ -120,16 +122,16 @@ const CTACards = styled(BaseLayout)`
 
 const Home: React.FC = () => {
   const { t } = useTranslation()
-/*   const { account } = useWeb3React()
-  For live loading of portfolio data
+   const { account } = useWeb3React()
+  // For live loading of portfolio data
   usePollFarmsData(false)
-  setTimeout( () => { const b =1 }, 2000 ); 
+  // setTimeout( () => { const b =1 }, 2000 ); 
   usePollVaultsData(false) 
-  setTimeout( () => { const b =1 }, 2000 ); 
+ // setTimeout( () => { const b =1 }, 2000 ); 
   useFetchPublicPoolsData()
-  setTimeout( () => { const c=1 }, 2000 );
+ // setTimeout( () => { const c=1 }, 2000 );
    const { pools: poolsWithoutAutoVault, userDataLoaded } = usePools(account) 
-*/
+
   return (
     <>
       

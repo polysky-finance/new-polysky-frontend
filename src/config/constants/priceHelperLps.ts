@@ -248,6 +248,20 @@ const priceHelperLps: FarmConfig[] = [
     token: tokens.pbrew,
     quoteToken: tokens.wmatic,
   },
+  {
+    pid: null,
+    lpSymbol: 'BREW - USDC',
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0x248C328b1048f9B6e7e00D61a02E9cA3F8c2bf50',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.brew,
+    quoteToken: tokens.usdc,
+  },
 ]
 
 export default priceHelperLps

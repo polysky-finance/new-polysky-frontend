@@ -295,6 +295,24 @@ const tokens = {
     decimals: 18,
     projectLink: 'https://www.beefy.finance/',
   },
+  tusd: {
+    symbol: 'TUSD',
+    address: {
+      137: '0x2e1ad108ff1d8c782fcbbb89aad783ac49586756',
+      80001: '',
+    },
+    decimals: 18,
+    projectLink: 'https://www.trusttoken.com/trueusd',
+  },
+  insur: {
+    symbol: 'INSUR',
+    address: {
+      137: '0x8a0e8b4b0903929f47c3ea30973940d4a9702067',
+      80001: '',
+    },
+    decimals: 18,
+    projectLink: 'https://www.trusttoken.com/trueusd',
+  },
 }
 
 export default tokens

@@ -262,6 +262,34 @@ const priceHelperLps: FarmConfig[] = [
     token: tokens.brew,
     quoteToken: tokens.usdc,
   },
+  {
+    pid: null,
+    lpSymbol: 'TUSD - USDC',
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0x4AB66a7138F50Db9B7aDaF8CE8aFB3F638B22f7f',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.tusd,
+    quoteToken: tokens.usdc,
+  },
+  {
+    pid: null,
+    lpSymbol: 'INSUR - USDC',
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0x6F21996181915D688C787A1eC7C987E2A31B6829',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.insur,
+    quoteToken: tokens.usdc,
+  },
 ]
 
 export default priceHelperLps

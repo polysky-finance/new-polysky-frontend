@@ -1301,7 +1301,71 @@ const vaults: VaultConfig[] = [
 	lpRewardsApr:8.33,
 	platform: 'Sushiswap',
 	rewarder: '0xa3378Ca78633B3b9b2255EAa26748770211163AE'
-  },   
+  },  
+{
+    pid: 46,
+    lpSymbol: 'WETH - USDT',  
+	exchange: 'Sushiswap',
+	baseLiquidityUrl: 'https://app.sushi.com/add/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619/0xc2132d05d31c914a87c6611c10748aeb04b58e8f',
+	strategyAddress:{
+		137: '0x81FDd8A300625B48667cCb4936d5Cc80e2b06C1C',
+		80001: '',
+	},
+    lpAddresses: {
+      137: '0xc2755915a85C6f6c1C0F3a86ac8C058F11Caa9C9',
+      80001: '',
+    },
+	masterChefAddress:{
+		137: '0x0769fd68dFb93167989C6f7254cd0D766Fb2841F',
+		80001: '',
+	},
+	spid: 2,
+    token: tokens.usdt,
+    quoteToken: tokens.weth,
+	rewardToken: tokens.sushi,
+	emissionFunctionName: 'sushiPerSecond',
+	emissionMultiplier: 2,
+	isArchived: false,
+	isSingle:false,
+	isBurning:false,
+	isStable: true,
+	allocPointName:'allocPoint',
+	lpRewardsApr:8.7,
+	platform: 'Sushiswap',
+	rewarder: '0xa3378Ca78633B3b9b2255EAa26748770211163AE'
+  }, 
+{
+    pid: 47,
+    lpSymbol: 'USDC - BIFI',  
+	exchange: 'Sushiswap',
+	baseLiquidityUrl: 'https://app.sushi.com/add/0x2791bca1f2de4661ed88a30c99a7a9449aa84174/0xfbdd194376de19a88118e84e279b977f165d01b8',
+	strategyAddress:{
+		137: '0x3C9157d72CB005EBA78b1D960657ce607c3B1D65',
+		80001: '',
+	},
+    lpAddresses: {
+      137: '0x180237bd326d5245D0898336F54b3c8012c5c62f',
+      80001: '',
+    },
+	masterChefAddress:{
+		137: '0x0769fd68dFb93167989C6f7254cd0D766Fb2841F',
+		80001: '',
+	},
+	spid: 23,
+    token: tokens.bifi,
+    quoteToken: tokens.usdc,
+	rewardToken: tokens.sushi,
+	emissionFunctionName: 'sushiPerSecond',
+	emissionMultiplier: 2,
+	isArchived: false,
+	isSingle:false,
+	isBurning:false,
+	isStable: true,
+	allocPointName:'allocPoint',
+	lpRewardsApr:11.24,
+	platform: 'Sushiswap',
+	rewarder: '0xa3378Ca78633B3b9b2255EAa26748770211163AE'
+  },       
 ]
 
 export default vaults

@@ -286,6 +286,15 @@ const tokens = {
     decimals: 18,
     projectLink: 'https://www.terra.money/',
   },
+  bifi: {
+    symbol: 'BIFI',
+    address: {
+      137: '0xfbdd194376de19a88118e84e279b977f165d01b8',
+      80001: '',
+    },
+    decimals: 18,
+    projectLink: 'https://www.beefy.finance/',
+  },
 }
 
 export default tokens

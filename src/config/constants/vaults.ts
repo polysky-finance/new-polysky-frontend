@@ -1368,7 +1368,7 @@ const vaults: VaultConfig[] = [
   },
 {
     pid: 48,
-    lpSymbol: 'WMATIC - WETH',  
+    lpSymbol: 'MATIC - WETH',  
 	exchange: 'Sushiswap',
 	baseLiquidityUrl: 'https://app.sushi.com/add/ETH/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619',
 	strategyAddress:{
@@ -1384,8 +1384,8 @@ const vaults: VaultConfig[] = [
 		80001: '',
 	},
 	spid: 0,
-    token: tokens.weth,
-    quoteToken: tokens.wmatic,
+    token: tokens.wmatic,
+    quoteToken: tokens.weth,
 	rewardToken: tokens.sushi,
 	emissionFunctionName: 'sushiPerSecond',
 	emissionMultiplier: 2,
@@ -1493,7 +1493,39 @@ const vaults: VaultConfig[] = [
 	lpRewardsApr:8.64,
 	platform: 'Sushiswap',
 	rewarder: '0xa3378Ca78633B3b9b2255EAa26748770211163AE'
-  },  
+  }, 
+{
+    pid: 52,
+    lpSymbol: 'WETH - MANA',  
+	exchange: 'Sushiswap',
+	baseLiquidityUrl: 'https://app.sushi.com/add/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619/0xa1c57f48f0deb89f569dfbe6e2b7f46d33606fd4',
+	strategyAddress:{
+		137: '0x3ecD812200D4e1583d97Bbc5e871707BD9dD0b25',
+		80001: '',
+	},
+    lpAddresses: {
+      137: '0xc48AE82ca34C63887b975F20ABA91a38f2a900B8',
+      80001: '',
+    },
+	masterChefAddress:{
+		137: '0x0769fd68dFb93167989C6f7254cd0D766Fb2841F',
+		80001: '',
+	},
+	spid: 34,
+    token: tokens.mana,
+    quoteToken: tokens.weth,
+	rewardToken: tokens.sushi,
+	emissionFunctionName: 'sushiPerSecond',
+	emissionMultiplier: 2,
+	isArchived: false,
+	isSingle:false,
+	isBurning:false,
+	isStable: true,
+	allocPointName:'allocPoint',
+	lpRewardsApr:62.51,
+	platform: 'Sushiswap',
+	rewarder: '0xa3378Ca78633B3b9b2255EAa26748770211163AE'
+  },   
 ]
 
 export default vaults

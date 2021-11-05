@@ -311,7 +311,16 @@ const tokens = {
       80001: '',
     },
     decimals: 18,
-    projectLink: 'https://www.trusttoken.com/trueusd',
+    projectLink: 'https://www.insurace.io/',
+  },
+  mana: {
+    symbol: 'MANA',
+    address: {
+      137: '0xa1c57f48f0deb89f569dfbe6e2b7f46d33606fd4',
+      80001: '',
+    },
+    decimals: 18,
+    projectLink: 'https://decentraland.org/',
   },
 }
 

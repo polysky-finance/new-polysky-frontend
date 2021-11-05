@@ -290,6 +290,20 @@ const priceHelperLps: FarmConfig[] = [
     token: tokens.insur,
     quoteToken: tokens.usdc,
   },
+  {
+    pid: null,
+    lpSymbol: 'WETH - MANA',
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0xa1c57f48f0deb89f569dfbe6e2b7f46d33606fd4',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.mana,
+    quoteToken: tokens.weth,
+  },
 ]
 
 export default priceHelperLps

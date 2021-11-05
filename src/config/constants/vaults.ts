@@ -957,7 +957,7 @@ const vaults: VaultConfig[] = [
   },
   {
     pid: 34,
-    lpSymbol: 'pBREW - WMATIC',  
+    lpSymbol: 'pBREW - MATIC',  
 	exchange: 'Cafeswap',
 	baseLiquidityUrl: 'https://polygondex.cafeswap.finance/#/add/ETH/0xb5106a3277718ecad2f20ab6b86ce0fee7a21f09',
 	strategyAddress:{
@@ -1076,6 +1076,68 @@ const vaults: VaultConfig[] = [
 	lpRewardsApr:0,
 	platform: 'Cafeswap',
   }, 
+  {
+    pid: 38,
+    lpSymbol: 'USDC - DAI',  
+	exchange: 'Cafeswap',
+	baseLiquidityUrl: 'https://polygondex.cafeswap.finance/#/add/0x2791bca1f2de4661ed88a30c99a7a9449aa84174/0x8f3cf7ad23cd3cadbd9735aff958023239c6a063',
+	strategyAddress:{
+		137: '0x8ebfE4E7DaFd1399B9bb6B4138df01D1aE758E88',
+		80001: '',
+	},
+    lpAddresses: {
+      137: '0x815c2D1894Daf25935fa909bE35Ee1Fed67b2B97',
+      80001: '',
+    },
+	masterChefAddress:{
+		137: '0xca2DeAc853225f5a4dfC809Ae0B7c6e39104fCe5',
+		80001: '',
+	},
+	spid: 5,
+    token: tokens.dai,
+    quoteToken: tokens.usdc,
+	rewardToken: tokens.pbrew,
+	emissionFunctionName: 'brewPerBlock',
+	emissionMultiplier: 1,
+	isArchived: false,
+	isSingle:false,
+	isBurning:false,
+	isStable: true,
+	allocPointName:'lastRewardTime',
+	lpRewardsApr:0,
+	platform: 'Cafeswap',
+  },
+  {
+    pid: 39,
+    lpSymbol: 'UST - USDC',  
+	exchange: 'Cafeswap',
+	baseLiquidityUrl: 'https://polygondex.cafeswap.finance/#/add/0x2791bca1f2de4661ed88a30c99a7a9449aa84174/0x692597b009d13c4049a947cab2239b7d6517875f',
+	strategyAddress:{
+		137: '0x9908fa8EAFE595dF17cBCf54fdcce5732558E602',
+		80001: '',
+	},
+    lpAddresses: {
+      137: '0xFCcabD913DF5a17721c30bF23fEB7eA865422f45',
+      80001: '',
+    },
+	masterChefAddress:{
+		137: '0xca2DeAc853225f5a4dfC809Ae0B7c6e39104fCe5',
+		80001: '',
+	},
+	spid: 14,
+    token: tokens.ust,
+    quoteToken: tokens.usdc,
+	rewardToken: tokens.pbrew,
+	emissionFunctionName: 'brewPerBlock',
+	emissionMultiplier: 1,
+	isArchived: false,
+	isSingle:false,
+	isBurning:false,
+	isStable: true,
+	allocPointName:'lastRewardTime',
+	lpRewardsApr:0,
+	platform: 'Cafeswap',
+  },   
 ]
 
 export default vaults

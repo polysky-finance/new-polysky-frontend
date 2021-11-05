@@ -277,6 +277,15 @@ const tokens = {
     decimals: 18,
     projectLink: 'https://polygon.cafeswap.finance/',
   },
+  ust: {
+    symbol: 'UST',
+    address: {
+      137: '0x692597b009d13c4049a947cab2239b7d6517875f',
+      80001: '',
+    },
+    decimals: 18,
+    projectLink: 'https://www.terra.money/',
+  },
 }
 
 export default tokens

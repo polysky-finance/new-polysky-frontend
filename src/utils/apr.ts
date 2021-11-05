@@ -47,10 +47,11 @@ export const getPoolApr = (
   poolLiquidityUsd: BigNumber,
   farmAddress: string,
   rewardPerBlock: BigNumber,
-  lpApr: number
+  lpApr: number,
+  maticPerDay: BigNumber
 ): { siriusRewardsApr: number; lpRewardsApr: number } => {
-
-  const lpRewardsApr = lpApr // lpAprs[farmAddress?.toLocaleLowerCase()] ?? 0
+  
+  const lpRewardsApr = lpApr 
   if(rewardPerBlock.comparedTo(0) === 0){
     return { siriusRewardsApr: 0.0001, lpRewardsApr }
   }
@@ -59,7 +60,8 @@ export const getPoolApr = (
   }
   const rewardPerYear = BLOCKS_PER_YEAR.times(rewardPerBlock)
   const yearlyRewardAllocation = rewardPerYear.times(poolWeight)
-  const rewardsApr = yearlyRewardAllocation.times(rewardTokenPriceUsd).div(poolLiquidityUsd).times(100)
+  const maticRewardPerYear = maticPerDay? maticPerDay.times(new BigNumber(365.25)):BIG_ZERO
+  const rewardsApr = yearlyRewardAllocation.times(rewardTokenPriceUsd).plus(maticRewardPerYear).div(poolLiquidityUsd).times(100)
   let rewardsAprAsNumber = null
   if (!rewardsApr.isNaN() && rewardsApr.isFinite()) {
     rewardsAprAsNumber = rewardsApr.toNumber()> 100000? 100000:rewardsApr.toNumber()

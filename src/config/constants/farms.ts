@@ -8,7 +8,7 @@ const farms: FarmConfig[] = [
    // MATIC - SIRIUS APESWAP LP 0xdf641eaf424a9972e92afd91ac57d28ea5ba05b7
    {
     pid: 1,
-    lpSymbol: 'SIRIUS - WMATIC',
+    lpSymbol: 'SIRIUS - MATIC',
 	exchange: 'Quickswap',
 	baseLiquidityUrl: 'https://quickswap.exchange/#',
     lpAddresses: {
@@ -36,7 +36,7 @@ const farms: FarmConfig[] = [
   },
   {
     pid: 2,
-    lpSymbol: 'WMATIC - USDC LP',
+    lpSymbol: 'MATIC - USDC',
 	exchange: 'Quickswap',
 	baseLiquidityUrl: 'https://quickswap.exchange/#',
     lpAddresses: {

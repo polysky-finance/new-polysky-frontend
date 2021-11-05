@@ -58,6 +58,7 @@ export interface VaultConfig {
   isSingle: false
   isStable: false
   isQuickswap?: boolean
+  maticPerDay?: number
   emissionFunctionName: string
   emissionMultiplier: number
   exchange: string

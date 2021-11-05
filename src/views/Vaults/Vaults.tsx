@@ -8,6 +8,7 @@ import styled from 'styled-components'
 import {VaultWithStakedValue} from 'views/Vaults/components/VaultTable/Row'
 import { getBalanceAmount, getBalanceNumber, getFullDisplayBalance } from 'utils/formatBalance'
 import Page from 'components/Layout/Page'
+import { usePriceWMaticUsdc } from 'state/hooks'
 import { usePollFarmsDataSubset, useVaults, usePollVaultsData, usePriceSiriusUsdc } from 'state/hooks'
 import { Vault } from 'state/types'
 import { getVaultApr } from 'utils/apr'
@@ -197,6 +198,8 @@ const Vaults: React.FC = () => {
   const inactiveVaults = pVaultsLP.filter((vault) =>  vault.isArchived)
   const archivedVaults = pVaultsLP.filter((vault) => vault.isArchived)
 
+  const wmaticPriceUsdc = usePriceWMaticUsdc()
+
   const stakedOnlyVaults = activeVaults.filter(
     (vault) => vault.userData && new BigNumber(vault.userData.stakedBalance).isGreaterThan(0),
   )
@@ -220,9 +223,10 @@ const Vaults: React.FC = () => {
         const rewardTokenPrice = new BigNumber(vault.rewardToken.usdcPrice)
         const rewardPerBlock = new BigNumber(vault.emission).times(new BigNumber(vault.emissionMultiplier)).div(BIG_TEN.pow(vault.rewardToken.decimals))
         const masterLiquidity = totalLiquidity.times(new BigNumber(vault.lpTokenBalanceMasterChef)).div(new BigNumber(vault.lpTotalSupply))
+        const maticPerDayUsdc=vault.maticPerDay? new BigNumber(vault.maticPerDay).times(wmaticPriceUsdc): BIG_ZERO
 
         const { siriusRewardsApr, lpRewardsApr } = isActive
-          ? getVaultApr(new BigNumber(vault.poolWeight), rewardTokenPrice, masterLiquidity, vault.lpAddresses[ChainId.MAINNET], rewardPerBlock, vault.lpRewardsApr)
+          ? getVaultApr(new BigNumber(vault.poolWeight), rewardTokenPrice, masterLiquidity, vault.lpAddresses[ChainId.MAINNET], rewardPerBlock, vault.lpRewardsApr, maticPerDayUsdc)
           : { siriusRewardsApr: 0, lpRewardsApr: 0 }
 
         return { ...vault, apr: siriusRewardsApr, lpRewardsApr, liquidity: stratLiquidity }
@@ -236,7 +240,7 @@ const Vaults: React.FC = () => {
       }
       return vaultsToDisplayWithAPR
     },
-    [query, isActive],
+    [query, isActive, wmaticPriceUsdc],
   )
 
   const handleChangeQuery = (event: React.ChangeEvent<HTMLInputElement>) => {

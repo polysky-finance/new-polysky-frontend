@@ -152,6 +152,7 @@ const vaults: VaultConfig[] = [
 	lpRewardsApr:5.82,
 	isBurning:false,
 	platform: 'Apeswap',
+	maticPerDay: 603.9,
   },
   {
     pid: 6,
@@ -182,6 +183,7 @@ const vaults: VaultConfig[] = [
 	lpRewardsApr:9.98,
 	isBurning:false,
 	platform: 'Apeswap',
+	maticPerDay: 241.6,
   },
   {
     pid: 7,
@@ -212,6 +214,7 @@ const vaults: VaultConfig[] = [
 	lpRewardsApr:9.98,
 	isBurning:false,
 	platform: 'Apeswap',
+	maticPerDay: 96.63,
   },
   {
     pid: 8,
@@ -242,6 +245,7 @@ const vaults: VaultConfig[] = [
 	lpRewardsApr:20.47,
 	isBurning:false,
 	platform: 'Apeswap',
+	maticPerDay: 72.47,
   },
   {
     pid: 9,
@@ -272,6 +276,7 @@ const vaults: VaultConfig[] = [
 	lpRewardsApr:9.94,
 	isBurning:false,
 	platform: 'Apeswap',
+	maticPerDay: 72.47,
   },
   {
     pid: 10,
@@ -303,6 +308,7 @@ const vaults: VaultConfig[] = [
 	lpRewardsApr:7.99,
 	isBurning:false,
 	platform: 'Apeswap',
+	maticPerDay: 48.31,
   },
   {
     pid: 11,
@@ -333,6 +339,7 @@ const vaults: VaultConfig[] = [
 	lpRewardsApr:2.7,
 	isBurning:false,
 	platform: 'Apeswap',
+	maticPerDay: 72.47,
   },
   {
     pid: 12,
@@ -1226,8 +1233,9 @@ const vaults: VaultConfig[] = [
 	isBurning:false,
 	isStable: true,
 	allocPointName:'allocPoint',
-	lpRewardsApr:9.15,
+	lpRewardsApr:7.3,
 	platform: 'Sushiswap',
+	maticPerDay: 67.39,
   }, 
 {
     pid: 43,
@@ -1257,8 +1265,9 @@ const vaults: VaultConfig[] = [
 	isBurning:false,
 	isStable: true,
 	allocPointName:'allocPoint',
-	lpRewardsApr:10.1,
+	lpRewardsApr:9.87,
 	platform: 'Sushiswap',
+	maticPerDay: 25.92,
   },  
 ]
 

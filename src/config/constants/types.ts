@@ -58,7 +58,6 @@ export interface VaultConfig {
   isSingle: false
   isStable: false
   isQuickswap?: boolean
-  maticPerDay?: number
   emissionFunctionName: string
   emissionMultiplier: number
   exchange: string
@@ -67,6 +66,7 @@ export interface VaultConfig {
   allocPointName: string
   lpRewardsApr:number
   isBurning?: boolean
+  rewarder?: string
 }
 
 export interface PoolConfig {

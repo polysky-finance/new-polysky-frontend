@@ -152,7 +152,7 @@ const vaults: VaultConfig[] = [
 	lpRewardsApr:5.82,
 	isBurning:false,
 	platform: 'Apeswap',
-	maticPerDay: 603.9,
+	rewarder: '0x1F234B1b83e21Cb5e2b99b4E498fe70Ef2d6e3bf'
   },
   {
     pid: 6,
@@ -183,7 +183,7 @@ const vaults: VaultConfig[] = [
 	lpRewardsApr:9.98,
 	isBurning:false,
 	platform: 'Apeswap',
-	maticPerDay: 241.6,
+	rewarder: '0x1F234B1b83e21Cb5e2b99b4E498fe70Ef2d6e3bf'
   },
   {
     pid: 7,
@@ -214,7 +214,7 @@ const vaults: VaultConfig[] = [
 	lpRewardsApr:9.98,
 	isBurning:false,
 	platform: 'Apeswap',
-	maticPerDay: 96.63,
+	rewarder: '0x1F234B1b83e21Cb5e2b99b4E498fe70Ef2d6e3bf'
   },
   {
     pid: 8,
@@ -245,7 +245,7 @@ const vaults: VaultConfig[] = [
 	lpRewardsApr:20.47,
 	isBurning:false,
 	platform: 'Apeswap',
-	maticPerDay: 72.47,
+	rewarder: '0x1F234B1b83e21Cb5e2b99b4E498fe70Ef2d6e3bf'
   },
   {
     pid: 9,
@@ -276,7 +276,7 @@ const vaults: VaultConfig[] = [
 	lpRewardsApr:9.94,
 	isBurning:false,
 	platform: 'Apeswap',
-	maticPerDay: 72.47,
+	rewarder: '0x1F234B1b83e21Cb5e2b99b4E498fe70Ef2d6e3bf'
   },
   {
     pid: 10,
@@ -304,11 +304,11 @@ const vaults: VaultConfig[] = [
 	isArchived: false,
 	isSingle:false,
 	isStable: true,
+	isBurning:false,
 	allocPointName: 'allocPoint',
 	lpRewardsApr:7.99,
-	isBurning:false,
 	platform: 'Apeswap',
-	maticPerDay: 48.31,
+	rewarder: '0x1F234B1b83e21Cb5e2b99b4E498fe70Ef2d6e3bf'
   },
   {
     pid: 11,
@@ -339,7 +339,7 @@ const vaults: VaultConfig[] = [
 	lpRewardsApr:2.7,
 	isBurning:false,
 	platform: 'Apeswap',
-	maticPerDay: 72.47,
+	rewarder: '0x1F234B1b83e21Cb5e2b99b4E498fe70Ef2d6e3bf'
   },
   {
     pid: 12,
@@ -1235,7 +1235,7 @@ const vaults: VaultConfig[] = [
 	allocPointName:'allocPoint',
 	lpRewardsApr:7.3,
 	platform: 'Sushiswap',
-	maticPerDay: 67.39,
+	rewarder: '0xa3378Ca78633B3b9b2255EAa26748770211163AE'
   }, 
 {
     pid: 43,
@@ -1267,7 +1267,7 @@ const vaults: VaultConfig[] = [
 	allocPointName:'allocPoint',
 	lpRewardsApr:9.87,
 	platform: 'Sushiswap',
-	maticPerDay: 25.92,
+	rewarder: '0xa3378Ca78633B3b9b2255EAa26748770211163AE'
   },  
 ]
 

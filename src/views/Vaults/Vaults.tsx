@@ -223,7 +223,10 @@ const Vaults: React.FC = () => {
         const rewardTokenPrice = new BigNumber(vault.rewardToken.usdcPrice)
         const rewardPerBlock = new BigNumber(vault.emission).times(new BigNumber(vault.emissionMultiplier)).div(BIG_TEN.pow(vault.rewardToken.decimals))
         const masterLiquidity = totalLiquidity.times(new BigNumber(vault.lpTokenBalanceMasterChef)).div(new BigNumber(vault.lpTotalSupply))
-        const maticPerDayUsdc=vault.maticPerDay? new BigNumber(vault.maticPerDay).times(wmaticPriceUsdc): BIG_ZERO
+        
+        const maticPerDay = new BigNumber(43200).times(new BigNumber(vault.rewardEmission)).times(vault.poolWeight).times(new BigNumber(vault.emissionMultiplier)).div(BIG_TEN.pow(18))
+
+        const maticPerDayUsdc=vault.rewarder? new BigNumber(maticPerDay).times(wmaticPriceUsdc) : BIG_ZERO
 
         const { siriusRewardsApr, lpRewardsApr } = isActive
           ? getVaultApr(new BigNumber(vault.poolWeight), rewardTokenPrice, masterLiquidity, vault.lpAddresses[ChainId.MAINNET], rewardPerBlock, vault.lpRewardsApr, maticPerDayUsdc)
@@ -486,6 +489,10 @@ const Vaults: React.FC = () => {
                     value: 'Apeswap',
                   },
                   {
+                    label: t('Cafeswap'),
+                    value: 'Cafeswap',
+                  },
+                  {
                     label: t('Polysky'),
                     value: 'Polysky',
                   },
@@ -493,9 +500,9 @@ const Vaults: React.FC = () => {
                     label: t('Quickswap'),
                     value: 'Quickswap',
                   },
-				  {
-                    label: t('Cafeswap'),
-                    value: 'Cafeswap',
+                  {
+                    label: t('Sushiswap'),
+                    value: 'Sushiswap',
                   },
                 ]}
                 onChange={handlePlatformOptionChange}

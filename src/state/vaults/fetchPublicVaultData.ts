@@ -20,10 +20,11 @@ type PublicVaultData = {
   emission: SerializedBigNumber
   masterChefBalanceRatio: SerializedBigNumber
   lpTokenBalanceMasterChef: SerializedBigNumber
+  rewardEmission: SerializedBigNumber
 }
 
 export const fetchVaultLP = async (vault: Vault, lpTokenBalanceMasterChef:any, lpTokenBalanceStrategy:any,lpTotalSupply:any,
-  tokenBalanceLP:any, tokenDecimals:any, quoteTokenBalanceLP:any,quoteTokenDecimals:any, info, totalAllocPoint, emissionMC ): Promise<PublicVaultData> => {
+  tokenBalanceLP:any, tokenDecimals:any, quoteTokenBalanceLP:any,quoteTokenDecimals:any, info, totalAllocPoint, emissionMC, emissionRewarder ): Promise<PublicVaultData> => {
   
       
   const masterChefBalanceRatio = new BigNumber(lpTokenBalanceMasterChef).div(new BigNumber(lpTokenBalanceStrategy.amount._hex))
@@ -49,6 +50,7 @@ export const fetchVaultLP = async (vault: Vault, lpTokenBalanceMasterChef:any, l
 //  const tp =quoteTokenAmountTotal.div(tokenAmountTotal).toJSON()
 
   const emission = new BigNumber(emissionMC)
+  const rewardEmission = new BigNumber(emissionRewarder)
   return {
     tokenAmountMc: tokenAmountMc.toJSON(),
     quoteTokenAmountMc: quoteTokenAmountMc.toJSON(),
@@ -61,14 +63,15 @@ export const fetchVaultLP = async (vault: Vault, lpTokenBalanceMasterChef:any, l
     poolWeight: poolWeight.toJSON(),
     emission: emission.toJSON(),
     masterChefBalanceRatio: masterChefBalanceRatio.toJSON(),
-    lpTokenBalanceMasterChef: new BigNumber(lpTokenBalanceMasterChef).toJSON()
+    lpTokenBalanceMasterChef: new BigNumber(lpTokenBalanceMasterChef).toJSON(),
+    rewardEmission: rewardEmission.toJSON()
   }
 }
 
 export const fetchVaultQuick = async (vault: Vault,
   lpTokenBalanceMasterChef:any, lpTokenBalanceStrategy:any,lpTotalSupply:any,
   tokenBalanceLP:any,tokenDecimals:any, quoteTokenBalanceLP:any,
-  quoteTokenDecimals:any, emissionMC:any, quickPer10000dQuick:any): Promise<PublicVaultData> => {
+  quoteTokenDecimals:any, emissionMC:any, quickPer10000dQuick:any, emissionRewarder): Promise<PublicVaultData> => {
       
   const masterChefBalanceRatio = new BigNumber(lpTokenBalanceMasterChef).div(new BigNumber(lpTokenBalanceStrategy))
 
@@ -93,6 +96,7 @@ export const fetchVaultQuick = async (vault: Vault,
 //  const tp =quoteTokenAmountTotal.div(tokenAmountTotal).toJSON()
 
   const emission = new BigNumber(emissionMC).times(quickPer10000dQuick).div(new BigNumber(10000))
+  const rewardEmission = new BigNumber(emissionRewarder)
   return {
     tokenAmountMc: tokenAmountMc.toJSON(),
     quoteTokenAmountMc: quoteTokenAmountMc.toJSON(),
@@ -105,13 +109,14 @@ export const fetchVaultQuick = async (vault: Vault,
     poolWeight: poolWeight.toJSON(),
     emission: emission.toJSON(),
     masterChefBalanceRatio: masterChefBalanceRatio.toJSON(),
-    lpTokenBalanceMasterChef: new BigNumber(lpTokenBalanceMasterChef).toJSON()
+    lpTokenBalanceMasterChef: new BigNumber(lpTokenBalanceMasterChef).toJSON(),
+    rewardEmission: rewardEmission.toJSON()
   }
 }
 
 export const fetchVaultSingle = async(vault: Vault, lpTotalSupply: any,tokenDecimals: any,
   lpTokenBalanceMasterChef:any, lpTokenBalanceStrategy:any, info: any, totalAllocPoint:any,
-  emissionMC: any): Promise<PublicVaultData> => { 
+  emissionMC: any, emissionRewarder): Promise<PublicVaultData> => { 
   
   const quoteTokenBalanceLP = lpTotalSupply
   const quoteTokenDecimals = tokenDecimals
@@ -137,6 +142,7 @@ export const fetchVaultSingle = async(vault: Vault, lpTotalSupply: any,tokenDeci
   const poolWeight =  totalAllocPoint ? allocPoint.div(new BigNumber(totalAllocPoint)) : BIG_ZERO
 
   const emission = new BigNumber(emissionMC)
+  const rewardEmission = new BigNumber(emissionRewarder)
   return {
     tokenAmountMc: tokenAmountMc.toJSON(),
     quoteTokenAmountMc: quoteTokenAmountMc.toJSON(),
@@ -149,7 +155,8 @@ export const fetchVaultSingle = async(vault: Vault, lpTotalSupply: any,tokenDeci
     poolWeight: poolWeight.toJSON(),
     emission: emission.toJSON(),
     masterChefBalanceRatio: masterChefBalanceRatio.toJSON(),
-    lpTokenBalanceMasterChef: new BigNumber(lpTokenBalanceMasterChef).toJSON()
+    lpTokenBalanceMasterChef: new BigNumber(lpTokenBalanceMasterChef).toJSON(),
+    rewardEmission: rewardEmission.toJSON()
   }
 }
 // export default fetchVaultLP

@@ -428,24 +428,28 @@ export const useGetProposalLoadingStatus = () => {
   return votingStatus
 }
 
+
+
 export const useBuybackAmount = () : BigNumber => {
   let value = new BigNumber(0);
   const { data: vaultsLP } = useVaults()
+  const wmaticPriceUsdc = usePriceWMaticUsdc()
   for(let i=0; i < vaultsLP.length; i++){
     if (vaultsLP[i].lpTotalInQuoteToken && vaultsLP[i].quoteToken.usdcPrice) {        
         const vault = vaultsLP[i]
         if(vault.isBurning)
         {
-            const totalLiquidity = new BigNumber(vault.lpTotalInQuoteToken).times(vault.quoteToken.usdcPrice)
-            const rewardTokenPrice = new BigNumber(vault.rewardToken.usdcPrice)
-            const rewardPerBlock = new BigNumber(vault.emission).times(new BigNumber(vault.emissionMultiplier)).div(BIG_TEN.pow(vault.rewardToken.decimals))
-            const masterLiquidity = totalLiquidity.times(new BigNumber(vault.masterChefBalanceRatio))
+          const totalLiquidity =  (vault.isSingle? BIG_ONE:new BigNumber(2)).times(new BigNumber(vault.quoteTokenAmountTotal)).times(vault.quoteToken.usdcPrice)
+          const rewardTokenPrice = new BigNumber(vault.rewardToken.usdcPrice)
+          const rewardPerBlock = new BigNumber(vault.emission).times(new BigNumber(vault.emissionMultiplier)).div(BIG_TEN.pow(vault.rewardToken.decimals))
+          const masterLiquidity = totalLiquidity.times(new BigNumber(vault.lpTokenBalanceMasterChef)).div(new BigNumber(vault.lpTotalSupply))
+          const maticPerDay = new BigNumber(43200).times(new BigNumber(vault.rewardEmission)).times(vault.poolWeight).times(new BigNumber(vault.emissionMultiplier)).div(BIG_TEN.pow(18))
+          const maticPerDayUsdc=vault.rewarder? new BigNumber(maticPerDay).times(wmaticPriceUsdc) : BIG_ZERO
+          const { siriusRewardsApr} = getVaultApr(new BigNumber(vault.poolWeight), rewardTokenPrice, masterLiquidity, vault.lpAddresses[ChainId.MAINNET], rewardPerBlock, vault.lpRewardsApr, maticPerDayUsdc)
   
-            const { siriusRewardsApr, lpRewardsApr } = getVaultApr(new BigNumber(vault.poolWeight), rewardTokenPrice, masterLiquidity, vault.lpAddresses[ChainId.MAINNET], rewardPerBlock, vault.lpRewardsApr)
-  
-            const factor = new BigNumber(80);
-            const buyback = new BigNumber(vaultsLP[i].lpTotalInQuoteToken).times(vaultsLP[i].quoteToken.usdcPrice).times(siriusRewardsApr).times(factor).div(new BigNumber(3650000));
-            value = value.plus(buyback);
+          const factor = new BigNumber(80);
+          const buyback = new BigNumber(vaultsLP[i].lpTotalInQuoteToken).times(vaultsLP[i].quoteToken.usdcPrice).times(siriusRewardsApr).times(factor).div(new BigNumber(3650000));
+          value = value.plus(buyback);
         }
         
       }
@@ -500,24 +504,23 @@ export const useTotalVaultValue = (): BigNumber => {
   const { data: vaultsLP } = useVaults()
   let value = new BigNumber(0);
   for(let i=0; i < vaultsLP.length; i++){
-      if (vaultsLP[i].lpTotalInQuoteToken && vaultsLP[i].quoteToken.usdcPrice && vaultsLP[i].lpSymbol !== "SIRIUS") {
-          const totalLiquidity = new BigNumber(vaultsLP[i].lpTotalInQuoteToken).times(vaultsLP[i].quoteToken.usdcPrice);
-          value = value.plus(totalLiquidity);
-      }
-      if((!vaultsLP[i].lpTotalInQuoteToken || !vaultsLP[i].quoteToken.usdcPrice) && vaultsLP[i].lpSymbol !== "SIRIUS")
-      {
-        return undefined;
-      }
+    const vault = vaultsLP[i]
+    if((!vault.lpTotalInQuoteToken || !vault.quoteToken.usdcPrice) && vault.lpSymbol !== "SIRIUS")
+    {
+      return undefined;
+    }
+    if (vault.lpTotalInQuoteToken && vault.quoteToken.usdcPrice && vault.lpSymbol !== "SIRIUS") {
+        const totalLiquidity = new BigNumber(vault.lpTotalInQuoteToken).times(vault.quoteToken.usdcPrice);
+        value = value.plus(totalLiquidity);
+    }
+      
   }
   return value
 } 
 
 export const useTotalVaultValue2 = (): BigNumber => {
-  const { data: vaultsLP, userDataLoaded: isLoaded } = useVaults()
-  if(!isLoaded)
-  {
-     return undefined
-  }
+  const { data: vaultsLP } = useVaults()
+
   let value = new BigNumber(0);
   for(let i=0; i < vaultsLP.length; i++){
       if (vaultsLP[i].lpTotalInQuoteToken && vaultsLP[i].quoteToken.usdcPrice) {

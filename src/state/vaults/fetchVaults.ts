@@ -117,6 +117,17 @@ export const quickPer10000dQuicks = async (vaultsToFetch: VaultConfig[]) => {
   return rawLpAllowances
 }
 
+export const emissionRewarders = async (vaultsToFetch: VaultConfig[]) => {
+  const calls = vaultsToFetch.map((vault) => {
+    const masterAddress = getAddress(vault.masterChefAddress)
+    const rewardAddress = vault.rewarder;
+    return rewardAddress? { address: rewardAddress, name: 'rewardPerSecond' }: { address: masterAddress, name: vault.emissionFunctionName }
+  })
+
+  const rawLpAllowances = await multicall(erc20, calls)
+  return rawLpAllowances
+}
+
 const fetchVaults = async (vaultsToFetch: VaultConfig[]) => {
   const tokenBalances = await tokenBalancesLP(vaultsToFetch);
   const quoteTokenBalances = await quoteTokenBalancesLP(vaultsToFetch);
@@ -129,6 +140,7 @@ const fetchVaults = async (vaultsToFetch: VaultConfig[]) => {
   const info =await infos(vaultsToFetch)
   const emissionMC = await emissionMCs(vaultsToFetch)
   const quickPer10000dQuick = await quickPer10000dQuicks(vaultsToFetch)
+  const emissionRewarder = await emissionRewarders(vaultsToFetch)
  
   const vaults =await Promise.all(vaultsToFetch.map(async (vault, index)=>
   {
@@ -136,20 +148,20 @@ const fetchVaults = async (vaultsToFetch: VaultConfig[]) => {
       if(vault.isSingle)
       {
          v = await fetchVaultSingle(vault, lpTotalSupply[index],tokenDecimal[index],
-          lpTokenBalanceMasterChef[index], lpTokenBalanceStrategy[index],info[index], totalAllocs[index], emissionMC[index])
+          lpTokenBalanceMasterChef[index], lpTokenBalanceStrategy[index],info[index], totalAllocs[index], emissionMC[index], emissionRewarder[index])
       }
       else if(vault.isQuickswap)
       {
         v= await fetchVaultQuick(vault, lpTokenBalanceMasterChef[index],lpTokenBalanceStrategy[index],
           lpTotalSupply[index], tokenBalances[index], tokenDecimal[index], quoteTokenBalances[index], quoteTokenDecimal[index],
-          emissionMC[index], quickPer10000dQuick[index] )
+          emissionMC[index], quickPer10000dQuick[index], emissionRewarder[index] )
       }
       else
       {
         v =await fetchVaultLP(vault, lpTokenBalanceMasterChef[index],lpTokenBalanceStrategy[index],
           lpTotalSupply[index], tokenBalances[index], tokenDecimal[index], quoteTokenBalances[index], quoteTokenDecimal[index],
           info[index],totalAllocs[index],
-          emissionMC[index] )
+          emissionMC[index], emissionRewarder[index] )
       }
         return {...vault, ...v};
   }))

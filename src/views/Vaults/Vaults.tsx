@@ -258,7 +258,7 @@ const Vaults: React.FC = () => {
         case 'apy':
           return orderBy(
             vaults,
-            (vault: VaultWithStakedValue) => (vault.userData ? Number(vault.userData.earnings) : 0),
+            (vault: VaultWithStakedValue) => (vault.apr ? getApy(vault.apr, vault.lpRewardsApr) : 0),
             'desc',
           )
         case 'liquidity':
@@ -392,9 +392,9 @@ const Vaults: React.FC = () => {
           switch (column.name) {
             case 'vault':
               return b.id - a.id
-            case 'apr':
-              if (a.original.apr.value && b.original.apr.value) {
-                return Number(a.original.apr.value) - Number(b.original.apr.value)
+            case 'apy':
+              if (a.original.apy.value && b.original.apy.value) {
+                return (a.original.apy.originalValue.minus(b.original.apy.originalValue)).toNumber();
               }
               return 0
             case 'liquidity':

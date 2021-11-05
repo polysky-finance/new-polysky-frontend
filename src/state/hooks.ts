@@ -534,24 +534,30 @@ export const useTotalVaultValue2 = (): BigNumber => {
 
 
 export const useUserTotalVaultValue = (): BigNumber => {
-  const { data: vaultsLP, userDataLoaded: isLoaded } = useVaults()
-  if(!isLoaded)
+  const { account } = useWeb3React()
+  const { data: vaultsLP, userDataLoaded } = useVaults()
+  const userDataReady = !account || (!!account && userDataLoaded)
+  let vaultTotal = BIG_ZERO;
+  if(userDataReady)
   {
-    return undefined
-  }
-  let value = new BigNumber(0);
-  for(let i=0; i < vaultsLP.length; i++){
-      if (vaultsLP[i].lpTotalInQuoteToken && vaultsLP[i].quoteToken.usdcPrice) {
-          const totalLiquidity = new BigNumber(vaultsLP[i].lpTotalInQuoteToken).times(vaultsLP[i].quoteToken.usdcPrice).times(vaultsLP[i].userData.currentBalance).div(vaultsLP[i].lpTokenBalanceMC);
-          const tl =totalLiquidity.decimalPlaces(2).toNumber()
-          value = value.plus(totalLiquidity);
+    vaultTotal = BIG_ZERO
+    for (let i =0; i < vaultsLP.length; i++ )
+    {
+      let lpPrice = BIG_ZERO
+      const vault = vaultsLP[i]
+      if (vault.lpTotalSupply && vault.lpTotalInQuoteToken) {
+        // Total value of base token in LP
+        const valueOfBaseTokenInVault = new BigNumber(vault.token.usdcPrice).times(vault.tokenAmountTotal)
+        // Double it to get overall value in LP
+        const overallValueOfAllTokensInVault =vault.isSingle? valueOfBaseTokenInVault: valueOfBaseTokenInVault.times(2)
+        // Divide total value of all tokens, by the number of LP tokens
+        const totalLpTokens = getBalanceAmount(new BigNumber(vault.lpTotalSupply))
+        lpPrice = getBalanceAmount(overallValueOfAllTokensInVault.div(totalLpTokens))
       }
-      if(!vaultsLP[i].lpTotalInQuoteToken || !vaultsLP[i].quoteToken.usdcPrice)
-      {
-        return undefined;
-      }
+      vaultTotal = vaultTotal.plus(new BigNumber(vault.userData.currentBalance).times(lpPrice))
+    }
   }
-  return value
+  return userDataReady? vaultTotal: undefined
 } 
 
 

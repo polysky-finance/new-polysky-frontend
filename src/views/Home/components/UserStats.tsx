@@ -1,9 +1,10 @@
 import React from 'react'
+import BigNumber from 'bignumber.js'
 import { Card, CardBody, Heading, Text, Skeleton } from '@polysky-libs/uikit'
+import { getBalanceAmount, getBalanceNumber, getFullDisplayBalance } from 'utils/formatBalance'
 import styled from 'styled-components'
 import { SIRIUS_PER_BLOCK } from 'config'
 import {useUserTotalPoolValue, useUserTotalFarmValue, useUserTotalVaultValue} from 'state/hooks'
-import { getBalanceNumber } from 'utils/formatBalance'
 import { useTotalSupply, useBurnedBalance } from 'hooks/useTokenBalance'
 import { useTranslation } from 'contexts/Localization'
 import { getSiriusAddress } from 'utils/addressHelpers'
@@ -30,13 +31,6 @@ const Row = styled.div`
 
 const UserStats = () => {
   const { t } = useTranslation()
-  const { account } = useWeb3React()
-  
- // usePollFarmsData(false)
- // usePollVaultsData(false) 
- // useFetchPublicPoolsData()
- // const { pools: poolsWithoutAutoVault, userDataLoaded } = usePools(account)
-  
   const userFarm =   useUserTotalFarmValue()   
   const userVault =   useUserTotalVaultValue()
   const userPool = useUserTotalPoolValue() 

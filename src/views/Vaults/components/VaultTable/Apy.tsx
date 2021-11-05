@@ -56,7 +56,7 @@ const Apr: React.FC<ApyProps> = ({
         <>
         {
           originalValue > 1e6?
-          (<AprWrapper>Infitity%</AprWrapper>):
+          (<AprWrapper>Infinity%</AprWrapper>):
           (<AprWrapper>{value}%</AprWrapper>)
         }
           

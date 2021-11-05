@@ -266,7 +266,16 @@ const tokens = {
       80001: '',
     },
     decimals: 18,
-    projectLink: 'https://fantom.foundation',
+    projectLink: 'https://polygon.cafeswap.finance/',
+  },
+  brew: {
+    symbol: 'BREW',
+    address: {
+      137: '0xa0b20decbc557e3f68e140ed5a0c69bc865f865a',
+      80001: '',
+    },
+    decimals: 18,
+    projectLink: 'https://polygon.cafeswap.finance/',
   },
 }
 

@@ -1046,6 +1046,36 @@ const vaults: VaultConfig[] = [
 	lpRewardsApr:0,
 	platform: 'Cafeswap',
   }, 
+  {
+    pid: 37,
+    lpSymbol: 'BREW - USDC',  
+	exchange: 'Cafeswap',
+	baseLiquidityUrl: 'https://polygondex.cafeswap.finance/#/add/0x2791bca1f2de4661ed88a30c99a7a9449aa84174/0xa0b20decbc557e3f68e140ed5a0c69bc865f865a',
+	strategyAddress:{
+		137: '0x5863e7f9a6448B52CfCa5721A096aD7b951CF926',
+		80001: '',
+	},
+    lpAddresses: {
+      137: '0x248C328b1048f9B6e7e00D61a02E9cA3F8c2bf50',
+      80001: '',
+    },
+	masterChefAddress:{
+		137: '0xca2DeAc853225f5a4dfC809Ae0B7c6e39104fCe5',
+		80001: '',
+	},
+	spid: 7,
+    token: tokens.brew,
+    quoteToken: tokens.usdc,
+	rewardToken: tokens.pbrew,
+	emissionFunctionName: 'brewPerBlock',
+	emissionMultiplier: 1,
+	isArchived: false,
+	isSingle:false,
+	isBurning:false,
+	allocPointName:'lastRewardTime',
+	lpRewardsApr:0,
+	platform: 'Cafeswap',
+  }, 
 ]
 
 export default vaults

@@ -5,7 +5,7 @@ const vaults: VaultConfig[] = [
 {
     pid: 2,
     lpSymbol: 'SIRIUS',  
-	exchange: 'Polysky',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/swap?outputCurrency=0xB1289f48E8d8Ad1532e83A8961f6E8b5a134661D',
 	strategyAddress:{
 		137: '0xf36588739784912085a0d4E7CF666c4f9B4f9178',
@@ -34,7 +34,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 1,
     lpSymbol: 'QUICK - USDC',  
-	exchange: 'Quickswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/add/0x831753DD7087CaC61aB5644b308642cc1c33Dc13/0x9Bbcda2606e616659b118399A2823E8a392f55DA',
 	strategyAddress:{
 		137: '0x6d2f82A4D90c865B8A118d47677A1d6d6B85b1e3',
@@ -65,7 +65,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 3,
     lpSymbol: 'USDC - MAI',  
-	exchange: 'Quickswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/add/0xa3Fa99A148fA48D14Ed51d610c367C61876997F1/0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174',
 	strategyAddress:{
 		137: '0x60543048F48b924892CbAF686274513Bb3dca30E',
@@ -96,7 +96,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 4,
     lpSymbol: 'MATIC - QI',  
-	exchange: 'Quickswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/add/ETH/0x580A84C73811E1839F75d86d75d88cCa0c241fF4',
 	strategyAddress:{
 		137: '0x7f3e907AB4a4458bB34F20fd1A8268933abCE0ac',
@@ -126,7 +126,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 5,
     lpSymbol: 'MATIC - BANANA',  
-	exchange: 'Apeswap',
+	exchange: 'Ape LP',
 	baseLiquidityUrl: 'https://app.apeswap.finance/add/ETH/0x5d47baba0d66083c52009271faf3f50dcc01023c',
 	strategyAddress:{
 		137: '0x490cDACea9a68E0305f613c50AFEA464c09af79C',
@@ -157,7 +157,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 6,
     lpSymbol: 'MATIC - WETH',  
-	exchange: 'Apeswap',
+	exchange: 'Ape LP',
 	baseLiquidityUrl: 'https://app.apeswap.finance/add/ETH/0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619',
 	strategyAddress:{
 		137: '0x46aAdC175eF9272Ab47Ce6c923249478d09CA91d',
@@ -188,7 +188,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 7,
     lpSymbol: 'MATIC - DAI',  
-	exchange: 'Apeswap',
+	exchange: 'Ape LP',
 	baseLiquidityUrl: 'https://app.apeswap.finance/add/ETH/0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063',
 	strategyAddress:{
 		137: '0x3a342D42f38C4b19624f7e86192924ec0E77fb25',
@@ -219,7 +219,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 8,
     lpSymbol: 'MATIC - USDT',  
-	exchange: 'Apeswap',
+	exchange: 'Ape LP',
 	baseLiquidityUrl: 'https://app.apeswap.finance/add/ETH/0xc2132D05D31c914a87C6611C10748AEb04B58e8F',
 	strategyAddress:{
 		137: '0x644ec9aBc0915C6819B1061723Dc82d271A5AECa',
@@ -250,7 +250,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 9,
     lpSymbol: 'MATIC - WBTC',  
-	exchange: 'Apeswap',
+	exchange: 'Ape LP',
 	baseLiquidityUrl: 'https://app.apeswap.finance/add/ETH/0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6',
 	strategyAddress:{
 		137: '0x07c1DA21bB9EB2C19b89a7c9B51DB62CAdc5c16E',
@@ -281,7 +281,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 10,
     lpSymbol: 'USDC - DAI',  
-	exchange: 'Apeswap',
+	exchange: 'Ape LP',
 	baseLiquidityUrl: 'https://app.apeswap.finance/add/0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063/0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174',
 	strategyAddress:{
 		137: '0x37afdE115595FA0C937235559b76782132A259CA',
@@ -313,7 +313,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 11,
     lpSymbol: 'MATIC - BNB',  
-	exchange: 'Apeswap',
+	exchange: 'Ape LP',
 	baseLiquidityUrl: 'https://app.apeswap.finance/add/ETH/0xA649325Aa7C5093d12D6F98EB4378deAe68CE23F',
 	strategyAddress:{
 		137: '0xD66E630A457afD337A782f4E8B7a31FC0915d3da',
@@ -344,7 +344,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 12,
     lpSymbol: 'USDC - USDT',  
-	exchange: 'Quickswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/add/0xc2132D05D31c914a87C6611C10748AEb04B58e8F/0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174',
 	strategyAddress:{
 		137: '0xD41cE6a0EAd76d5420630cE6b1b2f8bCA2ba18C8',
@@ -376,7 +376,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 13,
     lpSymbol: 'QUICK - USDC',  
-	exchange: 'Quickswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/add/0x831753DD7087CaC61aB5644b308642cc1c33Dc13/0x9Bbcda2606e616659b118399A2823E8a392f55DA',
 	strategyAddress:{
 		137: '0x9FF08d9B14A386D957995Cee8E1111eD8087fa86',
@@ -407,7 +407,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 14,
     lpSymbol: 'ETH - USDC',  
-	exchange: 'Quickswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/0x2791bca1f2de4661ed88a30c99a7a9449aa84174/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619',
 	strategyAddress:{
 		137: '0x071545a88aA89bc7Ca9A536321D7b47d84773029',
@@ -438,7 +438,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 17,
     lpSymbol: 'ETH - USDT',  
-	exchange: 'Quickswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619/0xc2132d05d31c914a87c6611c10748aeb04b58e8f',
 	strategyAddress:{
 		137: '0xBDc2de50Feb124B5d6b671162D0206fe199Ba382',
@@ -469,7 +469,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 19,
     lpSymbol: 'wBTC - ETH',  
-	exchange: 'Quickswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619',
 	strategyAddress:{
 		137: '0x63a5603b05c733886B63067A06479325e1aCe5F5',
@@ -500,7 +500,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 20,
     lpSymbol: 'ETH - QUICK',  
-	exchange: 'Quickswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619/0x831753dd7087cac61ab5644b308642cc1c33dc13',
 	strategyAddress:{
 		137: '0x86D2eaAF608535E64a4E580B6a75bAFa21d2FD9E',
@@ -531,7 +531,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 21,
     lpSymbol: 'MAI - USDT',  
-	exchange: 'Quickswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/0xa3fa99a148fa48d14ed51d610c367c61876997f1/0xc2132d05d31c914a87c6611c10748aeb04b58e8f',
 	strategyAddress:{
 		137: '0x36f8764cB439828B2D15b72817C8de691bdd6dA7',
@@ -562,7 +562,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 22,
     lpSymbol: 'MATIC - USDT',  
-	exchange: 'Quickswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/ETH/0xc2132d05d31c914a87c6611c10748aeb04b58e8f',
 	strategyAddress:{
 		137: '0x3B4FFca867A3BdA37243663b37E0591D1D827180',
@@ -593,7 +593,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 23,
     lpSymbol: 'MATIC - MAI',  
-	exchange: 'Quickswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/ETH/0xa3fa99a148fa48d14ed51d610c367c61876997f1',
 	strategyAddress:{
 		137: '0x60E681A83dB7211c055a7a870D7f2c4054793f52',
@@ -624,7 +624,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 24,
     lpSymbol: 'AVAX - MATIC',  
-	exchange: 'Quickswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/ETH/0x2c89bbc92bd86f8075d1decc58c7f4e0107f286b',
 	strategyAddress:{
 		137: '0x15d4Ea58e472bBFb291D731D109B4Dc40c7eC034',
@@ -655,7 +655,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 25,
     lpSymbol: 'UNI - ETH',  
-	exchange: 'Quickswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619/0xb33eaad8d922b1083446dc23f610c2567fb5180f',
 	strategyAddress:{
 		137: '0x9Fae7DFF186C27b123A7739e0A72d82e08c325B6',
@@ -686,7 +686,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 26,
     lpSymbol: 'SOL - MATIC',  
-	exchange: 'Quickswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/ETH/0x7dff46370e9ea5f0bad3c4e29711ad50062ea7a4',
 	strategyAddress:{
 		137: '0x34e2f2a43d1bCDeBa6b63f505E2433340d072936',
@@ -717,7 +717,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 27,
     lpSymbol: 'AAVE - ETH',  
-	exchange: 'Quickswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619/0xd6df932a45c0f255f85145f286ea0b292b21c90b',
 	strategyAddress:{
 		137: '0xD4CFa1Da948714E3cf3Ba06Bd18f0ddde8cec436',
@@ -748,7 +748,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 28,
     lpSymbol: 'QI - ETH',  
-	exchange: 'Quickswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/0x580a84c73811e1839f75d86d75d88cca0c241ff4/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619',
 	strategyAddress:{
 		137: '0x19CDA79b8701a5Edd637F3E5519C0FC54c39802E',
@@ -779,7 +779,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 29,
     lpSymbol: 'LINK - ETH',  
-	exchange: 'Quickswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/0x53e0bca35ec356bd5dddfebbd1fc0fd03fabad39/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619',
 	strategyAddress:{
 		137: '0x8f8B31B034e5E4f7C333c10DD5eB21b4fab84ba0',
@@ -810,7 +810,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 30,
     lpSymbol: 'FTM - MATIC',  
-	exchange: 'Quickswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/add/ETH/0xb85517b87bf64942adf3a0b9e4c71e4bc5caa4e5',
 	strategyAddress:{
 		137: '0x524F49fE7c919587c4950eF7454E5aD1eb1bD608',
@@ -841,7 +841,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 31,
     lpSymbol: 'DAI - ETH',  
-	exchange: 'Quickswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619/0x8f3cf7ad23cd3cadbd9735aff958023239c6a063',
 	strategyAddress:{
 		137: '0x823A997b48E9fC5b348524E20821d35a54FD711A',
@@ -872,7 +872,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 32,
     lpSymbol: 'MAI - DAI',  
-	exchange: 'Quickswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/0x8f3cf7ad23cd3cadbd9735aff958023239c6a063/0xa3fa99a148fa48d14ed51d610c367c61876997f1',
 	strategyAddress:{
 		137: '0xf2b5D3B6EcF3D9306fefd4381d3459EF21B07e0E',
@@ -904,7 +904,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 33,
     lpSymbol: 'MATIC - USDC',  
-	exchange: 'Cafeswap',
+	exchange: 'Cafe LP',
 	baseLiquidityUrl: 'https://polygondex.cafeswap.finance/#/add/ETH/0x2791bca1f2de4661ed88a30c99a7a9449aa84174',
 	strategyAddress:{
 		137: '0x2AEb3169dbE852Ac087DCcFf51F7366ffaf0F2e6',
@@ -934,7 +934,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 34,
     lpSymbol: 'pBREW - MATIC',  
-	exchange: 'Cafeswap',
+	exchange: 'Cafe LP',
 	baseLiquidityUrl: 'https://polygondex.cafeswap.finance/#/add/ETH/0xb5106a3277718ecad2f20ab6b86ce0fee7a21f09',
 	strategyAddress:{
 		137: '0x313B1e682BB10587df5C265a6DbDCbe2F79F5Bf3',
@@ -964,7 +964,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 35,
     lpSymbol: 'pBREW - USDC',  
-	exchange: 'Cafeswap',
+	exchange: 'Cafe LP',
 	baseLiquidityUrl: 'https://polygondex.cafeswap.finance/#/add/0x2791bca1f2de4661ed88a30c99a7a9449aa84174/0xb5106a3277718ecad2f20ab6b86ce0fee7a21f09',
 	strategyAddress:{
 		137: '0xC5081C12218A2BE437A0B7f589BC70BAc7B67f83',
@@ -994,7 +994,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 36,
     lpSymbol: 'USDT - USDC',  
-	exchange: 'Cafeswap',
+	exchange: 'Cafe LP',
 	baseLiquidityUrl: 'https://polygondex.cafeswap.finance/#/add/0x2791bca1f2de4661ed88a30c99a7a9449aa84174/0xc2132d05d31c914a87c6611c10748aeb04b58e8f',
 	strategyAddress:{
 		137: '0xe455BE4F595290AC019d28cB5E83863AF030106c',
@@ -1025,7 +1025,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 37,
     lpSymbol: 'BREW - USDC',  
-	exchange: 'Cafeswap',
+	exchange: 'Cafe LP',
 	baseLiquidityUrl: 'https://polygondex.cafeswap.finance/#/add/0x2791bca1f2de4661ed88a30c99a7a9449aa84174/0xa0b20decbc557e3f68e140ed5a0c69bc865f865a',
 	strategyAddress:{
 		137: '0x5863e7f9a6448B52CfCa5721A096aD7b951CF926',
@@ -1055,7 +1055,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 38,
     lpSymbol: 'USDC - DAI',  
-	exchange: 'Cafeswap',
+	exchange: 'Cafe LP',
 	baseLiquidityUrl: 'https://polygondex.cafeswap.finance/#/add/0x2791bca1f2de4661ed88a30c99a7a9449aa84174/0x8f3cf7ad23cd3cadbd9735aff958023239c6a063',
 	strategyAddress:{
 		137: '0x8ebfE4E7DaFd1399B9bb6B4138df01D1aE758E88',
@@ -1086,7 +1086,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 39,
     lpSymbol: 'UST - USDC',  
-	exchange: 'Cafeswap',
+	exchange: 'Cafe LP',
 	baseLiquidityUrl: 'https://polygondex.cafeswap.finance/#/add/0x2791bca1f2de4661ed88a30c99a7a9449aa84174/0x692597b009d13c4049a947cab2239b7d6517875f',
 	strategyAddress:{
 		137: '0x9908fa8EAFE595dF17cBCf54fdcce5732558E602',
@@ -1117,7 +1117,7 @@ const vaults: VaultConfig[] = [
 {
     pid: 40,
     lpSymbol: 'pBREW',  
-	exchange: 'Cafeswap',
+	exchange: 'Cafe LP',
 	baseLiquidityUrl: 'https://polygondex.cafeswap.finance/#/swap?outputCurrency=0xb5106a3277718ecad2f20ab6b86ce0fee7a21f09',
 	strategyAddress:{
 		137: '0x8a7851f8a401543542788363d346340Fb4b9b68d',
@@ -1147,7 +1147,7 @@ const vaults: VaultConfig[] = [
 {
     pid: 41,
     lpSymbol: 'BREW',  
-	exchange: 'Cafeswap',
+	exchange: 'Cafe LP',
 	baseLiquidityUrl: 'https://polygondex.cafeswap.finance/#/swap?outputCurrency=0xa0b20decbc557e3f68e140ed5a0c69bc865f865a',
 	strategyAddress:{
 		137: '0xBF9a388e5e416d658194Cce0Eb44552206138AEc',
@@ -1177,7 +1177,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 42,
     lpSymbol: 'USDC - USDT',  
-	exchange: 'Sushiswap',
+	exchange: 'Sushi LP',
 	baseLiquidityUrl: 'https://app.sushi.com/add/0x2791bca1f2de4661ed88a30c99a7a9449aa84174/0xc2132d05d31c914a87c6611c10748aeb04b58e8f',
 	strategyAddress:{
 		137: '0x764F7E394AD704D62DeE21350c5024a5b34711A1',
@@ -1209,7 +1209,7 @@ const vaults: VaultConfig[] = [
 {
     pid: 43,
     lpSymbol: 'USDC - DAI',  
-	exchange: 'Sushiswap',
+	exchange: 'Sushi LP',
 	baseLiquidityUrl: 'https://app.sushi.com/add/0x2791bca1f2de4661ed88a30c99a7a9449aa84174/0x8f3cf7ad23cd3cadbd9735aff958023239c6a063',
 	strategyAddress:{
 		137: '0xbf2dEEF7a090650cae3542F77396ECbD39471f06',
@@ -1241,7 +1241,7 @@ const vaults: VaultConfig[] = [
 {
     pid: 44,
     lpSymbol: 'AVAX - WETH',  
-	exchange: 'Sushiswap',
+	exchange: 'Sushi LP',
 	baseLiquidityUrl: 'https://app.sushi.com/add/0x2c89bbc92bd86f8075d1decc58c7f4e0107f286b/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619',
 	strategyAddress:{
 		137: '0xFa0B98d47e31054349c6Ae6922FaE158aEf695f4',
@@ -1273,7 +1273,7 @@ const vaults: VaultConfig[] = [
 {
     pid: 45,
     lpSymbol: 'WETH - DAI',  
-	exchange: 'Sushiswap',
+	exchange: 'Sushi LP',
 	baseLiquidityUrl: 'https://app.sushi.com/add/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619/0x8f3cf7ad23cd3cadbd9735aff958023239c6a063',
 	strategyAddress:{
 		137: '0x904608564CFAC14a353A595F6aA38A5D99937E36',
@@ -1305,7 +1305,7 @@ const vaults: VaultConfig[] = [
 {
     pid: 46,
     lpSymbol: 'WETH - USDT',  
-	exchange: 'Sushiswap',
+	exchange: 'Sushi LP',
 	baseLiquidityUrl: 'https://app.sushi.com/add/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619/0xc2132d05d31c914a87c6611c10748aeb04b58e8f',
 	strategyAddress:{
 		137: '0x81FDd8A300625B48667cCb4936d5Cc80e2b06C1C',
@@ -1337,7 +1337,7 @@ const vaults: VaultConfig[] = [
 {
     pid: 47,
     lpSymbol: 'USDC - BIFI',  
-	exchange: 'Sushiswap',
+	exchange: 'Sushi LP',
 	baseLiquidityUrl: 'https://app.sushi.com/add/0x2791bca1f2de4661ed88a30c99a7a9449aa84174/0xfbdd194376de19a88118e84e279b977f165d01b8',
 	strategyAddress:{
 		137: '0x3C9157d72CB005EBA78b1D960657ce607c3B1D65',
@@ -1369,7 +1369,7 @@ const vaults: VaultConfig[] = [
 {
     pid: 48,
     lpSymbol: 'MATIC - WETH',  
-	exchange: 'Sushiswap',
+	exchange: 'Sushi LP',
 	baseLiquidityUrl: 'https://app.sushi.com/add/ETH/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619',
 	strategyAddress:{
 		137: '0xdE7193f78d24dcC569ECcB1b27348c48Aa93505C',
@@ -1401,7 +1401,7 @@ const vaults: VaultConfig[] = [
 {
     pid: 49,
     lpSymbol: 'USDC - WETH',  
-	exchange: 'Sushiswap',
+	exchange: 'Sushi LP',
 	baseLiquidityUrl: 'https://app.sushi.com/add/0x2791bca1f2de4661ed88a30c99a7a9449aa84174/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619',
 	strategyAddress:{
 		137: '0x4f494049133f3C12d36c4caa31C0b675c567E513',
@@ -1433,7 +1433,7 @@ const vaults: VaultConfig[] = [
 {
     pid: 50,
     lpSymbol: 'USDC - TUSD',  
-	exchange: 'Sushiswap',
+	exchange: 'Sushi LP',
 	baseLiquidityUrl: 'https://app.sushi.com/add/0x2791bca1f2de4661ed88a30c99a7a9449aa84174/0x2e1ad108ff1d8c782fcbbb89aad783ac49586756',
 	strategyAddress:{
 		137: '0xdd1f9b4358116d736a4DB150a39789B070937339',
@@ -1465,7 +1465,7 @@ const vaults: VaultConfig[] = [
 {
     pid: 51,
     lpSymbol: 'USDC - INSUR',  
-	exchange: 'Sushiswap',
+	exchange: 'Sushi LP',
 	baseLiquidityUrl: 'https://app.sushi.com/add/0x2791bca1f2de4661ed88a30c99a7a9449aa84174/0x8a0e8b4b0903929f47c3ea30973940d4a9702067',
 	strategyAddress:{
 		137: '0x51e043a2135b7231Ec8d594C3FFa59382983Ab2a',
@@ -1497,7 +1497,7 @@ const vaults: VaultConfig[] = [
 {
     pid: 52,
     lpSymbol: 'WETH - MANA',  
-	exchange: 'Sushiswap',
+	exchange: 'Sushi LP',
 	baseLiquidityUrl: 'https://app.sushi.com/add/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619/0xa1c57f48f0deb89f569dfbe6e2b7f46d33606fd4',
 	strategyAddress:{
 		137: '0x3ecD812200D4e1583d97Bbc5e871707BD9dD0b25',
@@ -1529,7 +1529,7 @@ const vaults: VaultConfig[] = [
 {
     pid: 53,
     lpSymbol: 'DINO - USDC',  
-	exchange: 'Dinoswap',
+	exchange: 'Sushi LP',
 	baseLiquidityUrl: 'https://app.sushi.com/add/0x2791bca1f2de4661ed88a30c99a7a9449aa84174/0xaa9654becca45b5bdfa5ac646c939c62b527d394',
 	strategyAddress:{
 		137: '0x91881440A99b71E77ED59F7172932d537e0B4F3f',
@@ -1560,7 +1560,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 54,
     lpSymbol: 'DINO - WETH',  
-	exchange: 'Dinoswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619/0xaa9654becca45b5bdfa5ac646c939c62b527d394',
 	strategyAddress:{
 		137: '0xb15F38B4fa59F4470494f312BC99D488fC993Db8',
@@ -1591,7 +1591,7 @@ const vaults: VaultConfig[] = [
 {
     pid: 55,
     lpSymbol: 'EROWAN - QUICK',  
-	exchange: 'Dinoswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/0x831753dd7087cac61ab5644b308642cc1c33dc13/0xa7051c5a22d963b81d71c2ba64d46a877fbc1821',
 	strategyAddress:{
 		137: '0x925a2e1C8B3118359d27Cc2c73a8beC49f7478B4',
@@ -1622,7 +1622,7 @@ const vaults: VaultConfig[] = [
 {
     pid: 56,
     lpSymbol: 'DFYN - WETH',  
-	exchange: 'Dinoswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://exchange.dfyn.network/#/add/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619/0xc168e40227e4ebd8c1cae80f7a55a4f0e6d66c97',
 	strategyAddress:{
 		137: '0xfdcf445b6e37Ca9a7C8a57153937baE0777EA4cf',
@@ -1653,7 +1653,7 @@ const vaults: VaultConfig[] = [
 {
     pid: 57,
     lpSymbol: 'EROWAN - IRIS',  
-	exchange: 'Dinoswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/0x3dc6052a693e4a2fc28eb2ea12fe0cfd3bd221d1/0xa7051c5a22d963b81d71c2ba64d46a877fbc1821',
 	strategyAddress:{
 		137: '0x40ad769BA5aef3a2e8c6F97a92564a6829Dea36D',
@@ -1684,7 +1684,7 @@ const vaults: VaultConfig[] = [
 {
     pid: 58,
     lpSymbol: 'EROWAN - XPRT',  
-	exchange: 'Dinoswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/0xa7051c5a22d963b81d71c2ba64d46a877fbc1821/0xb3b9c016ad1e9f7efdae451b04ef696e05658b32',
 	strategyAddress:{
 		137: '0x8a10d9391687100f32084e9DaD41be13d9B52207',
@@ -1715,7 +1715,7 @@ const vaults: VaultConfig[] = [
 {
     pid: 59,
     lpSymbol: 'EROWAN - AKT',  
-	exchange: 'Dinoswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/0xa7051c5a22d963b81d71c2ba64d46a877fbc1821/0xf14fbc6b30e2c4bc05a1d4fbe34bf9f14313309d',
 	strategyAddress:{
 		137: '0x0cD184d508A3A1901216fAD0BbC18B98f9cc9cc7',
@@ -1746,7 +1746,7 @@ const vaults: VaultConfig[] = [
 {
     pid: 60,
     lpSymbol: 'EROWAN - REGEN',  
-	exchange: 'Dinoswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/0xa7051c5a22d963b81d71c2ba64d46a877fbc1821/0xec482de9569a5ea3dd9779039b79e53f15791fde',
 	strategyAddress:{
 		137: '0x1456FD6E9C1f6ca4d46e27fC50afd69755fAe0F1',
@@ -1777,7 +1777,7 @@ const vaults: VaultConfig[] = [
 {
     pid: 61,
     lpSymbol: 'UST - USDT',  
-	exchange: 'Dinoswap',
+	exchange: 'Dfyn LP',
 	baseLiquidityUrl: 'https://exchange.dfyn.network/#/add/0x692597b009d13c4049a947cab2239b7d6517875f/0xc2132d05d31c914a87c6611c10748aeb04b58e8f',
 	strategyAddress:{
 		137: '0x004C4808E3c3b07F66834dE28569F19Fb31DA29b',
@@ -1808,7 +1808,7 @@ const vaults: VaultConfig[] = [
 {
     pid: 62,
     lpSymbol: 'EROWAN - ATOM',  
-	exchange: 'Dinoswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/0xa7051c5a22d963b81d71c2ba64d46a877fbc1821/0xac51c4c48dc3116487ed4bc16542e27b5694da1b',
 	strategyAddress:{
 		137: '0x37cC57188A758401EaEfb54249A73b8B51161Ec5',
@@ -1839,7 +1839,7 @@ const vaults: VaultConfig[] = [
 {
     pid: 63,
     lpSymbol: 'WORK - USDC',  
-	exchange: 'Dinoswap',
+	exchange: 'Sushi LP',
 	baseLiquidityUrl: 'https://app.sushi.com/add/0x2791bca1f2de4661ed88a30c99a7a9449aa84174/0x6002410dda2fb88b4d0dc3c1d562f7761191ea80',
 	strategyAddress:{
 		137: '0xE41B466dBE91fF2435eDeD4296EA9B395a80880e',
@@ -1870,7 +1870,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 64,
     lpSymbol: 'FOR - USDC',  
-	exchange: 'Dinoswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/0x2791bca1f2de4661ed88a30c99a7a9449aa84174/0x546b4c391520e6652897c65153074088bfc0a909',
 	strategyAddress:{
 		137: '0x585b45A2C74c7E653D61f100048e37953cD3A0d3',
@@ -1901,7 +1901,7 @@ const vaults: VaultConfig[] = [
 {
     pid: 65,
     lpSymbol: 'DG - USDC',  
-	exchange: 'Dinoswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/0x2791bca1f2de4661ed88a30c99a7a9449aa84174/0x2a93172c8dccbfbc60a39d56183b7279a2f647b4',
 	strategyAddress:{
 		137: '0x469D391BD9788965BfaD0e44373b5b3Df86227eb',
@@ -1932,7 +1932,7 @@ const vaults: VaultConfig[] = [
 {
     pid: 66,
     lpSymbol: 'ORBS - USDC',  
-	exchange: 'Dinoswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/0x2791bca1f2de4661ed88a30c99a7a9449aa84174/0x614389eaae0a6821dc49062d56bda3d9d45fa2ff',
 	strategyAddress:{
 		137: '0xd61eB2D31275970c4BD24042d327E4715D5Fd6bE',
@@ -1963,7 +1963,7 @@ const vaults: VaultConfig[] = [
 {
     pid: 67,
     lpSymbol: 'DNXC-USDC',  
-	exchange: 'Dinoswap',
+	exchange: 'Quick LP',
 	baseLiquidityUrl: 'https://quickswap.exchange/#/0x2791bca1f2de4661ed88a30c99a7a9449aa84174/0xcaf5191fc480f43e4df80106c7695eca56e48b18',
 	strategyAddress:{
 		137: '0x3C66b50c8bC81f230a3D74421Be7D4a1541D9e70',
@@ -1994,7 +1994,7 @@ const vaults: VaultConfig[] = [
 {
     pid: 68,
     lpSymbol: 'ROUTE - WETH',  
-	exchange: 'Dinoswap',
+	exchange: 'Dfyn LP',
 	baseLiquidityUrl: 'https://exchange.dfyn.network/#/add/0x16eccfdbb4ee1a85a33f3a9b21175cd7ae753db4/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619',
 	strategyAddress:{
 		137: '0xCb71e46c7299379BA0cD20a704Caee221A3B5847',
@@ -2025,8 +2025,9 @@ const vaults: VaultConfig[] = [
 {
     pid: 69,
     lpSymbol: 'SFI - WETH',  
-	exchange: 'Dinoswap',
-	baseLiquidityUrl: 'https://app.sushi.com/add/0x35b937583f04a24963eb685f728a542240f28dd8/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619',
+	exchange: 'Sushi LP',
+	lpInfo: 'https://analytics.sushi.com/pairs/0x23a9292830fc80db7f563edb28d2fe6fb47f8624',
+	baseLiquidityUrl: 'https://app.sushi.com/add/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/0xb753428af26E81097e7fD17f40c88aaA3E04902c',
 	strategyAddress:{
 		137: '0x696ECba7C5226d37e6603043ad05e5b6609e15D9',
 		80001: '',
@@ -2056,7 +2057,7 @@ const vaults: VaultConfig[] = [
   {
     pid: 70,
     lpSymbol: 'ARPA - WETH',  
-	exchange: 'Dinoswap',
+	exchange: 'Sushi LP',
 	baseLiquidityUrl: 'https://app.sushi.com/add/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619/0xee800b277a96b0f490a1a732e1d6395fad960a26',
 	strategyAddress:{
 		137: '0x9c544d3770C6f1e14729e587934071c42BFDD627',

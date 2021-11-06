@@ -187,7 +187,8 @@ const Row: React.FunctionComponent<RowPropsWithLoading> = (props) => {
                   <td key={key}>
                     <CellInner>
                       <CellLayout label={t(tableSchema[columnIndex].label)}>
-                        {React.createElement(cells[key], { ...props[key], userDataReady, platform: props.details.platform})}
+                        {React.createElement(cells[key], { ...props[key], userDataReady, 
+                          exchange: props.details.exchange, platform: props.details.platform})}
                       </CellLayout>
                     </CellInner>
                   </td>

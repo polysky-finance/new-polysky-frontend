@@ -75,8 +75,11 @@ const Vault: React.FunctionComponent<VaultProps> = ({ token, quoteToken, label, 
         { isBurning?
             <BurningTag/> :null
         }
-        <br/>
-        <LabelTag variant="secondary">{platform}</LabelTag>
+        { isBurning?
+            <br/> :null
+        }
+        {isSingle? null: <LabelTag variant="secondary">{exchange}</LabelTag>}
+        <LabelTag variant="primary">{platform}</LabelTag>
       </div>
     </Container>
   )

@@ -155,7 +155,8 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
   
   const lpAddress = getAddress(vault.lpAddresses)
   const polygon = getPolygonScanAddressUrl(lpAddress)
-  const info = vault.isSingle?`https://info.quickswap.exchange/token/${lpAddress}`:`https://info.quickswap.exchange/pair/${lpAddress}`
+  const info = vault.lpInfo // .isSingle?`https://info.quickswap.exchange/token/${lpAddress}`:`https://info.quickswap.exchange/pair/${lpAddress}`
+  const url = vault.baseLiquidityUrl //
   const label = lpLabel === 'AUTO SIRIUS'? 'SIRIUS':lpLabel;
   
   let lpPrice = BIG_ZERO
@@ -188,13 +189,18 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
       <InfoContainer>
         {isActive && (
           <StakeContainer>
-            <StyledLinkExternal href={info}>
+            <StyledLinkExternal href={url}>
               {t('Get %symbol%', { symbol: label })}
             </StyledLinkExternal>
           </StakeContainer>
         )}
         <StyledLinkExternal href={polygon}>{t('View Contract')}</StyledLinkExternal>
-        <StyledLinkExternal href={info}>{t('See Pair Info')}</StyledLinkExternal>
+        <StyledLinkExternal href={info}>
+              {t('See %symbol% Info', { symbol: label })}
+        </StyledLinkExternal>
+        <StyledLinkExternal href={url}>
+              {t('Get %symbol%', { symbol: label })}
+        </StyledLinkExternal>
 
       </InfoContainer>
       <ValueContainer>

@@ -598,6 +598,48 @@ const priceHelperLps: FarmConfig[] = [
     token: tokens.orbs,
     quoteToken: tokens.usdc,
   },
+  {
+    pid: null,
+    lpSymbol: 'DNXC - USDC',
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0xE169a660d720917B4fB7e95f045B6f60a64EB10A',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.dnxc,
+    quoteToken: tokens.usdc,
+  },
+  {
+    pid: null,
+    lpSymbol: 'ROUTE - WETH',
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0xeBC4f9B1cE66258AC3A48578FFEEba1330dDB68B',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.route,
+    quoteToken: tokens.weth,
+  },
+  {
+    pid: null,
+    lpSymbol: 'SFI - WETH',
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0x7C07CecD8cdd65C0daD449808cc5f9AD74C22bd1',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.sfi,
+    quoteToken: tokens.weth,
+  },
 ]
 
 export default priceHelperLps

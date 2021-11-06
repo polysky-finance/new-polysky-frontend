@@ -421,6 +421,33 @@ const tokens = {
     decimals: 18,
     projectLink: 'https://www.orbs.com/',
   },
+  dnxc: {
+    symbol: 'DNXC',
+    address: {
+      137: '0xcaf5191fc480f43e4df80106c7695eca56e48b18',
+      80001: '',
+    },
+    decimals: 18,
+    projectLink: 'https://dinox.io/',
+  },
+  route: {
+    symbol: 'ROUTE',
+    address: {
+      137: '0x16eccfdbb4ee1a85a33f3a9b21175cd7ae753db4',
+      80001: '',
+    },
+    decimals: 18,
+    projectLink: 'https://www.routerprotocol.com/',
+  },
+  sfi: {
+    symbol: 'SFI',
+    address: {
+      137: '0x35b937583f04a24963eb685f728a542240f28dd8',
+      80001: '',
+    },
+    decimals: 18,
+    projectLink: 'http://saffron.finance/',
+  },
 }
 
 export default tokens

@@ -457,6 +457,42 @@ const tokens = {
     decimals: 18,
     projectLink: 'https://arpachain.io/',
   },
+  bel: {
+    symbol: 'BEL',
+    address: {
+      137: '0x28c388fb1f4fa9f9eb445f0579666849ee5eeb42',
+      80001: '',
+    },
+    decimals: 18,
+    projectLink: 'https://arpachain.io/',
+  },
+  xmark: {
+    symbol: 'xMARK',
+    address: {
+      137: '0xf153eff70dc0bf3b085134928daeea248d9b30d0',
+      80001: '',
+    },
+    decimals: 9,
+    projectLink: 'https://arpachain.io/',
+  },
+  sx: {
+    symbol: 'SX',
+    address: {
+      137: '0x840195888db4d6a99ed9f73fcd3b225bb3cb1a79',
+      80001: '',
+    },
+    decimals: 18,
+    projectLink: 'https://arpachain.io/',
+  },
+  cgg: {
+    symbol: 'CGG',
+    address: {
+      137: '0x2ab4f9ac80f33071211729e45cfc346c1f8446d5',
+      80001: '',
+    },
+    decimals: 18,
+    projectLink: 'https://arpachain.io/',
+  },
 }
 
 export default tokens

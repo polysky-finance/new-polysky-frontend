@@ -654,6 +654,62 @@ const priceHelperLps: FarmConfig[] = [
     token: tokens.arpa,
     quoteToken: tokens.weth,
   },
+  {
+    pid: null,
+    lpSymbol: 'BEL - WETH',
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0x49ceCfa5c62b3A97F58CAd6B4aCc7c74810E1DDa',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.bel,
+    quoteToken: tokens.weth,
+  },
+  {
+    pid: null,
+    lpSymbol: 'xMARK - USDC',
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0x97A95deb56d689802F02f50c25EBCda5d0A49591',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.xmark,
+    quoteToken: tokens.usdc,
+  },
+  {
+    pid: null,
+    lpSymbol: 'SX - WETH',
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0x1bF9805B40a5f69c7d0f9E5d1Ab718642203c652',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.sx,
+    quoteToken: tokens.weth,
+  },
+  {
+    pid: null,
+    lpSymbol: 'CGG - WMATIC',
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0xd74d23d2f23CD06a7D94f740A74c6E906F0C9005',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.cgg,
+    quoteToken: tokens.wmatic,
+  },
 ]
 
 export default priceHelperLps

@@ -584,6 +584,20 @@ const priceHelperLps: FarmConfig[] = [
     token: tokens.dg,
     quoteToken: tokens.usdc,
   },
+  {
+    pid: null,
+    lpSymbol: 'ORBS - USDC',
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0xB2b6D423e535b57aaD06E9866803B95fB66152EA',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.orbs,
+    quoteToken: tokens.usdc,
+  },
 ]
 
 export default priceHelperLps

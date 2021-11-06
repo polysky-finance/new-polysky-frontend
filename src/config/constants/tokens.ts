@@ -412,6 +412,15 @@ const tokens = {
     decimals: 18,
     projectLink: 'https://decentral.games/',
   },
+  orbs: {
+    symbol: 'ORBS',
+    address: {
+      137: '0x614389eaae0a6821dc49062d56bda3d9d45fa2ff',
+      80001: '',
+    },
+    decimals: 18,
+    projectLink: 'https://www.orbs.com/',
+  },
 }
 
 export default tokens

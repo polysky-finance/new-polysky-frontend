@@ -1916,8 +1916,8 @@ const vaults: VaultConfig[] = [
 		80001: '',
 	},
 	spid: 16,
-    token: tokens.forr,
-    quoteToken: tokens.dg,
+    token: tokens.dg,
+    quoteToken: tokens.usdc,
 	rewardToken: tokens.dino,
 	emissionFunctionName: 'dinoPerBlock',
 	emissionMultiplier: 1,
@@ -1928,7 +1928,38 @@ const vaults: VaultConfig[] = [
 	allocPointName:'lastRewardTime',
 	lpRewardsApr:13.89,
 	platform: 'Dinoswap'
-  },  
+  }, 
+{
+    pid: 66,
+    lpSymbol: 'ORBS - USDC',  
+	exchange: 'Dinoswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#/0x2791bca1f2de4661ed88a30c99a7a9449aa84174/0x614389eaae0a6821dc49062d56bda3d9d45fa2ff',
+	strategyAddress:{
+		137: '0xd61eB2D31275970c4BD24042d327E4715D5Fd6bE',
+		80001: '',
+	},
+    lpAddresses: {
+      137: '0xB2b6D423e535b57aaD06E9866803B95fB66152EA',
+      80001: '',
+    },
+	masterChefAddress:{
+		137: '0x1948abC5400Aa1d72223882958Da3bec643fb4E5',
+		80001: '',
+	},
+	spid: 19,
+    token: tokens.orbs,
+    quoteToken: tokens.usdc,
+	rewardToken: tokens.dino,
+	emissionFunctionName: 'dinoPerBlock',
+	emissionMultiplier: 1,
+	isArchived: false,
+	isSingle:false,
+	isBurning:false,
+	isStable: false,
+	allocPointName:'lastRewardTime',
+	lpRewardsApr:0.1,
+	platform: 'Dinoswap'
+  },   
 ]
 
 export default vaults

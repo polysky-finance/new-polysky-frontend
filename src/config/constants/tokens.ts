@@ -349,6 +349,15 @@ const tokens = {
     decimals: 6,
     projectLink: 'https://sifchain.finance/',
   },
+  xprt: {
+    symbol: 'XPRT',
+    address: {
+      137: '0xb3b9c016ad1e9f7efdae451b04ef696e05658b32',
+      80001: '',
+    },
+    decimals: 6,
+    projectLink: 'https://sifchain.finance/',
+  },
 }
 
 export default tokens

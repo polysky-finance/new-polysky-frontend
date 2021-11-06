@@ -1680,6 +1680,37 @@ const vaults: VaultConfig[] = [
 	allocPointName:'lastRewardTime',
 	lpRewardsApr:3.42,
 	platform: 'Dinoswap'
+  }, 
+{
+    pid: 58,
+    lpSymbol: 'EROWAN - XPRT',  
+	exchange: 'Dinoswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#/0xa7051c5a22d963b81d71c2ba64d46a877fbc1821/0xb3b9c016ad1e9f7efdae451b04ef696e05658b32',
+	strategyAddress:{
+		137: '0x8a10d9391687100f32084e9DaD41be13d9B52207',
+		80001: '',
+	},
+    lpAddresses: {
+      137: '0xF366DF119532b2e0F4E416C81d6FF7728a60FE7d',
+      80001: '',
+    },
+	masterChefAddress:{
+		137: '0x1948abC5400Aa1d72223882958Da3bec643fb4E5',
+		80001: '',
+	},
+	spid: 25,
+    token: tokens.xprt,
+    quoteToken: tokens.erowan,
+	rewardToken: tokens.dino,
+	emissionFunctionName: 'dinoPerBlock',
+	emissionMultiplier: 1,
+	isArchived: false,
+	isSingle:false,
+	isBurning:false,
+	isStable: false,
+	allocPointName:'lastRewardTime',
+	lpRewardsApr:6.23,
+	platform: 'Dinoswap'
   },   
 ]
 

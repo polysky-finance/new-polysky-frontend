@@ -322,6 +322,15 @@ const tokens = {
     decimals: 18,
     projectLink: 'https://decentraland.org/',
   },
+  dino: {
+    symbol: 'DINO',
+    address: {
+      137: '0xaa9654becca45b5bdfa5ac646c939c62b527d394',
+      80001: '',
+    },
+    decimals: 18,
+    projectLink: 'https://dinoswap.exchange/',
+  },
 }
 
 export default tokens

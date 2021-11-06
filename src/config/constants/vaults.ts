@@ -1,7 +1,7 @@
 import tokens from './tokens'
 import { VaultConfig } from './types'
 
-const vaults: VaultConfig[] = [  
+const vaults: VaultConfig[] = [ 
 {
     pid: 2,
     lpSymbol: 'SIRIUS',  
@@ -92,7 +92,7 @@ const vaults: VaultConfig[] = [
 	allocPointName:'lastRewardTime',
 	lpRewardsApr:1.5,
 	platform: 'Mai',
-  },
+  }, 
   {
     pid: 4,
     lpSymbol: 'MATIC - QI',  
@@ -122,7 +122,7 @@ const vaults: VaultConfig[] = [
 	allocPointName:'lastRewardTime',
 	lpRewardsApr:1.84,
 	platform: 'Mai',
-  },
+  }, 
   {
     pid: 5,
     lpSymbol: 'MATIC - BANANA',  
@@ -1587,7 +1587,69 @@ const vaults: VaultConfig[] = [
 	allocPointName:'lastRewardTime',
 	lpRewardsApr:5.72,
 	platform: 'Dinoswap'
-  },  
+  }, 
+{
+    pid: 55,
+    lpSymbol: 'EROWAN - QUICK',  
+	exchange: 'Dinoswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#/0x831753dd7087cac61ab5644b308642cc1c33dc13/0xa7051c5a22d963b81d71c2ba64d46a877fbc1821',
+	strategyAddress:{
+		137: '0x925a2e1C8B3118359d27Cc2c73a8beC49f7478B4',
+		80001: '',
+	},
+    lpAddresses: {
+      137: '0x631F39D22430E889A3CFbEA4FD73Ed101059075f',
+      80001: '',
+    },
+	masterChefAddress:{
+		137: '0x1948abC5400Aa1d72223882958Da3bec643fb4E5',
+		80001: '',
+	},
+	spid: 21,
+    token: tokens.quick,
+    quoteToken: tokens.erowan,
+	rewardToken: tokens.dino,
+	emissionFunctionName: 'dinoPerBlock',
+	emissionMultiplier: 1,
+	isArchived: false,
+	isSingle:false,
+	isBurning:false,
+	isStable: false,
+	allocPointName:'lastRewardTime',
+	lpRewardsApr:46.24,
+	platform: 'Dinoswap'
+  },
+{
+    pid: 56,
+    lpSymbol: 'DFYN - WETH',  
+	exchange: 'Dinoswap',
+	baseLiquidityUrl: 'https://exchange.dfyn.network/#/add/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619/0xc168e40227e4ebd8c1cae80f7a55a4f0e6d66c97',
+	strategyAddress:{
+		137: '0xfdcf445b6e37Ca9a7C8a57153937baE0777EA4cf',
+		80001: '',
+	},
+    lpAddresses: {
+      137: '0x6fA867BBFDd025780a8CFE988475220AfF51FB8b',
+      80001: '',
+    },
+	masterChefAddress:{
+		137: '0x1948abC5400Aa1d72223882958Da3bec643fb4E5',
+		80001: '',
+	},
+	spid: 1,
+    token: tokens.dfyn,
+    quoteToken: tokens.weth,
+	rewardToken: tokens.dino,
+	emissionFunctionName: 'dinoPerBlock',
+	emissionMultiplier: 1,
+	isArchived: false,
+	isSingle:false,
+	isBurning:false,
+	isStable: false,
+	allocPointName:'lastRewardTime',
+	lpRewardsApr:28.73,
+	platform: 'Dinoswap'
+  },     
 ]
 
 export default vaults

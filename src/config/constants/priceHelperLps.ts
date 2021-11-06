@@ -304,6 +304,62 @@ const priceHelperLps: FarmConfig[] = [
     token: tokens.mana,
     quoteToken: tokens.weth,
   },
+  {
+    pid: null,
+    lpSymbol: 'EROWAN-QUICK',
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0x631F39D22430E889A3CFbEA4FD73Ed101059075f',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.erowan,
+    quoteToken: tokens.quick,
+  },
+  {
+    pid: null,
+    lpSymbol: 'DINO - USDC',
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0x3324af8417844e70b81555A6D1568d78f4D4Bf1f',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.dino,
+    quoteToken: tokens.usdc,
+  },
+  {
+    pid: null,
+    lpSymbol: 'MATIC - QI',
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0x9A8b2601760814019B7E6eE0052E25f1C623D1E6',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.qi,
+    quoteToken: tokens.wmatic,
+  },
+  {
+    pid: null,
+    lpSymbol: 'USDC - MAI',
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0x160532D2536175d65C03B97b0630A9802c274daD',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.mai,
+    quoteToken: tokens.usdc,
+  },
 ]
 
 export default priceHelperLps

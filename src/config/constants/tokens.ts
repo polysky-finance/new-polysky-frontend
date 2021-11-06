@@ -331,6 +331,15 @@ const tokens = {
     decimals: 18,
     projectLink: 'https://dinoswap.exchange/',
   },
+  erowan: {
+    symbol: 'EROWAN',
+    address: {
+      137: '0xa7051c5a22d963b81d71c2ba64d46a877fbc1821',
+      80001: '',
+    },
+    decimals: 18,
+    projectLink: 'https://sifchain.finance/',
+  },
 }
 
 export default tokens

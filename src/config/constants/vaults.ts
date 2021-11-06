@@ -2053,6 +2053,37 @@ const vaults: VaultConfig[] = [
 	lpRewardsApr:6.11,
 	platform: 'Dinoswap'
   },   
+  {
+    pid: 70,
+    lpSymbol: 'ARPA - WETH',  
+	exchange: 'Dinoswap',
+	baseLiquidityUrl: 'https://app.sushi.com/add/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619/0xee800b277a96b0f490a1a732e1d6395fad960a26',
+	strategyAddress:{
+		137: '0x9c544d3770C6f1e14729e587934071c42BFDD627',
+		80001: '',
+	},
+    lpAddresses: {
+      137: '0x590F5E967d73eA06DAE9aED2788108DCF52dA269',
+      80001: '',
+    },
+	masterChefAddress:{
+		137: '0x1948abC5400Aa1d72223882958Da3bec643fb4E5',
+		80001: '',
+	},
+	spid: 13,
+    token: tokens.arpa,
+    quoteToken: tokens.weth,
+	rewardToken: tokens.dino,
+	emissionFunctionName: 'dinoPerBlock',
+	emissionMultiplier: 1,
+	isArchived: false,
+	isSingle:false,
+	isBurning:false,
+	isStable: false,
+	allocPointName:'lastRewardTime',
+	lpRewardsApr:8.43,
+	platform: 'Dinoswap'
+  },
 ]
 
 export default vaults

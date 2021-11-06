@@ -640,6 +640,20 @@ const priceHelperLps: FarmConfig[] = [
     token: tokens.sfi,
     quoteToken: tokens.weth,
   },
+  {
+    pid: null,
+    lpSymbol: 'ARPA - WETH',
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0x590F5E967d73eA06DAE9aED2788108DCF52dA269',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.arpa,
+    quoteToken: tokens.weth,
+  },
 ]
 
 export default priceHelperLps

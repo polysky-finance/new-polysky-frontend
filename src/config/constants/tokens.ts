@@ -448,6 +448,15 @@ const tokens = {
     decimals: 18,
     projectLink: 'http://saffron.finance/',
   },
+  arpa: {
+    symbol: 'ARPA',
+    address: {
+      137: '0xee800b277a96b0f490a1a732e1d6395fad960a26',
+      80001: '',
+    },
+    decimals: 18,
+    projectLink: 'https://arpachain.io/',
+  },
 }
 
 export default tokens

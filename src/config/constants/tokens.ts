@@ -376,6 +376,42 @@ const tokens = {
     decimals: 6,
     projectLink: 'https://sifchain.finance/',
   },
+  atom: {
+    symbol: 'ATOM',
+    address: {
+      137: '0xac51c4c48dc3116487ed4bc16542e27b5694da1b',
+      80001: '',
+    },
+    decimals: 6,
+    projectLink: 'https://cosmos.network/',
+  },
+  work: {
+    symbol: 'WORK',
+    address: {
+      137: '0x6002410dda2fb88b4d0dc3c1d562f7761191ea80',
+      80001: '',
+    },
+    decimals: 18,
+    projectLink: 'https://cosmos.network/',
+  },
+  forr: {
+    symbol: 'FOR',
+    address: {
+      137: '0x546b4c391520e6652897c65153074088bfc0a909',
+      80001: '',
+    },
+    decimals: 18,
+    projectLink: 'https://cosmos.network/',
+  },
+  dg: {
+    symbol: 'DG',
+    address: {
+      137: '0x2a93172c8dccbfbc60a39d56183b7279a2f647b4',
+      80001: '',
+    },
+    decimals: 18,
+    projectLink: 'https://decentral.games/',
+  },
 }
 
 export default tokens

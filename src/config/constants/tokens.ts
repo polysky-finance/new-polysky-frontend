@@ -358,6 +358,24 @@ const tokens = {
     decimals: 6,
     projectLink: 'https://sifchain.finance/',
   },
+  akt: {
+    symbol: 'AKT',
+    address: {
+      137: '0xf14fbc6b30e2c4bc05a1d4fbe34bf9f14313309d',
+      80001: '',
+    },
+    decimals: 6,
+    projectLink: 'https://sifchain.finance/',
+  },
+  regen: {
+    symbol: 'REGEN',
+    address: {
+      137: '0xec482de9569a5ea3dd9779039b79e53f15791fde',
+      80001: '',
+    },
+    decimals: 6,
+    projectLink: 'https://sifchain.finance/',
+  },
 }
 
 export default tokens

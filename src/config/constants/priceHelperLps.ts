@@ -486,6 +486,34 @@ const priceHelperLps: FarmConfig[] = [
     token: tokens.erowan,
     quoteToken: tokens.xprt,
   },
+  {
+    pid: null,
+    lpSymbol: 'EROWAN - AKT',
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0xA651EF83FA6a90e76206De4e79A5c69f80994556',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.erowan,
+    quoteToken: tokens.akt,
+  },
+  {
+    pid: null,
+    lpSymbol: 'EROWAN - REGEN',
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0x66c37a00E426A613B188180198AAC12B0b4aE4D4',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.erowan,
+    quoteToken: tokens.regen,
+  },
 ]
 
 export default priceHelperLps

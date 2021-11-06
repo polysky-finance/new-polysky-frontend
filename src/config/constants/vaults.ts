@@ -1711,7 +1711,100 @@ const vaults: VaultConfig[] = [
 	allocPointName:'lastRewardTime',
 	lpRewardsApr:6.23,
 	platform: 'Dinoswap'
-  },   
+  },
+{
+    pid: 59,
+    lpSymbol: 'EROWAN - AKT',  
+	exchange: 'Dinoswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#/0xa7051c5a22d963b81d71c2ba64d46a877fbc1821/0xf14fbc6b30e2c4bc05a1d4fbe34bf9f14313309d',
+	strategyAddress:{
+		137: '0x0cD184d508A3A1901216fAD0BbC18B98f9cc9cc7',
+		80001: '',
+	},
+    lpAddresses: {
+      137: '0xA651EF83FA6a90e76206De4e79A5c69f80994556',
+      80001: '',
+    },
+	masterChefAddress:{
+		137: '0x1948abC5400Aa1d72223882958Da3bec643fb4E5',
+		80001: '',
+	},
+	spid: 24,
+    token: tokens.akt,
+    quoteToken: tokens.erowan,
+	rewardToken: tokens.dino,
+	emissionFunctionName: 'dinoPerBlock',
+	emissionMultiplier: 1,
+	isArchived: false,
+	isSingle:false,
+	isBurning:false,
+	isStable: false,
+	allocPointName:'lastRewardTime',
+	lpRewardsApr:5.7,
+	platform: 'Dinoswap'
+  },
+{
+    pid: 60,
+    lpSymbol: 'EROWAN - REGEN',  
+	exchange: 'Dinoswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#/0xa7051c5a22d963b81d71c2ba64d46a877fbc1821/0xec482de9569a5ea3dd9779039b79e53f15791fde',
+	strategyAddress:{
+		137: '0x1456FD6E9C1f6ca4d46e27fC50afd69755fAe0F1',
+		80001: '',
+	},
+    lpAddresses: {
+      137: '0x66c37a00E426A613B188180198AAC12B0b4aE4D4',
+      80001: '',
+    },
+	masterChefAddress:{
+		137: '0x1948abC5400Aa1d72223882958Da3bec643fb4E5',
+		80001: '',
+	},
+	spid: 26,
+    token: tokens.regen,
+    quoteToken: tokens.erowan,
+	rewardToken: tokens.dino,
+	emissionFunctionName: 'dinoPerBlock',
+	emissionMultiplier: 1,
+	isArchived: false,
+	isSingle:false,
+	isBurning:false,
+	isStable: false,
+	allocPointName:'lastRewardTime',
+	lpRewardsApr:10.26,
+	platform: 'Dinoswap'
+  }, 
+{
+    pid: 61,
+    lpSymbol: 'UST - USDT',  
+	exchange: 'Dinoswap',
+	baseLiquidityUrl: 'https://exchange.dfyn.network/#/add/0x692597b009d13c4049a947cab2239b7d6517875f/0xc2132d05d31c914a87c6611c10748aeb04b58e8f',
+	strategyAddress:{
+		137: '0x004C4808E3c3b07F66834dE28569F19Fb31DA29b',
+		80001: '',
+	},
+    lpAddresses: {
+      137: '0x39BEd7f1C412ab64443196A6fEcb2ac20C707224',
+      80001: '',
+    },
+	masterChefAddress:{
+		137: '0x1948abC5400Aa1d72223882958Da3bec643fb4E5',
+		80001: '',
+	},
+	spid: 12,
+    token: tokens.ust,
+    quoteToken: tokens.usdt,
+	rewardToken: tokens.dino,
+	emissionFunctionName: 'dinoPerBlock',
+	emissionMultiplier: 1,
+	isArchived: false,
+	isSingle:false,
+	isBurning:false,
+	isStable: false,
+	allocPointName:'lastRewardTime',
+	lpRewardsApr:0.86,
+	platform: 'Dinoswap'
+  },  
 ]
 
 export default vaults

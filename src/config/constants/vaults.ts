@@ -2027,7 +2027,7 @@ const vaults: VaultConfig[] = [
     lpSymbol: 'SFI - WETH',  
 	exchange: 'Sushi LP',
 	lpInfo: 'https://analytics.sushi.com/pairs/0x23a9292830fc80db7f563edb28d2fe6fb47f8624',
-	baseLiquidityUrl: 'https://app.sushi.com/add/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/0xb753428af26E81097e7fD17f40c88aaA3E04902c',
+	baseLiquidityUrl: 'https://app.sushi.com/add/0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619/0x35b937583F04A24963eb685F728a542240f28Dd8',
 	strategyAddress:{
 		137: '0x696ECba7C5226d37e6603043ad05e5b6609e15D9',
 		80001: '',

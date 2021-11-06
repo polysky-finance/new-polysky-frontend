@@ -340,6 +340,15 @@ const tokens = {
     decimals: 18,
     projectLink: 'https://sifchain.finance/',
   },
+  iris: {
+    symbol: 'IRIS',
+    address: {
+      137: '0x3dc6052a693e4a2fc28eb2ea12fe0cfd3bd221d1',
+      80001: '',
+    },
+    decimals: 6,
+    projectLink: 'https://sifchain.finance/',
+  },
 }
 
 export default tokens

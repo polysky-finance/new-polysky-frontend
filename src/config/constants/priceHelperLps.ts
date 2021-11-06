@@ -360,6 +360,20 @@ const priceHelperLps: FarmConfig[] = [
     token: tokens.mai,
     quoteToken: tokens.usdc,
   },
+  {
+    pid: null,
+    lpSymbol: 'EROWAN - IRIS',
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0x58fFB271c6F3D92f03C49e08E2887810F65b8Cd6',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.erowan,
+    quoteToken: tokens.iris,
+  },
 ]
 
 export default priceHelperLps

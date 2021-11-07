@@ -216,7 +216,7 @@ const vaults: VaultConfig[] = [
 	isStable: true,
 	allocPointName:'lastRewardTime',
 	lpRewardsApr:1.5,
-	platform: 'Mai',
+	platform: 'Qi Dao',
   }, 
   {
     pid: 4,
@@ -246,7 +246,7 @@ const vaults: VaultConfig[] = [
 	isBurning:false,
 	allocPointName:'lastRewardTime',
 	lpRewardsApr:1.84,
-	platform: 'Mai',
+	platform: 'Qi Dao',
   }, 
   {
     pid: 5,

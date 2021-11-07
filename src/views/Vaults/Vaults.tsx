@@ -449,12 +449,6 @@ const Vaults: React.FC = () => {
         </Flex>
       </PageHeader>
 	  
-	  <FoldableText title={t('')} mt="24px">
-              <Box display="inline">
-					<FeesMessage />
-          </Box>
-      </FoldableText>
-	  
       <Page>
         <ControlContainer>
         <ViewControls style={{ marginLeft: 16 }}>

@@ -752,6 +752,20 @@ const priceHelperLps: FarmConfig[] = [
     token: tokens.pnaut,
     quoteToken: tokens.wmatic,
   },
+  {
+    pid: null,
+    lpSymbol: 'PEAR-WMATIC',
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0x51BEffd36EB8c81a9b440B7ee51f98ba9eFda707',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.pear,
+    quoteToken: tokens.wmatic,
+  },
 ]
 
 export default priceHelperLps

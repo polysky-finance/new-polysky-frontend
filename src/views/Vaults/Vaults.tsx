@@ -223,8 +223,8 @@ const Vaults: React.FC = () => {
         const rewardTokenPrice = new BigNumber(vault.rewardToken.usdcPrice)
         const rewardPerBlock = new BigNumber(vault.emission).times(new BigNumber(vault.emissionMultiplier)).div(BIG_TEN.pow(vault.rewardToken.decimals))
         const masterLiquidity = totalLiquidity.times(new BigNumber(vault.lpTokenBalanceMasterChef)).div(new BigNumber(vault.lpTotalSupply))
-        
-        const maticPerDay = new BigNumber(43200).times(new BigNumber(vault.rewardEmission)).times(vault.poolWeight).times(new BigNumber(vault.emissionMultiplier)).div(BIG_TEN.pow(18))
+
+        const maticPerDay = vault.rewarder?new BigNumber(43200).times(new BigNumber(vault.rewardEmission)).times(vault.poolWeight).times(new BigNumber(vault.emissionMultiplier)).div(BIG_TEN.pow(18)) : BIG_ZERO
 
         const maticPerDayUsdc=vault.rewarder? new BigNumber(maticPerDay).times(wmaticPriceUsdc) : BIG_ZERO
 
@@ -497,6 +497,10 @@ const Vaults: React.FC = () => {
 				  {
                     label: t('Kogefarm'),
                     value: 'Kogefarm',
+                  },
+				  {
+                    label: t('Pearzap'),
+                    value: 'Pearzap',
                   },				  
                   {
                     label: t('Polysky'),

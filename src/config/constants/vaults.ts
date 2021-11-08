@@ -2531,7 +2531,39 @@ const vaults: VaultConfig[] = [
 	allocPointName:'totalAmountStaked',
 	lpRewardsApr:18.59,
 	platform: 'Gravity',
-  } 
+  }
+, 
+  {
+    pid: 87,
+    lpSymbol: 'USDC - USDT',  
+	exchange: 'Gravity LP',
+	baseLiquidityUrl: 'https://gravityfinance.io/add/0x2791bca1f2de4661ed88a30c99a7a9449aa84174/0xc2132d05d31c914a87c6611c10748aeb04b58e8f',
+	strategyAddress:{
+		137: '0x8563478c837BA6e7C4fEA1E53F88F34fdB25a803',
+		80001: '',
+	},
+    lpAddresses: {
+      137: '0x42286296c3ede3f6a0ec4e687939b017408cf321',
+      80001: '',
+    },
+	masterChefAddress:{
+		137: '0xe3bC11531D78Ce351Db9D2f0eC270B863FaC1C07',
+		80001: '',
+	},
+	spid: 0,
+    token: tokens.usdt,
+    quoteToken: tokens.usdc,
+	rewardToken: tokens.gfi,
+	emissionFunctionName: 'farmInfo',
+	emissionMultiplier: 1,
+	isArchived: false,
+	isSingle:false,
+	isBurning:false,
+	isStable: true,
+	allocPointName:'totalAmountStaked',
+	lpRewardsApr:0.88,
+	platform: 'Gravity',
+  }   
 ]
 
 export default vaults

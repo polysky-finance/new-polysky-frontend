@@ -325,10 +325,6 @@ const Vaults: React.FC = () => {
     const quoteTokenAddress = quoteToken.address
     const lpLabel = vault.lpSymbol;// && vault.lpSymbol.split(' ')[0].toUpperCase().replace('PANCAKE', '')
     const totalLiquidity =  new BigNumber(vault.lpTotalInQuoteToken).times(vault.quoteToken.usdcPrice)
-    if(vault.quoteToken.usdcPrice)
-    {
-      const ml =totalLiquidity.toJSON();
-    }
 
     const row: RowProps = {
       apr: {

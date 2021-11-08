@@ -505,11 +505,11 @@ export const useTotalVaultValue = (): BigNumber => {
   let value = new BigNumber(0);
   for(let i=0; i < vaultsLP.length; i++){
     const vault = vaultsLP[i]
-    if((!vault.lpTotalInQuoteToken || !vault.quoteToken.usdcPrice) && vault.lpSymbol !== "SIRIUS")
+    if((!vault.lpTotalInQuoteToken || !vault.quoteToken.usdcPrice) && vault.platform !== "Polysky")
     {
       return undefined;
     }
-    if (vault.lpTotalInQuoteToken && vault.quoteToken.usdcPrice && vault.lpSymbol !== "SIRIUS") {
+    if (vault.lpTotalInQuoteToken && vault.quoteToken.usdcPrice && vault.platform !== "Polysky") {
         const totalLiquidity = new BigNumber(vault.quoteTokenAmountMc).times(vault.quoteToken.usdcPrice);
         value = value.plus(totalLiquidity);
     }
@@ -540,6 +540,11 @@ export const useTotalVaultValue2 = (): BigNumber => {
 export const useUserTotalVaultValue = (): BigNumber => {
   const { account } = useWeb3React()
   const { data: vaultsLP, userDataLoaded } = useVaults()
+
+  if(!userDataLoaded)
+  {
+    return undefined
+  }
   const userDataReady = !account || (!!account && userDataLoaded)
   let vaultTotal = BIG_ZERO;
   if(userDataReady)
@@ -547,9 +552,9 @@ export const useUserTotalVaultValue = (): BigNumber => {
     for (let i =0; i < vaultsLP.length; i++ )
     {
       const vault = vaultsLP[i]
-      if (vaultsLP[i].lpTotalInQuoteToken && vaultsLP[i].quoteToken.usdcPrice && vault.platform !== 'Polysky') {
-          const masterLiquidity = new BigNumber(vault.quoteTokenAmountMc).times(vault.quoteToken.usdcPrice)
-          vaultTotal = vaultTotal.plus(masterLiquidity);
+      if (vaultsLP[i].lpTotalInQuoteToken && vaultsLP[i].quoteToken.usdcPrice) {
+        const totalLiquidity =  new BigNumber(vault.lpTotalInQuoteToken).times(vault.quoteToken.usdcPrice)
+          vaultTotal = vaultTotal.plus(new BigNumber(vault.userData.currentBalance).times(totalLiquidity).div(vault.lpTokenBalanceMasterChef));
       }
       if(!vaultsLP[i].lpTotalInQuoteToken || !vaultsLP[i].quoteToken.usdcPrice)
       {

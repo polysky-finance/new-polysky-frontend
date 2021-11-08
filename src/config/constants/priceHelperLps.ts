@@ -766,6 +766,20 @@ const priceHelperLps: FarmConfig[] = [
     token: tokens.pear,
     quoteToken: tokens.wmatic,
   },
+  {
+    pid: null,
+    lpSymbol: 'PolyDoge-QUICK',
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0xbedee6a7c572aa855a0c84d2f504311d482862f4',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.polydoge,
+    quoteToken: tokens.quick,
+  },
 ]
 
 export default priceHelperLps

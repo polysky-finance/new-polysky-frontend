@@ -510,7 +510,7 @@ export const useTotalVaultValue = (): BigNumber => {
       return undefined;
     }
     if (vault.lpTotalInQuoteToken && vault.quoteToken.usdcPrice && vault.lpSymbol !== "SIRIUS") {
-        const totalLiquidity = new BigNumber(vault.lpTotalInQuoteToken).times(vault.quoteToken.usdcPrice);
+        const totalLiquidity = new BigNumber(vault.quoteTokenAmountMc).times(vault.quoteToken.usdcPrice);
         value = value.plus(totalLiquidity);
     }
       
@@ -521,9 +521,9 @@ export const useTotalVaultValue = (): BigNumber => {
 export const useTotalVaultValue2 = (): BigNumber => {
   const { data: vaultsLP } = useVaults()
 
-  let value = new BigNumber(0);
+  let value = BIG_ZERO;
   for(let i=0; i < vaultsLP.length; i++){
-    const vault = vaultsLP[i]
+      const vault = vaultsLP[i]
       if (vaultsLP[i].lpTotalInQuoteToken && vaultsLP[i].quoteToken.usdcPrice) {
           const masterLiquidity = new BigNumber(vault.quoteTokenAmountMc).times(vault.quoteToken.usdcPrice)
           value = value.plus(masterLiquidity);
@@ -544,21 +544,17 @@ export const useUserTotalVaultValue = (): BigNumber => {
   let vaultTotal = BIG_ZERO;
   if(userDataReady)
   {
-    vaultTotal = BIG_ZERO
     for (let i =0; i < vaultsLP.length; i++ )
     {
-      let lpPrice = BIG_ZERO
       const vault = vaultsLP[i]
-      if (vault.lpTotalSupply && vault.lpTotalInQuoteToken) {
-        // Total value of base token in LP
-        const valueOfBaseTokenInVault = new BigNumber(vault.token.usdcPrice).times(vault.tokenAmountTotal)
-        // Double it to get overall value in LP
-        const overallValueOfAllTokensInVault =vault.isSingle? valueOfBaseTokenInVault: valueOfBaseTokenInVault.times(2)
-        // Divide total value of all tokens, by the number of LP tokens
-        const totalLpTokens = getBalanceAmount(new BigNumber(vault.lpTotalSupply))
-        lpPrice = getBalanceAmount(overallValueOfAllTokensInVault.div(totalLpTokens))
+      if (vaultsLP[i].lpTotalInQuoteToken && vaultsLP[i].quoteToken.usdcPrice && vault.platform !== 'Polysky') {
+          const masterLiquidity = new BigNumber(vault.quoteTokenAmountMc).times(vault.quoteToken.usdcPrice)
+          vaultTotal = vaultTotal.plus(masterLiquidity);
       }
-      vaultTotal = vaultTotal.plus(new BigNumber(vault.userData.currentBalance).times(lpPrice))
+      if(!vaultsLP[i].lpTotalInQuoteToken || !vaultsLP[i].quoteToken.usdcPrice)
+      {
+        return undefined;
+      }
     }
   }
   return userDataReady? vaultTotal: undefined

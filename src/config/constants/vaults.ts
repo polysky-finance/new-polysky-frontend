@@ -2314,7 +2314,7 @@ const vaults: VaultConfig[] = [
 	allocPointName:'lastRewardTime',
 	lpRewardsApr:2.47,
 	platform: 'Jetswap',
-  },  
+  } /* ,  
   {
     pid: 80,
     lpSymbol: 'PEAR - MATIC',  
@@ -2407,7 +2407,7 @@ const vaults: VaultConfig[] = [
 	allocPointName:'lastRewardTime',
 	lpRewardsApr:0,
 	platform: 'Pearzap',
-  },  
+  } */ ,  
   {
     pid: 83,
     lpSymbol: 'PolyDoge - QUICK',  

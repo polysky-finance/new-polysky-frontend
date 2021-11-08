@@ -28,9 +28,16 @@ const fetchVaultsPrices = async (vaults, farms) => {
   const farmPrices= await fetchFarmsPrices(farms);
 
   const vaultsWithPrices = vaults.map((vault) => {
-    const baseTokenPrice = getPrice(farmPrices, getAddress(vault.token.address))
-    const quoteTokenPrice = getPrice(farmPrices, getAddress(vault.quoteToken.address))
+    let baseTokenPrice = getPrice(farmPrices, getAddress(vault.token.address))
+    let quoteTokenPrice = getPrice(farmPrices, getAddress(vault.quoteToken.address))
     const rewardTokenPrice = getPrice(farmPrices, getAddress(vault.rewardToken.address))
+
+    if(baseTokenPrice && (!quoteTokenPrice || quoteTokenPrice === '0')){
+       quoteTokenPrice = baseTokenPrice.times(vault.tokenAmountTotal).div(vault.quoteTokenAmountTotal)
+    }
+    if((!baseTokenPrice || baseTokenPrice === '0') && quoteTokenPrice){
+      baseTokenPrice = (new BigNumber(quoteTokenPrice).times(new BigNumber(vault.quoteTokenAmountTotal)).div(vault.tokenAmountTotal)).toJSON()
+   }
 
     const token = { ...vault.token, usdcPrice: baseTokenPrice }
     const quoteToken = { ...vault.quoteToken, usdcPrice: quoteTokenPrice }

@@ -780,6 +780,20 @@ const priceHelperLps: FarmConfig[] = [
     token: tokens.polydoge,
     quoteToken: tokens.quick,
   },
+  {
+    pid: null,
+    lpSymbol: 'GFI-USDC',
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0x96d6F7afFF161E7152Bec4272B51Cc007E4417AE',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.gfi,
+    quoteToken: tokens.usdc,
+  },
 ]
 
 export default priceHelperLps

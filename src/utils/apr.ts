@@ -58,6 +58,8 @@ export const getPoolApr = (
   if(poolLiquidityUsd.comparedTo(0) === 0){
     return { siriusRewardsApr: 100000, lpRewardsApr }
   }
+  const rpb = rewardPerBlock.toJSON()
+  const plq = poolLiquidityUsd.toJSON()
   const rewardPerYear = BLOCKS_PER_YEAR.times(rewardPerBlock)
   const yearlyRewardAllocation = rewardPerYear.times(poolWeight)
   const maticRewardPerYear = maticPerDay? maticPerDay.times(new BigNumber(365.25)):BIG_ZERO

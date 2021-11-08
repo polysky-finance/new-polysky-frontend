@@ -218,18 +218,17 @@ const Vaults: React.FC = () => {
         if (!vault.lpTotalInQuoteToken || !vault.quoteToken.usdcPrice) {
           return vault;
         }
-        const totalLiquidity =  (vault.isSingle? BIG_ONE:new BigNumber(2)).times(new BigNumber(vault.quoteTokenAmountTotal)).times(vault.quoteToken.usdcPrice)
-        const stratLiquidity = new BigNumber(vault.lpTotalInQuoteToken).times(vault.quoteToken.usdcPrice);
+        const totalLiquidity =  new BigNumber(vault.lpTotalInQuoteToken).times(vault.quoteToken.usdcPrice)
+        const stratLiquidity = new BigNumber(vault.quoteTokenAmountMc).times(vault.quoteToken.usdcPrice);
         const rewardTokenPrice = new BigNumber(vault.rewardToken.usdcPrice)
         const rewardPerBlock = new BigNumber(vault.emission).times(new BigNumber(vault.emissionMultiplier)).div(BIG_TEN.pow(vault.rewardToken.decimals))
-        const masterLiquidity = totalLiquidity.times(new BigNumber(vault.lpTokenBalanceMasterChef)).div(new BigNumber(vault.lpTotalSupply))
 
         const maticPerDay = vault.rewarder?new BigNumber(43200).times(new BigNumber(vault.rewardEmission)).times(vault.poolWeight).times(new BigNumber(vault.emissionMultiplier)).div(BIG_TEN.pow(18)) : BIG_ZERO
 
         const maticPerDayUsdc=vault.rewarder? new BigNumber(maticPerDay).times(wmaticPriceUsdc) : BIG_ZERO
 
         const { siriusRewardsApr, lpRewardsApr } = isActive
-          ? getVaultApr(new BigNumber(vault.poolWeight), rewardTokenPrice, masterLiquidity, vault.lpAddresses[ChainId.MAINNET], rewardPerBlock, vault.lpRewardsApr, maticPerDayUsdc)
+          ? getVaultApr(new BigNumber(vault.poolWeight), rewardTokenPrice, totalLiquidity, vault.lpAddresses[ChainId.MAINNET], rewardPerBlock, vault.lpRewardsApr, maticPerDayUsdc)
           : { siriusRewardsApr: 0, lpRewardsApr: 0 }
 
         return { ...vault, apr: siriusRewardsApr, lpRewardsApr, liquidity: stratLiquidity }
@@ -325,16 +324,10 @@ const Vaults: React.FC = () => {
     const tokenAddress = token.address
     const quoteTokenAddress = quoteToken.address
     const lpLabel = vault.lpSymbol;// && vault.lpSymbol.split(' ')[0].toUpperCase().replace('PANCAKE', '')
-    let lpPrice = BIG_ZERO
-
-    if (vault.lpTotalSupply && vault.lpTotalInQuoteToken) {
-      // Total value of base token in LP
-      const valueOfBaseTokenInVault = new BigNumber(vault.token.usdcPrice).times(vault.tokenAmountTotal)
-      // Double it to get overall value in LP
-      const overallValueOfAllTokensInVault =vault.isSingle? valueOfBaseTokenInVault: valueOfBaseTokenInVault.times(2)
-      // Divide total value of all tokens, by the number of LP tokens
-      const totalLpTokens = getBalanceAmount(new BigNumber(vault.lpTotalSupply))
-      lpPrice = getBalanceAmount(overallValueOfAllTokensInVault.div(totalLpTokens))
+    const totalLiquidity =  new BigNumber(vault.lpTotalInQuoteToken).times(vault.quoteToken.usdcPrice)
+    if(vault.quoteToken.usdcPrice)
+    {
+      const ml =totalLiquidity.toJSON();
     }
 
     const row: RowProps = {
@@ -377,10 +370,10 @@ const Vaults: React.FC = () => {
         multiplier: vault.multiplier,
       },
       wallet:{
-        wallet: !userDataLoaded ? undefined: new BigNumber(vault.userData.tokenBalance).times(lpPrice),
+        wallet: !userDataLoaded ? undefined: new BigNumber(vault.userData.tokenBalance).times(totalLiquidity).div(vault.lpTokenBalanceMasterChef),
       },
       staked:{
-        wallet: !userDataLoaded ? undefined: new BigNumber(vault.userData.currentBalance).times(lpPrice),
+        wallet: !userDataLoaded ? undefined: new BigNumber(vault.userData.currentBalance).times(totalLiquidity).div(vault.lpTokenBalanceMasterChef),
       },
       details: vault,
     }
@@ -486,19 +479,23 @@ const Vaults: React.FC = () => {
                     label: t('Cafeswap'),
                     value: 'Cafeswap',
                   },
-				  {
+				          {
                     label: t('Dinoswap'),
                     value: 'Dinoswap',
                   }, 
-				  {
+                  {
+                    label: t('Gravity'),
+                    value: 'Gravity',
+                  }, 
+				          {
                     label: t('Jetswap'),
                     value: 'Jetswap',
                   }, 
-				  {
+				          {
                     label: t('Kogefarm'),
                     value: 'Kogefarm',
                   },
-				  {
+				          {
                     label: t('Pearzap'),
                     value: 'Pearzap',
                   },				  
@@ -506,7 +503,7 @@ const Vaults: React.FC = () => {
                     label: t('Polysky'),
                     value: 'Polysky',
                   },
-				  {
+				          {
                     label: t('Qi Dao'),
                     value: 'Qi Dao',
                   },

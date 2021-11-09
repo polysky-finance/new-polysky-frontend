@@ -2,27 +2,24 @@ import React from 'react'
 import styled, { keyframes, css } from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
 import { LinkExternal, Text } from '@polysky-libs/uikit'
-import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
 import { getAddress } from 'utils/addressHelpers'
 import { getPolygonScanAddressUrl } from 'utils/polygonscan'
 import { getBalanceAmount} from 'utils/formatBalance'
-import { CommunityTag, BurningTag, CoreTag, DualTag } from 'components/Tags'
 import BigNumber from 'bignumber.js'
 import { useVaults} from 'state/hooks'
+import {Vault} from 'state/types'
 import { BIG_TEN, BIG_ZERO, BIG_ONE } from 'utils/bigNumber'
 import StakedAction from './StakedAction'
 import Apr, { AprProps } from '../Apr'
-import LiquidityDetails, { LiquidityProps } from '../LiquidityDetails'
-import Wallet, { WalletProps } from '../Wallet'
-
-
-declare const NewAPR: AprProps
+import { LiquidityProps } from '../LiquidityDetails'
+import Wallet from '../Wallet'
 
 export interface VaultWithStakedValue extends Vault {
   apr?: number
   lpRewardsApr?: number
   liquidity?: BigNumber
 }
+
 
 export interface ActionPanelProps {
   apr: AprProps
@@ -87,27 +84,6 @@ const StakeContainer = styled.div`
   }
 `
 
-const TagsContainer = styled.div`
-  display: flex;
-  align-items: center;
-  margin-top: 25px;
-
-  ${({ theme }) => theme.mediaQueries.sm} {
-    margin-top: 16px;
-  }
-
-  > div {
-    height: 24px;
-    padding: 0 6px;
-    font-size: 14px;
-    margin-right: 4px;
-
-    svg {
-      width: 14px;
-    }
-  }
-`
-
 const ActionContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -155,26 +131,40 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
   
   const lpAddress = getAddress(vault.lpAddresses)
   const polygon = getPolygonScanAddressUrl(lpAddress)
-  const info = vault.lpInfo // .isSingle?`https://info.quickswap.exchange/token/${lpAddress}`:`https://info.quickswap.exchange/pair/${lpAddress}`
+  const info = vault.lpInfo
   const url = vault.baseLiquidityUrl //
-  const label = lpLabel === 'AUTO SIRIUS'? 'SIRIUS':lpLabel;
+  const label = lpLabel;
   
-  let lpPrice = BIG_ZERO
-
-    if (vault.lpTotalSupply && vault.lpTotalInQuoteToken) {
+  let lpPrice;
+  let digits=3;
+  if (vault.lpTotalSupply &&  vault.quoteToken.usdcPrice) {
       // Total value of base token in LP
-      const valueOfBaseTokenInVault = new BigNumber(vault.token.usdcPrice).times(vault.tokenAmountTotal)
-      // Double it to get overall value in LP
-      const overallValueOfAllTokensInVault =vault.isSingle? valueOfBaseTokenInVault: valueOfBaseTokenInVault.times(2)
+      const totalLiquidity =  new BigNumber(vault.quoteTokenAmountTotal).times(vault.quoteToken.usdcPrice)
       // Divide total value of all tokens, by the number of LP tokens
       const totalLpTokens = getBalanceAmount(new BigNumber(vault.lpTotalSupply))
-      lpPrice = getBalanceAmount(overallValueOfAllTokensInVault.div(totalLpTokens))
-    }
-  const wallet= !userDataLoaded ? undefined: new BigNumber(vault.userData.tokenBalance).times(lpPrice)
-  const staked = !userDataLoaded ? undefined: new BigNumber(vault.userData.currentBalance).times(lpPrice)
+      lpPrice = totalLiquidity.div(totalLpTokens)
+      digits = lpPrice.gt(new BigNumber(100))? 0: 3;
+      if(lpPrice.lt(new BigNumber(100)) && lpPrice.gt(new BigNumber(10))){
+        digits =1
+      }
+      if(lpPrice.lt(new BigNumber(10)) && lpPrice.gt(new BigNumber(0.1))){
+      digits = 2
+      }
+      if(lpPrice.lt(new BigNumber(0.1)) && lpPrice.gt(new BigNumber(0.01)))
+      {
+        digits = 3
+      }
+      if(lpPrice.lt(0.01))
+      {
+        digits = 4
+      }
+  }
+  
+  
+  const wallet= !userDataLoaded ? undefined: getBalanceAmount(new BigNumber(vault.userData.tokenBalance)).times(lpPrice)
+  const staked = !userDataLoaded ? undefined: getBalanceAmount(new BigNumber(vault.userData.currentBalance)).times(lpPrice)
   const aprval : AprProps ={ 
     value: new BigNumber(apr.value).toJSON(), // .div(100).plus(1).pow(365).minus(1).times(100).decimalPlaces(2).toJSON(),
-    multiplier: apr.multiplier,
     lpLabel: apr.lpLabel,
     tokenAddress: apr.tokenAddress,
     quoteTokenAddress: apr.quoteTokenAddress,
@@ -183,6 +173,28 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
     hideButton: apr.hideButton,
     baseLiquidityUrl: apr.baseLiquidityUrl
   }
+
+  const feesAPR : AprProps ={ 
+    value: new BigNumber(vault.lpRewardsApr).toJSON(), // .div(100).plus(1).pow(365).minus(1).times(100).decimalPlaces(2).toJSON(),
+    lpLabel: apr.lpLabel,
+    tokenAddress: apr.tokenAddress,
+    quoteTokenAddress: apr.quoteTokenAddress,
+    siriusPrice: apr.siriusPrice,
+    originalValue: apr.originalValue,
+    hideButton: apr.hideButton,
+    baseLiquidityUrl: apr.baseLiquidityUrl
+  }
+  const farmAPR : AprProps ={ 
+    value: new BigNumber(apr.farmAPR).decimalPlaces(2).toJSON(), // .div(100).plus(1).pow(365).minus(1).times(100).decimalPlaces(2).toJSON(),
+    lpLabel: apr.lpLabel,
+    tokenAddress: apr.tokenAddress,
+    quoteTokenAddress: apr.quoteTokenAddress,
+    siriusPrice: apr.siriusPrice,
+    originalValue: apr.originalValue,
+    hideButton: apr.hideButton,
+    baseLiquidityUrl: apr.baseLiquidityUrl
+  }
+
 
   return (
     <Container expanded={expanded}>
@@ -194,14 +206,25 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
             </StyledLinkExternal>
           </StakeContainer>
         )}
+        <ValueWrapper>
+           <Text>{t('LP Price')}</Text>
+          <Wallet wallet={lpPrice} maxDigits={digits}/>
+        </ValueWrapper>
+        <ValueWrapper>
+           <Text>{t('Farm APR:')}</Text>
+          <Apr {...farmAPR} /> 
+        </ValueWrapper>
+        <ValueWrapper>
+           <Text>{t('Fees APR:')}</Text>
+          <Apr {...feesAPR} /> 
+        </ValueWrapper>
         <StyledLinkExternal href={polygon}>{t('View Contract')}</StyledLinkExternal>
         <StyledLinkExternal href={info}>
               {t('See %symbol% Info', { symbol: label })}
         </StyledLinkExternal>
         <StyledLinkExternal href={url}>
               {t('Get %symbol%', { symbol: label })}
-        </StyledLinkExternal>
-
+        </StyledLinkExternal>        
       </InfoContainer>
       <ValueContainer>
         <ValueWrapper>
@@ -215,7 +238,7 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
         <ValueWrapper>
            <Text>{t('Staked')}</Text>
           <Wallet wallet={staked}/>
-        </ValueWrapper>
+        </ValueWrapper>        
       </ValueContainer>
       <ActionContainer>
         <StakedAction {...vault} userDataReady={userDataReady} />

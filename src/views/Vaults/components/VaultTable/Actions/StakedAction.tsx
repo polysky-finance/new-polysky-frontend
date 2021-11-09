@@ -22,7 +22,6 @@ import useStakeVaults from '../../../hooks/useStakeVaults'
 import useApproveVault from '../../../hooks/useApproveVault'
 import { ActionContainer, ActionTitles, ActionContent, Earned } from './styles'
 
-
 const IconButtonWrapper = styled.div`
   display: flex;
 `
@@ -111,7 +110,7 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({
       </ActionContainer>
     )
   }
-  const symbol = lpSymbol === 'AUTO SIRIUS'? 'SIRIUS':lpSymbol
+  const symbol = lpSymbol
   if (isApproved) {
     if (currentBalance.gt(0)) {
       return (

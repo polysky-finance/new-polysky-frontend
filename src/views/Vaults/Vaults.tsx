@@ -334,6 +334,7 @@ const Vaults: React.FC = () => {
     const row: RowProps = {
       apr: {
         value: getDisplayApr(vault.apr, vault.lpRewardsApr),
+        farmAPR: vault.apr,
         lpLabel,
         tokenAddress,
         quoteTokenAddress,

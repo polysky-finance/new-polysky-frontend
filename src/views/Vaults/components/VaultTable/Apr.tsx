@@ -10,6 +10,7 @@ export interface AprProps {
   lpLabel: string
   tokenAddress?: Address
   quoteTokenAddress?: Address
+  farmAPR?: number
   siriusPrice: BigNumber
   originalValue: number
   hideButton?: boolean

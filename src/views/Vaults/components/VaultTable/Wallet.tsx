@@ -10,6 +10,7 @@ const ReferenceElement = styled.div`
 
 export interface WalletProps {
   wallet: BigNumber
+  maxDigits?: number
 }
 
 const WalletWrapper = styled.div`
@@ -24,10 +25,10 @@ const Container = styled.div`
   align-items: center;
 `
 
-const Wallet: React.FunctionComponent<WalletProps> = ({ wallet }) => {
+const Wallet: React.FunctionComponent<WalletProps> = ({ wallet, maxDigits = 0 }) => {
   const displayWallet =
     wallet && !wallet.isNaN() ? (
-      `$${Number(wallet).toLocaleString(undefined, { maximumFractionDigits: 0 })}`
+      `$${Number(wallet).toLocaleString(undefined, { maximumFractionDigits: maxDigits })}`
     ) : (
       <Skeleton width={60} />
     )

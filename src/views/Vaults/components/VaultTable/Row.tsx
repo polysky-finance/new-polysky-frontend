@@ -19,7 +19,6 @@ import Earned, { EarnedProps } from './Earned'
 
 export interface VaultWithStakedValue extends VaultType {
   apr?: number
-  lpRewardsApr: number
   liquidity?: BigNumber
   staked?: BigNumber
   wallet?: BigNumber

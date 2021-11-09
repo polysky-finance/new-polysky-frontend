@@ -158,7 +158,7 @@ const Vaults: React.FC = () => {
   const [sortOption, setSortOption] = useState('hot')
   const [platformOption, setPlatformOption] = useState('All')
   const [typeOption, setTypeOption] = useState('All')
-  const [showBurning, setShowBurning] = useState(true)
+  const [showBurning, setShowBurning] = useState(false)
 
   const isArchived = pathname.includes('archived')
   const isInactive = pathname.includes('history')

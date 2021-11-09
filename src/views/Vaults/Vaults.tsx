@@ -6,7 +6,7 @@ import { Flex, Image, Heading, RowType, Toggle, Text, Box } from '@polysky-libs/
 import { ChainId } from '@polysky-libs/sdk'
 import styled from 'styled-components'
 import {VaultWithStakedValue} from 'views/Vaults/components/VaultTable/Row'
-import { getBalanceAmount, getBalanceNumber, getFullDisplayBalance } from 'utils/formatBalance'
+import { getBalanceNumber } from 'utils/formatBalance'
 import Page from 'components/Layout/Page'
 import { usePriceWMaticUsdc } from 'state/hooks'
 import { usePollFarmsDataSubset, useVaults, usePollVaultsData, usePriceSiriusUsdc } from 'state/hooks'
@@ -17,14 +17,12 @@ import { orderBy } from 'lodash'
 import { latinise } from 'utils/latinise'
 import PageHeader from 'components/PageHeader'
 import SearchInput from 'components/SearchInput'
-import FoldableText from 'components/FoldableText'
 import Select, { OptionProps } from 'components/Select/Select'
 import Table from './components/VaultTable/VaultTable'
 import VaultTabButtons from './components/VaultTabButtons'
 import { RowProps } from './components/VaultTable/Row'
 import { DesktopColumnSchema} from './components/types'
 import { BIG_TEN, BIG_ZERO, BIG_ONE } from '../../utils/bigNumber'
-import FeesMessage from './components/FeesMessage'
 import BuybackCard from './components/BuybackCard'
 
 const ControlContainer = styled.div`
@@ -230,8 +228,11 @@ const Vaults: React.FC = () => {
         const { siriusRewardsApr, lpRewardsApr } = isActive
           ? getVaultApr(new BigNumber(vault.poolWeight), rewardTokenPrice, totalLiquidity, vault.lpAddresses[ChainId.MAINNET], rewardPerBlock, vault.lpRewardsApr, maticPerDayUsdc)
           : { siriusRewardsApr: 0, lpRewardsApr: 0 }
+        
+        const wallet = vault.userData && vault.userData.tokenBalance?new BigNumber(vault.userData.tokenBalance).times(totalLiquidity).div(vault.lpTokenBalanceMasterChef): BIG_ZERO
+        const staked = vault.userData && vault.userData.tokenBalance?new BigNumber(vault.userData.currentBalance).times(totalLiquidity).div(vault.lpTokenBalanceMasterChef): BIG_ZERO
 
-        return { ...vault, apr: siriusRewardsApr, lpRewardsApr, liquidity: stratLiquidity }
+        return { ...vault, apr: siriusRewardsApr, lpRewardsApr, liquidity: stratLiquidity, wallet, staked }
       })
 
       if (query) {
@@ -269,6 +270,10 @@ const Vaults: React.FC = () => {
           )
         case 'liquidity':
           return orderBy(vaults, (vault: VaultWithStakedValue) => Number(vault.liquidity), 'desc')
+        case 'staked':
+          return orderBy(vaults, (vault: VaultWithStakedValue) => Number(vault.staked), 'desc')
+        case 'wallet':
+          return orderBy(vaults, (vault: VaultWithStakedValue) => Number(vault.wallet), 'desc')
         default:
           return vaults
       }
@@ -329,7 +334,6 @@ const Vaults: React.FC = () => {
     const row: RowProps = {
       apr: {
         value: getDisplayApr(vault.apr, vault.lpRewardsApr),
-        multiplier: vault.multiplier,
         lpLabel,
         tokenAddress,
         quoteTokenAddress,
@@ -338,7 +342,6 @@ const Vaults: React.FC = () => {
       },
       apy: {
         value: getDisplayApy(vault.apr, vault.lpRewardsApr),
-        multiplier: vault.multiplier,
         lpLabel,
         tokenAddress,
         quoteTokenAddress,
@@ -352,7 +355,8 @@ const Vaults: React.FC = () => {
         quoteToken: vault.quoteToken,
         isSingle: vault.isSingle,
         isBurning: vault.isBurning,
-        exchange: vault.exchange
+        exchange: vault.exchange,
+        platform: vault.platform
       },
       earned: {
         earnings: getBalanceNumber(new BigNumber(vault.userData.currentBalance).minus(vault.userData.stakedBalance)),  // new BigNumber(vault.userData.earnings)),
@@ -361,9 +365,6 @@ const Vaults: React.FC = () => {
       },
       liquidity: {
         liquidity: vault.liquidity,
-      },
-      multiplier: {
-        multiplier: vault.multiplier,
       },
       wallet:{
         wallet: !userDataLoaded ? undefined: new BigNumber(vault.userData.tokenBalance).times(totalLiquidity).div(vault.lpTokenBalanceMasterChef),
@@ -390,7 +391,7 @@ const Vaults: React.FC = () => {
               return b.id - a.id
             case 'apy':
               if (a.original.apy.value && b.original.apy.value) {
-                return (a.original.apy.originalValue.minus(b.original.apy.originalValue)).toNumber();
+                return (a.original.apy.originalValue-b.original.apy.originalValue)
               }
               return 0
             case 'liquidity':
@@ -398,6 +399,16 @@ const Vaults: React.FC = () => {
               return (a.original.liquidity.liquidity.minus(a.original.liquidity.liquidity)).toNumber()
             }
             return 0
+            case 'staked':
+              if(a.original.staked && b.original.staked){
+                return (a.original.staked.wallet.minus(b.original.staked.wallet)).toNumber()
+              }
+              return 0
+            case 'wallet':
+              if(a.original.wallet && b.original.wallet){
+                return (a.original.wallet.wallet.minus(b.original.wallet.wallet)).toNumber()
+              }
+              return 0
             default:
               return 1
           }
@@ -536,6 +547,14 @@ const Vaults: React.FC = () => {
                   {
                     label: t('TVL'),
                     value: 'liquidity',
+                  },
+                  {
+                    label: t('Staked'),
+                    value: 'staked',
+                  },
+                  {
+                    label: t('Wallet'),
+                    value: 'wallet',
                   },
                 ]}
                 onChange={handleSortOptionChange}

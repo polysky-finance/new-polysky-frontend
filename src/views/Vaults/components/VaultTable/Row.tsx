@@ -21,6 +21,8 @@ export interface VaultWithStakedValue extends VaultType {
   apr?: number
   lpRewardsApr: number
   liquidity?: BigNumber
+  staked?: BigNumber
+  wallet?: BigNumber
 }
 
 export interface MultiplierProps {
@@ -32,7 +34,6 @@ export interface RowProps {
   apy: ApyProps
   vault: VaultProps
   earned?: EarnedProps
-  multiplier: MultiplierProps
   liquidity: LiquidityProps
   wallet: WalletProps
   staked: WalletProps

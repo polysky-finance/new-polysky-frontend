@@ -7,7 +7,6 @@ import { Skeleton } from '@polysky-libs/uikit'
 
 export interface AprProps {
   value: string
-  multiplier: string
   lpLabel: string
   tokenAddress?: Address
   quoteTokenAddress?: Address

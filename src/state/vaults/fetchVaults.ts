@@ -170,7 +170,7 @@ export const totalStakes = async (vaultsToFetch: VaultConfig[]) => {
   
   const calls = vaultsToFetch.map((vault) => {
     const masterAddress = getAddress(vault.masterChefAddress)
-    if(vault.platform === 'Gravity')
+    if(vault.platform === 'Gravity' && !vault.isSingle)
     {
       return { address: masterAddress, name: 'totalStakedAmount' }
     }
@@ -225,7 +225,7 @@ const fetchVaults = async (vaultsToFetch: VaultConfig[]) => {
           else
           {
             v = await fetchVaultSingleGravity(vault, lpTotalSupply[index],tokenDecimal[index],
-              lpTokenBalanceMasterChef[index], lpTokenBalanceStrategyGravity[index], emissionMC[index], emissionRewarder[index], totalStaked[index])
+              lpTokenBalanceMasterChef[index], lpTokenBalanceStrategyGravity[index], emissionMC[index], emissionRewarder[index],vault.pid ===85?  totalStaked[index]: lpTokenBalanceMasterChef[index])
           }
       }
       else

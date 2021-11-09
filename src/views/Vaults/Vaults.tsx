@@ -10,6 +10,7 @@ import { getBalanceNumber } from 'utils/formatBalance'
 import Page from 'components/Layout/Page'
 import { usePriceWMaticUsdc } from 'state/hooks'
 import { usePollFarmsDataSubset, useVaults, usePollVaultsData, usePriceSiriusUsdc } from 'state/hooks'
+import {getDecimalPlaces, reduceNumber} from 'utils/stringFormater'
 import { Vault } from 'state/types'
 import { getVaultApr } from 'utils/apr'
 import { useTranslation } from 'contexts/Localization'
@@ -123,16 +124,24 @@ const getApy = (siriusRewardsApr?: number, lpRewardsApr?: number) => {
   return null
 }
 
+const formatNumber = (number)=>{
+  const formattedNumber = reduceNumber(new BigNumber(number))
+  const digits = getDecimalPlaces(new BigNumber(formattedNumber[0]))
+  return `${(Number(formattedNumber[0])).toLocaleString('en-US', { maximumFractionDigits: digits })}${formattedNumber[1]}`
+}
+
 const getDisplayApy = (siriusRewardsApr?: number, lpRewardsApr?: number) => {
   if (siriusRewardsApr && lpRewardsApr) {
     const exponent = (1+(siriusRewardsApr + lpRewardsApr)/36500)**365;
     const apy = (exponent -1)*100;
-    return (apy).toLocaleString('en-US', { maximumFractionDigits: 2 })
+    return formatNumber(apy)
+   // return (apy).toLocaleString('en-US', { maximumFractionDigits: 2 })
   }
   if (siriusRewardsApr) {
     const exponent = (1+(siriusRewardsApr)/36500)**365;
     const apy = (exponent -1)*100;
-    return (apy).toLocaleString('en-US', { maximumFractionDigits: 2 })
+    return formatNumber(apy)
+ //   return (apy).toLocaleString('en-US', { maximumFractionDigits: 2 })
   }
   return null
 }

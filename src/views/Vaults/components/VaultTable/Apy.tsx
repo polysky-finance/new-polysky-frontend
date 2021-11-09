@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { Address } from 'config/constants/types'
 import BigNumber from 'bignumber.js'
-import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
 import { Skeleton } from '@polysky-libs/uikit'
+
 
 export interface ApyProps {
   value: string
@@ -48,13 +48,13 @@ const Apr: React.FC<ApyProps> = ({
   baseLiquidityUrl,
   hideButton = false,
 }) => {
-
+  
   return originalValue !== 0 ? (
     <Container>
       {originalValue ? (
         <>
         {
-          originalValue > 1e6?
+          originalValue > 1e10?
           (<AprWrapper>Infinity%</AprWrapper>):
           (<AprWrapper>{value}%</AprWrapper>)
         }

@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Text, Skeleton} from '@polysky-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
+import {getDecimalPlaces, reduceNumber} from 'utils/stringFormater'
 import BigNumber from 'bignumber.js'
 
 const ReferenceElement = styled.div`
@@ -10,7 +11,7 @@ const ReferenceElement = styled.div`
 
 export interface WalletProps {
   wallet: BigNumber
-  maxDigits?: number
+  prefix?: string
 }
 
 const WalletWrapper = styled.div`
@@ -25,10 +26,14 @@ const Container = styled.div`
   align-items: center;
 `
 
-const Wallet: React.FunctionComponent<WalletProps> = ({ wallet, maxDigits = 0 }) => {
+const Wallet: React.FunctionComponent<WalletProps> = ({ wallet}) => {
+  const formattedLPPrice = reduceNumber(wallet)
+  const digits = getDecimalPlaces(new BigNumber(formattedLPPrice[0]))
+  
+  
   const displayWallet =
     wallet && !wallet.isNaN() ? (
-      `$${Number(wallet).toLocaleString(undefined, { maximumFractionDigits: maxDigits })}`
+      `$${Number(formattedLPPrice[0]).toLocaleString(undefined, { maximumFractionDigits: digits })}${formattedLPPrice[1]}`
     ) : (
       <Skeleton width={60} />
     )

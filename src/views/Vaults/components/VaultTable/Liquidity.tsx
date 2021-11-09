@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Text, Skeleton} from '@polysky-libs/uikit'
 import { useTranslation } from 'contexts/Localization'
 import BigNumber from 'bignumber.js'
+import {getDecimalPlaces, reduceNumber} from 'utils/stringFormater'
 
 const ReferenceElement = styled.div`
   display: inline-block;
@@ -25,9 +26,13 @@ const Container = styled.div`
 `
 
 const Liquidity: React.FunctionComponent<LiquidityProps> = ({ liquidity }) => {
+  const formattedNumber = reduceNumber(new BigNumber(liquidity))
+  let digits = getDecimalPlaces(new BigNumber(formattedNumber[0]))
+  digits = digits===0?0 : digits-1
+
   const displayLiquidity =
     liquidity ? (
-      `$${Number(liquidity).toLocaleString(undefined, { maximumFractionDigits: 0 })}`
+      `$${Number(formattedNumber[0]).toLocaleString(undefined, { maximumFractionDigits: digits })}${formattedNumber[1]}`
     ) : (
       <Skeleton width={60} />
     )

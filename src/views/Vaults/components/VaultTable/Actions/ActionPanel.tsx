@@ -14,6 +14,7 @@ import Apr, { AprProps } from '../Apr'
 import { LiquidityProps } from '../LiquidityDetails'
 import Wallet from '../Wallet'
 
+
 export interface VaultWithStakedValue extends Vault {
   apr?: number
   lpRewardsApr?: number
@@ -136,30 +137,13 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
   const label = lpLabel;
   
   let lpPrice;
-  let digits=3;
   if (vault.lpTotalSupply &&  vault.quoteToken.usdcPrice) {
       // Total value of base token in LP
       const totalLiquidity =  new BigNumber(vault.quoteTokenAmountTotal).times(vault.quoteToken.usdcPrice)
       // Divide total value of all tokens, by the number of LP tokens
       const totalLpTokens = getBalanceAmount(new BigNumber(vault.lpTotalSupply))
-      lpPrice = totalLiquidity.div(totalLpTokens)
-      digits = lpPrice.gt(new BigNumber(100))? 0: 3;
-      if(lpPrice.lt(new BigNumber(100)) && lpPrice.gt(new BigNumber(10))){
-        digits =1
-      }
-      if(lpPrice.lt(new BigNumber(10)) && lpPrice.gt(new BigNumber(0.1))){
-      digits = 2
-      }
-      if(lpPrice.lt(new BigNumber(0.1)) && lpPrice.gt(new BigNumber(0.01)))
-      {
-        digits = 3
-      }
-      if(lpPrice.lt(0.01))
-      {
-        digits = 4
-      }
+      lpPrice = totalLiquidity.div(totalLpTokens)      
   }
-  
   
   const wallet= !userDataLoaded ? undefined: getBalanceAmount(new BigNumber(vault.userData.tokenBalance)).times(lpPrice)
   const staked = !userDataLoaded ? undefined: getBalanceAmount(new BigNumber(vault.userData.currentBalance)).times(lpPrice)
@@ -195,7 +179,6 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
     baseLiquidityUrl: apr.baseLiquidityUrl
   }
 
-
   return (
     <Container expanded={expanded}>
       <InfoContainer>
@@ -208,14 +191,14 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
         )}
         <ValueWrapper>
            <Text>{t('LP Price')}</Text>
-          <Wallet wallet={lpPrice} maxDigits={digits}/>
+          <Wallet wallet={lpPrice}/>
         </ValueWrapper>
         <ValueWrapper>
-           <Text>{t('Farm APR:')}</Text>
+           <Text>{t('Farm APR')}</Text>
           <Apr {...farmAPR} /> 
         </ValueWrapper>
         <ValueWrapper>
-           <Text>{t('Fees APR:')}</Text>
+           <Text>{t('Fees APR')}</Text>
           <Apr {...feesAPR} /> 
         </ValueWrapper>
         <StyledLinkExternal href={polygon}>{t('View Contract')}</StyledLinkExternal>

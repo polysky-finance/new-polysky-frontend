@@ -2787,7 +2787,7 @@ const vaults: VaultConfig[] = [
     pid: 92,
     lpSymbol: 'USDC - WETH',  
 	exchange: 'Gravity LP',
-	baseLiquidityUrl: 'https://gravityfinance.io/add/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619/0x8f3cf7ad23cd3cadbd9735aff958023239c6a063',
+	baseLiquidityUrl: 'https://gravityfinance.io/add/0x7ceb23fd6bc0add59e62ac25578270cff1b9f619/0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174',
 	strategyAddress:{
 		137: '0xbFDDb2173f16b76b80C9936BF35efFFA51EFDfB7',
 		80001: '',
@@ -2819,7 +2819,7 @@ const vaults: VaultConfig[] = [
     pid: 93,
     lpSymbol: 'DAI - WETH',  
 	exchange: 'Gravity LP',
-	baseLiquidityUrl: 'https://gravityfinance.io/add/0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6/0x2791bca1f2de4661ed88a30c99a7a9449aa84174',
+	baseLiquidityUrl: 'https://gravityfinance.io/add/0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063/0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619',
 	strategyAddress:{
 		137: '0x466Cd06a3847DFc8c20094CBc2596F9E02bD7b2d',
 		80001: '',
@@ -2976,7 +2976,7 @@ const vaults: VaultConfig[] = [
   },
   {
     pid: 98,
-    lpSymbol: 'SUDHI',  
+    lpSymbol: 'SUSHI',  
 	exchange: 'Gravity LP',
 	baseLiquidityUrl: 'https://app.sushi.com/swap?outputCurrency=0x0b3f868e0be5597d5db7feb59e1cadbb0fdda50a',
 	strategyAddress:{

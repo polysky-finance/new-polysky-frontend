@@ -1,10 +1,9 @@
 import BigNumber from 'bignumber.js'
-import masterchefABI from 'config/abi/masterchefStandard.json'
-import erc20 from 'config/abi/erc20.json'
 import { getAddress} from 'utils/addressHelpers'
 import { BIG_ONE, BIG_TEN, BIG_ZERO } from 'utils/bigNumber'
-import multicall from 'utils/multicall'
+import {getLPAPR} from 'utils/vaultHelper'
 import { Vault, SerializedBigNumber } from '../types'
+
 
 
 type PublicVaultData = {
@@ -21,6 +20,7 @@ type PublicVaultData = {
   masterChefBalanceRatio: SerializedBigNumber
   lpTokenBalanceMasterChef: SerializedBigNumber
   rewardEmission: SerializedBigNumber
+  fetchedLPAPR: SerializedBigNumber
 }
 
 export const fetchVaultLP = async (vault: Vault, lpTokenBalanceMasterChef:any, lpTokenBalanceStrategy:any,lpTotalSupply:any,
@@ -66,7 +66,8 @@ export const fetchVaultLP = async (vault: Vault, lpTokenBalanceMasterChef:any, l
     emission: emission.toJSON(),
     masterChefBalanceRatio: masterChefBalanceRatio.toJSON(),
     lpTokenBalanceMasterChef: new BigNumber(lpTokenBalanceMasterChef).toJSON(),
-    rewardEmission: rewardEmission.toJSON()
+    rewardEmission: rewardEmission.toJSON(),
+    fetchedLPAPR:"0"
   }
 }
 
@@ -99,6 +100,7 @@ export const fetchVaultQuick = async (vault: Vault,
 
   const emission = new BigNumber(emissionMC).times(quickPer10000dQuick).div(new BigNumber(10000))
   const rewardEmission = vault.rewarder?  new BigNumber(emissionRewarder):BIG_ZERO
+  const LPAPR = await getLPAPR(vault.exchange, getAddress(vault.lpAddresses))
   return {
     tokenAmountMc: tokenAmountMc.toJSON(),
     quoteTokenAmountMc: quoteTokenAmountMc.times(2).toJSON(),
@@ -112,7 +114,8 @@ export const fetchVaultQuick = async (vault: Vault,
     emission: emission.toJSON(),
     masterChefBalanceRatio: masterChefBalanceRatio.toJSON(),
     lpTokenBalanceMasterChef: new BigNumber(totalStaked).toJSON(),
-    rewardEmission: rewardEmission.toJSON()
+    rewardEmission: rewardEmission.toJSON(),
+    fetchedLPAPR: LPAPR.toJSON()
   }
 }
 
@@ -146,6 +149,7 @@ export const fetchVaultGravity = async (vault: Vault,
 
   const emission = new BigNumber(emissionMC.blockReward._hex)
   const rewardEmission = vault.rewarder? new BigNumber(emissionRewarder): BIG_ZERO
+
   return {
     tokenAmountMc: tokenAmountMc.toJSON(),
     quoteTokenAmountMc: quoteTokenAmountMc.times(2).toJSON(),
@@ -159,7 +163,8 @@ export const fetchVaultGravity = async (vault: Vault,
     emission: emission.toJSON(),
     masterChefBalanceRatio: masterChefBalanceRatio.toJSON(),
     lpTokenBalanceMasterChef: new BigNumber(lpTokenBalanceMasterChef).toJSON(),
-    rewardEmission: rewardEmission.toJSON()
+    rewardEmission: rewardEmission.toJSON(),
+    fetchedLPAPR: "0"
   }
 }
 
@@ -205,7 +210,8 @@ export const fetchVaultSingle = async(vault: Vault, lpTotalSupply: any,tokenDeci
     emission: emission.toJSON(),
     masterChefBalanceRatio: masterChefBalanceRatio.toJSON(),
     lpTokenBalanceMasterChef: new BigNumber(lpTokenBalanceMasterChef).toJSON(),
-    rewardEmission: rewardEmission.toJSON()
+    rewardEmission: rewardEmission.toJSON(),
+    fetchedLPAPR: "0"
   }
 }
 
@@ -251,7 +257,8 @@ export const fetchVaultSingleGravity = async(vault: Vault, lpTotalSupply: any,to
     emission: emission.toJSON(),
     masterChefBalanceRatio: masterChefBalanceRatio.toJSON(),
     lpTokenBalanceMasterChef: new BigNumber(lpTokenBalanceMasterChef).toJSON(),
-    rewardEmission: rewardEmission.toJSON()
+    rewardEmission: rewardEmission.toJSON(),
+    fetchedLPAPR: "0"
   }
 }
 // export default fetchVaultLP

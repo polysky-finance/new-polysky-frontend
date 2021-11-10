@@ -22,6 +22,7 @@ export interface VaultWithStakedValue extends VaultType {
   liquidity?: BigNumber
   staked?: BigNumber
   wallet?: BigNumber
+  
 }
 
 export interface MultiplierProps {

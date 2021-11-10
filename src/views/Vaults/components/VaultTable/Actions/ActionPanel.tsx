@@ -159,7 +159,7 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
   }
 
   const feesAPR : AprProps ={ 
-    value: new BigNumber(vault.lpRewardsApr).toJSON(), // .div(100).plus(1).pow(365).minus(1).times(100).decimalPlaces(2).toJSON(),
+    value:  vault.fetchedLPAPR !== '0'?new BigNumber(vault.fetchedLPAPR).decimalPlaces(2).toJSON():new BigNumber(vault.lpRewardsApr).toJSON(), // .div(100).plus(1).pow(365).minus(1).times(100).decimalPlaces(2).toJSON(),
     lpLabel: apr.lpLabel,
     tokenAddress: apr.tokenAddress,
     quoteTokenAddress: apr.quoteTokenAddress,

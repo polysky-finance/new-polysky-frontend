@@ -1,6 +1,13 @@
 import BigNumber from 'bignumber.js'
 import { SerializedBigNumber, TranslatableText } from 'state/types'
 
+/*
+export interface ExchangeConfig{
+	platform: string
+	api: string
+  liquidityFeeFraction: number
+} */
+
 export interface Address {
   137?: string
   80001: string

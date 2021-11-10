@@ -342,7 +342,7 @@ const Vaults: React.FC = () => {
 
     const row: RowProps = {
       apr: {
-        value: getDisplayApr(vault.apr, vault.lpRewardsApr),
+        value: getDisplayApr(vault.apr, vault.fetchedLPAPR !== '0' ? new BigNumber(vault.fetchedLPAPR).toNumber(): vault.lpRewardsApr),
         farmAPR: vault.apr,
         lpLabel,
         tokenAddress,
@@ -351,12 +351,12 @@ const Vaults: React.FC = () => {
         originalValue: vault.apr,
       },
       apy: {
-        value: getDisplayApy(vault.apr, vault.lpRewardsApr),
+        value: getDisplayApy(vault.apr, vault.fetchedLPAPR !== '0' ? new BigNumber(vault.fetchedLPAPR).toNumber(): vault.lpRewardsApr),
         lpLabel,
         tokenAddress,
         quoteTokenAddress,
         siriusPrice,
-        originalValue: getApy(vault.apr, vault.lpRewardsApr),
+        originalValue: getApy(vault.apr, vault.fetchedLPAPR !== '0' ? new BigNumber(vault.fetchedLPAPR).toNumber(): vault.lpRewardsApr),
       },
       vault: {
         label: lpLabel,

@@ -159,7 +159,15 @@ export const emissionRewarders = async (vaultsToFetch: VaultConfig[]) => {
   const calls = vaultsToFetch.map((vault) => {
     const masterAddress = getAddress(vault.masterChefAddress)
     const rewardAddress = vault.rewarder;
-    return rewardAddress? { address: rewardAddress, name: 'rewardPerSecond' }: { address: masterAddress, name: vault.emissionFunctionName }
+    if(!rewardAddress)
+    {
+      return { address: masterAddress, name: vault.emissionFunctionName }
+    }
+    if(vault.platform !== 'Quickswap')
+    {
+      return { address: rewardAddress, name: 'rewardPerSecond' }     
+    }
+    return { address: masterAddress, name: 'rewardRateB' }
   })
 
   const rawLpAllowances = await multicall(erc20, calls)

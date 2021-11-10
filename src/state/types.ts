@@ -50,6 +50,7 @@ export interface Vault extends VaultConfig {
   lpTotalSupply?: SerializedBigNumber
   tokenPriceVsQuote?: SerializedBigNumber
   poolWeight?: SerializedBigNumber
+  fetchedLPAPR?: SerializedBigNumber
   userData?: {
     allowance: string
     tokenBalance: string

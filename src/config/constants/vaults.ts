@@ -2974,7 +2974,7 @@ const vaults: VaultConfig[] = [
 	lpRewardsApr:22,
 	platform: 'Gravity',
   },
-  {
+  /* {
     pid: 98,
     lpSymbol: 'SUSHI',  
 	exchange: 'Gravity LP',
@@ -3004,7 +3004,7 @@ const vaults: VaultConfig[] = [
 	allocPointName:'totalAmountStaked',
 	lpRewardsApr:0,
 	platform: 'Gravity',
-  }, 
+  }, */
   {
     pid: 99,
     lpSymbol: 'LINK',  

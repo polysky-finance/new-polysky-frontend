@@ -496,6 +496,10 @@ const Vaults: React.FC = () => {
                     label: t('Cafeswap'),
                     value: 'Cafeswap',
                   },
+                  {
+                    label: t('Crystal Finance'),
+                    value: 'Crystal',
+                  },
 				          {
                     label: t('Dinoswap'),
                     value: 'Dinoswap',

@@ -26,7 +26,7 @@ const Container = styled.div`
 `
 
 const Liquidity: React.FunctionComponent<LiquidityProps> = ({ liquidity }) => {
-  const formattedNumber = reduceNumber(new BigNumber(liquidity))
+  const formattedNumber = reduceNumber(new BigNumber(liquidity), false)
   let digits = getDecimalPlaces(new BigNumber(formattedNumber[0]))
   digits = digits===0?0 : digits-1
 

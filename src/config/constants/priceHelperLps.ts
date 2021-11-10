@@ -794,6 +794,20 @@ const priceHelperLps: FarmConfig[] = [
     token: tokens.gfi,
     quoteToken: tokens.usdc,
   },
+  {
+    pid: null,
+    lpSymbol: 'CRYSTL-MATIC',
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0xb8e54c9ea1616beebe11505a419dd8df1000e02a',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.crystl,
+    quoteToken: tokens.wmatic,
+  },
 ]
 
 export default priceHelperLps

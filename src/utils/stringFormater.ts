@@ -21,11 +21,11 @@ export const getDecimalPlaces=(value:BigNumber)=>{
       return digits
 }
 
-export const reduceNumber=(value: BigNumber)=>{
+export const reduceNumber=(value: BigNumber, reduceSmallNumber = true)=>{
    if(!value){
        return [undefined, '']
    }
-   if(value.abs().lt(0.01) && !value.abs().eq(new BigNumber(0)))
+   if( reduceSmallNumber && value.abs().lt(0.01) && !value.abs().eq(new BigNumber(0)))
    {
        let power = 0;
        let val =value.abs();

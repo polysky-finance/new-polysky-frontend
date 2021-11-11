@@ -6,7 +6,7 @@ import { Flex, Image, Heading, RowType, Toggle, Text, Box } from '@polysky-libs/
 import { ChainId } from '@polysky-libs/sdk'
 import styled from 'styled-components'
 import {VaultWithStakedValue} from 'views/Vaults/components/VaultTable/Row'
-import { getBalanceNumber } from 'utils/formatBalance'
+import { getBalanceNumber, getBalanceAmount } from 'utils/formatBalance'
 import Page from 'components/Layout/Page'
 import { usePriceWMaticUsdc } from 'state/hooks'
 import { usePollFarmsDataSubset, useVaults, usePollVaultsData, usePriceSiriusUsdc } from 'state/hooks'
@@ -338,7 +338,14 @@ const Vaults: React.FC = () => {
     const tokenAddress = token.address
     const quoteTokenAddress = quoteToken.address
     const lpLabel = vault.lpSymbol;// && vault.lpSymbol.split(' ')[0].toUpperCase().replace('PANCAKE', '')
-    const totalLiquidity =  new BigNumber(vault.quoteTokenAmountTotal).times(vault.quoteToken.usdcPrice)
+    let lpPrice;
+    if (vault.lpTotalSupply &&  vault.quoteToken.usdcPrice) {
+      // Total value of base token in LP
+      const totalLiquidity =  new BigNumber(vault.quoteTokenAmountTotal).times(vault.quoteToken.usdcPrice)
+      // Divide total value of all tokens, by the number of LP tokens
+      const totalLpTokens = getBalanceAmount(new BigNumber(vault.lpTotalSupply))
+      lpPrice = totalLiquidity.div(totalLpTokens)      
+    }
 
     const row: RowProps = {
       apr: {
@@ -377,10 +384,10 @@ const Vaults: React.FC = () => {
         liquidity: vault.liquidity,
       },
       wallet:{
-        wallet: !userDataLoaded ? undefined: new BigNumber(vault.userData.tokenBalance).times(totalLiquidity).div(vault.lpTokenBalanceMasterChef),
+        wallet: !userDataLoaded ? undefined: getBalanceAmount(new BigNumber(vault.userData.tokenBalance)).times(lpPrice),
       },
       staked:{
-        wallet: !userDataLoaded ? undefined: new BigNumber(vault.userData.currentBalance).times(totalLiquidity).div(vault.lpTokenBalanceMasterChef),
+        wallet: !userDataLoaded ? undefined: getBalanceAmount(new BigNumber(vault.userData.currentBalance)).times(lpPrice),
       },
       details: vault,
     }

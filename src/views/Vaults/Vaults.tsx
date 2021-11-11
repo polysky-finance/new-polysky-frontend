@@ -225,7 +225,7 @@ const Vaults: React.FC = () => {
         if (!vault.lpTotalInQuoteToken || !vault.quoteToken.usdcPrice) {
           return vault;
         }
-        const totalLiquidity =  new BigNumber(vault.lpTotalInQuoteToken).times(vault.quoteToken.usdcPrice)
+        const totalLiquidity =  new BigNumber(vault.lpTotalInQuoteToken).times(vault.quoteToken.usdcPrice).times(vault.lpTokenBalanceMasterChef).div(vault.lpTotalSupply)
         const stratLiquidity = new BigNumber(vault.quoteTokenAmountMc).times(vault.quoteToken.usdcPrice);
         const rewardTokenPrice = new BigNumber(vault.rewardToken.usdcPrice)
         const rewardPerBlock = new BigNumber(vault.emission).times(new BigNumber(vault.emissionMultiplier)).div(BIG_TEN.pow(vault.rewardToken.decimals))
@@ -338,7 +338,7 @@ const Vaults: React.FC = () => {
     const tokenAddress = token.address
     const quoteTokenAddress = quoteToken.address
     const lpLabel = vault.lpSymbol;// && vault.lpSymbol.split(' ')[0].toUpperCase().replace('PANCAKE', '')
-    const totalLiquidity =  new BigNumber(vault.lpTotalInQuoteToken).times(vault.quoteToken.usdcPrice)
+    const totalLiquidity =  new BigNumber(vault.quoteTokenAmountTotal).times(vault.quoteToken.usdcPrice)
 
     const row: RowProps = {
       apr: {

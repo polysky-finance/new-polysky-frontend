@@ -43,7 +43,7 @@ export const fetchVaultLP = async (vault: Vault, lpTokenBalanceMasterChef:any, l
 
 
   // Total staked in LP, in quote token value
-  const lpTotalInQuoteToken = new BigNumber(quoteTokenBalanceLP).times(new BigNumber(lpTokenBalanceMasterChef)).div(new BigNumber(lpTotalSupply)).times(2).div(BIG_TEN.pow(quoteTokenDecimals)) // quoteTokenAmountMc.times(new BigNumber(2))
+  const lpTotalInQuoteToken = new BigNumber(quoteTokenBalanceLP).times(2).div(BIG_TEN.pow(quoteTokenDecimals))
 
 //  const names = vault.lpSymbol
   const allocPoint =  info ? new BigNumber(info[vault.allocPointName]?._hex) : BIG_ZERO
@@ -53,6 +53,7 @@ export const fetchVaultLP = async (vault: Vault, lpTokenBalanceMasterChef:any, l
 
   const emission = new BigNumber(emissionMC)
   const rewardEmission = vault.rewarder?  new BigNumber(emissionRewarder):BIG_ZERO
+  const LPAPR =  await getLPAPR(vault.exchange, getAddress(vault.lpAddresses))
   return {
     tokenAmountMc: tokenAmountMc.toJSON(),
     quoteTokenAmountMc: quoteTokenAmountMc.times(2).toJSON(),
@@ -67,7 +68,7 @@ export const fetchVaultLP = async (vault: Vault, lpTokenBalanceMasterChef:any, l
     masterChefBalanceRatio: masterChefBalanceRatio.toJSON(),
     lpTokenBalanceMasterChef: new BigNumber(lpTokenBalanceMasterChef).toJSON(),
     rewardEmission: rewardEmission.toJSON(),
-    fetchedLPAPR:"0"
+    fetchedLPAPR: LPAPR.toJSON()
   }
 }
 
@@ -90,7 +91,7 @@ export const fetchVaultQuick = async (vault: Vault,
   const quoteTokenAmountMc = quoteTokenAmountTotal.times(lpTokenRatio)
 
   // Total staked in LP, in quote token value
-  const lpTotalInQuoteToken = new BigNumber(totalStaked).times(quoteTokenBalanceLP).times(2).div(lpTotalSupply).div(BIG_TEN.pow(quoteTokenDecimals))
+  const lpTotalInQuoteToken = new BigNumber(quoteTokenBalanceLP).times(2).div(BIG_TEN.pow(quoteTokenDecimals))
 
 //  const names = vault.lpSymbol
  // const allocPoint =  info ? new BigNumber(info[allocPointName]?._hex) : BIG_ZERO
@@ -139,7 +140,7 @@ export const fetchVaultGravity = async (vault: Vault,
   const quoteTokenAmountMc = quoteTokenAmountTotal.times(lpTokenRatio)
 
   // Total staked in LP, in quote token value
-  const lpTotalInQuoteToken = new BigNumber(totalStaked).times(new BigNumber(quoteTokenBalanceLP)).times(2).div(new BigNumber(lpTotalSupply)).div(BIG_TEN.pow(quoteTokenDecimals))
+  const lpTotalInQuoteToken = new BigNumber(quoteTokenBalanceLP).times(2).div(BIG_TEN.pow(quoteTokenDecimals))
 
 //  const names = vault.lpSymbol
  // const allocPoint =  info ? new BigNumber(info[allocPointName]?._hex) : BIG_ZERO
@@ -190,7 +191,7 @@ export const fetchVaultSingle = async(vault: Vault, lpTotalSupply: any,tokenDeci
   const quoteTokenAmountMc = quoteTokenAmountTotal.times(lpTokenRatio)
 
   // Total staked in LP, in quote token value
-  const lpTotalInQuoteToken = new BigNumber(lpTokenBalanceMasterChef).div(BIG_TEN.pow(tokenDecimals)) // .times(new BigNumber(2))
+  const lpTotalInQuoteToken = new BigNumber(quoteTokenBalanceLP).div(BIG_TEN.pow(quoteTokenDecimals))
 
   const allocPoint =  info ? new BigNumber(info[vault.allocPointName]?._hex) : BIG_ZERO
   const poolWeight =  totalAllocPoint ? allocPoint.div(new BigNumber(totalAllocPoint)) : BIG_ZERO
@@ -238,7 +239,7 @@ export const fetchVaultSingleGravity = async(vault: Vault, lpTotalSupply: any,to
   const quoteTokenAmountMc = quoteTokenAmountTotal.times(lpTokenRatio)
 
   // Total staked in LP, in quote token value
-  const lpTotalInQuoteToken = new BigNumber(totalStaked).div(BIG_TEN.pow(quoteTokenDecimals))// .times(new BigNumber(2))
+  const lpTotalInQuoteToken = new BigNumber(quoteTokenBalanceLP).div(BIG_TEN.pow(quoteTokenDecimals))
 
   const poolWeight = BIG_ONE 
 

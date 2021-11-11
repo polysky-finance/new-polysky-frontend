@@ -6,7 +6,7 @@ export const getLPAPR= async (exchange: string, lpAddress: string)=>{
     const exc = exchanges[exchange]
     if(!exc)
     {
-        return undefined
+        return '0'
     }
 
     const id = await getID(lpAddress, exc.api);

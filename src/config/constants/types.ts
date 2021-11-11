@@ -55,7 +55,7 @@ export interface VaultConfig {
   pid: number
   spid: number
   lpSymbol: string
-  lpInfo: string
+  lpInfo?: string
   lpAddresses: Address
   strategyAddress: Address
   masterChefAddress: Address
@@ -63,8 +63,8 @@ export interface VaultConfig {
   quoteToken: Token
   rewardToken: Token
   isArchived: boolean
-  isSingle: false
-  isStable: false
+  isSingle: boolean
+  isStable?: boolean
   isQuickswap?: boolean
   emissionFunctionName: string
   emissionMultiplier: number

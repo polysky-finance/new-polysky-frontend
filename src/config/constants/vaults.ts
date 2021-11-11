@@ -3160,6 +3160,37 @@ const vaults: VaultConfig[] = [
 	allocPointName:'lastRewardTime',
 	lpRewardsApr:19.84,
 	platform: 'Crystal',
+  },
+   {
+    pid: 107,
+    lpSymbol: 'SX - MATIC',  
+	exchange: 'Ape LP',
+	baseLiquidityUrl: 'https://app.apeswap.finance/add/ETH/0x840195888db4d6a99ed9f73fcd3b225bb3cb1a79',
+	strategyAddress:{
+		137: '0x25dd74838b00dff35bbccfc0770ce532c37ec902',
+		80001: '',
+	},
+    lpAddresses: {
+      137: '0xF90331CB67f9aE85739F5AEDFA93dEC68B7cE32e',
+      80001: '',
+    },
+	masterChefAddress:{
+		137: '0xebcc84d2a73f0c9e23066089c6c24f4629ef1e6d',
+		80001: '',
+	},
+	spid: 52,
+    token: tokens.sx,
+    quoteToken: tokens.wmatic,
+	rewardToken: tokens.crystl,
+	emissionFunctionName: 'crystalPerBlock',
+	emissionMultiplier: 1,
+	isArchived: false,
+	isSingle:false,
+	isBurning:false,
+	isStable: false,
+	allocPointName:'lastRewardTime',
+	lpRewardsApr:1.75,
+	platform: 'Crystal',
   }
 ]
 

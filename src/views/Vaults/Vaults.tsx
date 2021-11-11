@@ -543,6 +543,10 @@ const Vaults: React.FC = () => {
                     label: t('Sushiswap'),
                     value: 'Sushiswap',
                   },
+				  {
+                    label: t('Wault'),
+                    value: 'Wault',
+                  },
                 ]}
                 onChange={handlePlatformOptionChange}
               />

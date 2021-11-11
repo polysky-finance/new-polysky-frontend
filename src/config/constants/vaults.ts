@@ -3191,6 +3191,37 @@ const vaults: VaultConfig[] = [
 	allocPointName:'lastRewardTime',
 	lpRewardsApr:1.75,
 	platform: 'Crystal',
+  },
+  {
+    pid: 108,
+    lpSymbol: 'WUSD - USDC',  
+	exchange: 'Wault LP',
+	baseLiquidityUrl: 'https://swap.wault.finance/polygon/index.html#/add/0x2791bca1f2de4661ed88a30c99a7a9449aa84174/0xb8ab048d6744a276b2772dc81e406a4b769a5c3d',
+	strategyAddress:{
+		137: '0xC4541fd09A8187F813B21F6769078FB77f8A2130',
+		80001: '',
+	},
+    lpAddresses: {
+      137: '0x7B93196CD4861f345509c2da31058CA4B1c30D63',
+      80001: '',
+    },
+	masterChefAddress:{
+		137: '0xC8Bd86E5a132Ac0bf10134e270De06A8Ba317BFe',
+		80001: '',
+	},
+	spid: 28,
+    token: tokens.wusd,
+    quoteToken: tokens.usdc,
+	rewardToken: tokens.wexpoly,
+	emissionFunctionName: 'wexPerBlock',
+	emissionMultiplier: 1,
+	isArchived: false,
+	isSingle:false,
+	isBurning:false,
+	isStable: true,
+	allocPointName:'lastRewardTime',
+	lpRewardsApr:7.31,
+	platform: 'Wault',
   }
 ]
 

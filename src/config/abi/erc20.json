@@ -237,6 +237,8 @@
 	{"constant":true,"inputs":[],"name":"rewardRateA","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},
 	{"constant":true,"inputs":[],"name":"rewardRateB","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},
 	
+	{"inputs":[],"name":"wexPerBlock","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
+	
 	{"inputs":[],"name":"fishPerBlock","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
 	{"inputs":[],"name":"bananaPerSecond","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
 

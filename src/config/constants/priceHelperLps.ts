@@ -808,6 +808,34 @@ const priceHelperLps: FarmConfig[] = [
     token: tokens.crystl,
     quoteToken: tokens.wmatic,
   },
+  {
+    pid: null,
+    lpSymbol: 'WUSD - USDC',
+	exchange: 'Wault',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0x7B93196CD4861f345509c2da31058CA4B1c30D63',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.wusd,
+    quoteToken: tokens.usdc,
+  },
+  {
+    pid: null,
+    lpSymbol: 'WEXPOLY - USDC',
+	exchange: 'Wault',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0x5DE6a3CcA10d3F788EEdbD4923e31D4658bf6f9a',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.wexpoly,
+    quoteToken: tokens.usdc,
+  },
 ]
 
 export default priceHelperLps

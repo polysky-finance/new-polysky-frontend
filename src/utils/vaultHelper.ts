@@ -11,16 +11,11 @@ export const getLPAPR= async (exchange: string, lpAddress: string)=>{
         return BIG_ZERO
     }
     try {
-    if(exc.pairID === 'pair')
-    {
-      const p = 'p'
+      const id = await getID(lpAddress, exc);
+      return getAPR(id, exc)
+    }catch(err){
+      return BIG_ZERO
     }
-
-    const id = await getID(lpAddress, exc);
-    return getAPR(id, exc)
-  }catch(err){
-    return BIG_ZERO
-  }
 }
 
 export const getID = async(lpAddress, exchange)=> {
@@ -55,9 +50,5 @@ export const getAPR = async(id, exchange)=> {
     const result = await axios.post(exchange.api, {
         query: q
     });
-    if(exchange.volumeUSD ==='volumeUSD')
-    {
-       const hi= "h"
-    }
     return  new BigNumber(result.data.data.pairDayData[exchange.volumeUSD]).times(exchange.liquidityFeeFraction).times(365.25).div(new BigNumber(result.data.data.pairDayData.reserveUSD))
 }

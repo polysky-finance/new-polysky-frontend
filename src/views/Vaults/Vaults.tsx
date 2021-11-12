@@ -457,7 +457,7 @@ const Vaults: React.FC = () => {
                {t('Vaults')}
            </Heading>
 	          <Heading scale="md" color="text">
-             {t('Polysky helps you earn the highest yield by auto-compounding.')} <u><a color="blue" href="https://www.certik.org/projects/polysky-finance" target="_blank" rel="noreferrer">On-boarded by Certik.</a></u>
+             {t('Polysky helps you earn the highest yield by auto-compounding.')} <u><a color="blue" href="https://www.certik.org/projects/polysky-finance" target="_blank" rel="noreferrer">Audited by Certik.</a></u>
             </Heading>            
 		    </Flex>  
         <Flex flex="1" height="fit-content" justifyContent="center" alignItems="center" mt={['24px', null, '0']}>
@@ -617,8 +617,15 @@ const Vaults: React.FC = () => {
               <Text textTransform="uppercase">{t('Search')}</Text>
               <SearchInput onChange={handleChangeQuery} placeholder="Search Vaults" />
             </LabelWrapper>
-           </FilterContainer>
+           </FilterContainer> 
+           <a color="blue" href="https://www.certik.org/projects/polysky-finance" target="_blank" rel="noreferrer">
+           <Flex alignContent="center" alignItems="center">
+           <Text textTransform="uppercase">{'Audited by  '}</Text>
+            <img src="/images/certik-logo-w.svg" alt="Sirius logo" width={40} height={40} />
+           </Flex>   
+           </a>       
         </ControlContainer>
+         
         {renderContent()}
         <div ref={loadMoreRef} />
         {/* <StyledImage src="/images/decorations/3dpan.png" alt="Polysky illustration" width={120} height={103} /> */}

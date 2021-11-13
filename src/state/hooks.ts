@@ -244,6 +244,17 @@ export const useFarmFromTokenName = (tokenName: string): Farm => {
 export const useVaultLpTokenPrice = (lpAddresses: Address) => {
   // Retrieve the vault using the LP token name. //TODO: just use the lp address to find it
   const vault = useVaultFromLpAddress(getAddress(lpAddresses))
+
+  let lpPrice;
+    if (vault.lpTotalSupply &&  vault.quoteToken.usdcPrice) {
+      // Total value of base token in LP
+      const totalLiquidity =  new BigNumber(vault.quoteTokenAmountTotal).times(vault.quoteToken.usdcPrice)
+      // Divide total value of all tokens, by the number of LP tokens
+      const totalLpTokens = getBalanceAmount(new BigNumber(vault.lpTotalSupply))
+      lpPrice = totalLiquidity.div(totalLpTokens)      
+    }
+    return lpPrice
+    /*
   let lpTokenPrice = BIG_ZERO
 
   if (vault.lpTotalSupply && vault.lpTotalInQuoteToken) {
@@ -256,7 +267,7 @@ export const useVaultLpTokenPrice = (lpAddresses: Address) => {
     lpTokenPrice = overallValueOfAllTokensInVault.div(totalLpTokens)
   }
 
-  return lpTokenPrice
+  return lpTokenPrice */
 }
 
 export const useFarmLpTokenPrice = (symbol: string) => {

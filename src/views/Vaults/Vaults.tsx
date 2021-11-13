@@ -458,7 +458,12 @@ const Vaults: React.FC = () => {
            </Heading>
 	          <Heading scale="md" color="text">
              {t('Polysky helps you earn the highest yield by auto-compounding.')} <u><a color="blue" href="https://www.certik.org/projects/polysky-finance" target="_blank" rel="noreferrer">Audited by Certik.</a></u>
-            </Heading>            
+            </Heading>  
+            <br/>  
+            <Heading scale="md" color="text">
+              {t('Please unstake your token from the old vault and stake them below. The old vault is at ')}
+              <u><a color="#8B0000" href="https://old.polysky.finance" target="_blank" rel="noreferrer">https://old.polysky.finance</a></u>
+            </Heading>        
 		    </Flex>  
         <Flex flex="1" height="fit-content" justifyContent="center" alignItems="center" mt={['24px', null, '0']}>
                 <BuybackCard />
@@ -618,12 +623,16 @@ const Vaults: React.FC = () => {
               <SearchInput onChange={handleChangeQuery} placeholder="Search Vaults" />
             </LabelWrapper>
            </FilterContainer> 
-           <a color="blue" href="https://www.certik.org/projects/polysky-finance" target="_blank" rel="noreferrer">
-           <Flex alignContent="center" alignItems="center">
-           <Text textTransform="uppercase">{'Audited by  '}</Text>
-            <img src="/images/certik-logo-w.svg" alt="Sirius logo" width={40} height={40} />
-           </Flex>   
-           </a>       
+           
+           <FilterContainer style={{ marginLeft: 16 }}>
+            <a color="blue" href="https://www.certik.org/projects/polysky-finance" target="_blank" rel="noreferrer">
+              <>
+              <Text textTransform="uppercase">{'Audited by  '}</Text>
+              <img src="/images/certik-logo-w.svg" alt="Sirius logo" width={40} height={40} />
+              </>
+            </a> 
+           </FilterContainer>   
+                 
         </ControlContainer>
          
         {renderContent()}

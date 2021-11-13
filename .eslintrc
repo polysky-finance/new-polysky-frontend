@@ -19,6 +19,8 @@
     "plugin:import/typescript",
 	],
   "rules": {
+	"react/default-props-match-prop-types":[0],
+	"react/destructuring-assignment": [0],
     "react/require-default-props": [0],
     "import/no-unresolved": [2, { "caseSensitive": false }],
     "no-console": ["warn", { "allow": ["info", "warn", "error"] }],

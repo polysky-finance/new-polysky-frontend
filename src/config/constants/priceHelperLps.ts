@@ -836,6 +836,20 @@ const priceHelperLps: FarmConfig[] = [
     token: tokens.wexpoly,
     quoteToken: tokens.usdc,
   },
+  {
+    pid: null,
+    lpSymbol: 'SHIB - MATIC',
+	exchange: 'Wault',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0x5fb641de2663e8a94c9dea0a539817850d996e99',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.shib,
+    quoteToken: tokens.wmatic,
+  },
 ]
 
 export default priceHelperLps

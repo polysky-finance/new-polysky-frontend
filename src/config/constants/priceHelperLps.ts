@@ -850,6 +850,34 @@ const priceHelperLps: FarmConfig[] = [
     token: tokens.shib,
     quoteToken: tokens.wmatic,
   },
+  {
+    pid: null,
+    lpSymbol: 'renDOGE-ETH',
+	exchange: 'Wault',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0x13305f843e66f7cc7f9cb1bbc40dabee7086d1f8',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.rendoge,
+    quoteToken: tokens.weth,
+  },
+  {
+    pid: null,
+    lpSymbol: 'ELON-ETH',
+	exchange: 'Wault',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0xab1403de66519b898b38028357b74df394a54a37',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.elon,
+    quoteToken: tokens.weth,
+  },
 ]
 
 export default priceHelperLps

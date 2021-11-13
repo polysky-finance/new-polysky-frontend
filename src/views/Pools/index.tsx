@@ -238,64 +238,13 @@ const Pools: React.FC = () => {
         <Flex justifyContent="space-between" flexDirection={['column', null, null, 'row']}>
           <Flex flex="1" flexDirection="column" mr={['8px', 0]}>
             <Heading as="h1" scale="xxl" color="secondary" mb="24px">
-              {t('Pools')}
+              {t('Sirius Pool')}
             </Heading>
           </Flex>
         </Flex>
       </PageHeader>
       <Page>
-        <PoolControls justifyContent="space-between">
-          <ViewControls style={{ marginLeft: 16 }}>
-          <PoolTabButtons 
-            hasStakeInFinishedPools={hasStakeInFinishedPools}
-          />
-          </ViewControls>
-          <ViewControls style={{ marginLeft: 16 }}>
-            <LabelWrapper>
-              <Text textTransform="uppercase"> {t('Staked only')}</Text>      
-              <Toggle checked={stakedOnly} onChange={() => setStakedOnly(!stakedOnly)} scale="sm" />              
-            </LabelWrapper> 
-          </ViewControls>
-         
-          <FilterContainer style={{ marginLeft: 16 }}>
-            <LabelWrapper>
-              <Text fontSize="12px" bold color="textSubtle" textTransform="uppercase">
-                {t('Sort by')}
-              </Text>
-                <Select
-                  options={[
-                    {
-                      label: t('Hot'),
-                      value: 'hot',
-                    },
-                    {
-                      label: t('APR'),
-                      value: 'apr',
-                    },
-                    {
-                      label: t('Earned'),
-                      value: 'earned',
-                    },
-                    {
-                      label: t('Total staked'),
-                      value: 'totalStaked',
-                    },
-                  ]}
-                  onChange={handleSortOptionChange}
-                />
-            </LabelWrapper>
-          </FilterContainer>
-          <SearchSortContainer style={{ marginLeft: 16 }}>
-            <Flex flexDirection="column" width="50%">
-              <Text fontSize="12px" bold color="textSubtle" textTransform="uppercase">
-                {t('Search')}
-              </Text>
-              <ControlStretch>
-                <SearchInput onChange={handleChangeSearchQuery} placeholder="Search Pools" />
-              </ControlStretch>
-            </Flex>
-          </SearchSortContainer>
-        </PoolControls>
+        
         {showFinishedPools && (
           <Text fontSize="20px" color="failure" pb="32px">
             {t('These pools are no longer distributing rewards. Please unstake your tokens.')}

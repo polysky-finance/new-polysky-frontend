@@ -633,7 +633,7 @@ const Vaults: React.FC = () => {
            <FilterContainer style={{ marginLeft: 16 }}>
             <a color="blue" href="https://www.certik.org/projects/polysky-finance" target="_blank" rel="noreferrer">
               <>
-              <img src="/images/Certik.svg" width={116} height={46} />
+              <img src="/images/Certik.svg" " alt="Certik logo" width={116} height={46} />
               </>
             </a> 
            </FilterContainer>   

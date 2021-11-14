@@ -55,9 +55,9 @@ export const fetchVaultLP = async (vault: Vault, lpTokenBalanceMasterChef:any, l
   const rewardEmission = vault.rewarder?  new BigNumber(emissionRewarder):BIG_ZERO
   const LPAPR =  await getLPAPR(vault.exchange, getAddress(vault.lpAddresses))
   return {
-    tokenAmountMc: tokenAmountMc.toJSON(),
+    tokenAmountMc: tokenAmountMc.times(2).toJSON(),
     quoteTokenAmountMc: quoteTokenAmountMc.times(2).toJSON(),
-    tokenAmountTotal: tokenAmountTotal.toJSON(),
+    tokenAmountTotal: tokenAmountTotal.times(2).toJSON(),
     lpTokenBalanceMC : new BigNumber(lpTokenBalanceStrategy.amount._hex).toJSON(),
     quoteTokenAmountTotal: quoteTokenAmountTotal.times(2).toJSON(),
     lpTotalSupply: new BigNumber(lpTotalSupply).toJSON(),
@@ -103,9 +103,9 @@ export const fetchVaultQuick = async (vault: Vault,
   const rewardEmission = vault.rewarder?  new BigNumber(emissionRewarder):BIG_ZERO
   const LPAPR = await getLPAPR(vault.exchange, getAddress(vault.lpAddresses))
   return {
-    tokenAmountMc: tokenAmountMc.toJSON(),
+    tokenAmountMc: tokenAmountMc.times(2).toJSON(),
     quoteTokenAmountMc: quoteTokenAmountMc.times(2).toJSON(),
-    tokenAmountTotal: tokenAmountTotal.toJSON(),
+    tokenAmountTotal: tokenAmountTotal.times(2).toJSON(),
     lpTokenBalanceMC : lpTokenBalanceStrategy,
     quoteTokenAmountTotal: quoteTokenAmountTotal.times(2).toJSON(),
     lpTotalSupply: new BigNumber(lpTotalSupply).toJSON(),
@@ -152,9 +152,9 @@ export const fetchVaultGravity = async (vault: Vault,
   const rewardEmission = vault.rewarder? new BigNumber(emissionRewarder): BIG_ZERO
   const LPAPR = await getLPAPR(vault.exchange, getAddress(vault.lpAddresses))
   return {
-    tokenAmountMc: tokenAmountMc.toJSON(),
+    tokenAmountMc: tokenAmountMc.times(2).toJSON(),
     quoteTokenAmountMc: quoteTokenAmountMc.times(2).toJSON(),
-    tokenAmountTotal: tokenAmountTotal.toJSON(),
+    tokenAmountTotal: tokenAmountTotal.times(2).toJSON(),
     lpTokenBalanceMC : lpTokenBalanceStrategy,
     quoteTokenAmountTotal: quoteTokenAmountTotal.times(2).toJSON(),
     lpTotalSupply: new BigNumber(lpTotalSupply).toJSON(),

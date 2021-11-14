@@ -75,6 +75,7 @@ export interface VaultConfig {
   lpRewardsApr:number
   isBurning?: boolean
   rewarder?: string
+  rewarderToken?:string
 }
 
 export interface PoolConfig {

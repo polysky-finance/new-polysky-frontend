@@ -878,6 +878,20 @@ const priceHelperLps: FarmConfig[] = [
     token: tokens.elon,
     quoteToken: tokens.weth,
   },
+  {
+    pid: null,
+    lpSymbol: 'GENESIS-QUICK',
+	exchange: 'Quick',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0xab1403de66519b898b38028357b74df394a54a37',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.genesis,
+    quoteToken: tokens.quick,
+  },
 ]
 
 export default priceHelperLps

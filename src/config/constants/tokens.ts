@@ -1591,6 +1591,15 @@ const tokens = {
     decimals: 18,
     projectLink: 'https://zerogoki.org/#/',
   },
+  genesis: {
+    symbol: 'Genesis',
+    address: {
+      137: '0x51869836681bce74a514625c856afb697a013797',
+      80001: '',
+    },
+    decimals: 18,
+    projectLink: 'https://zerogoki.org/#/',
+  },
 }
 
 export default tokens

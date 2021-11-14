@@ -13,6 +13,7 @@ import { usePollFarmsDataSubset, useVaults, usePollVaultsData, usePriceSiriusUsd
 import {getDecimalPlaces, reduceNumber} from 'utils/stringFormater'
 import { Vault } from 'state/types'
 import { getVaultApr } from 'utils/apr'
+import { getAddress } from 'utils/addressHelpers'
 import { useTranslation } from 'contexts/Localization'
 import { orderBy } from 'lodash'
 import { latinise } from 'utils/latinise'
@@ -231,8 +232,19 @@ const Vaults: React.FC = () => {
         const rewardPerBlock = new BigNumber(vault.emission).times(new BigNumber(vault.emissionMultiplier)).div(BIG_TEN.pow(vault.rewardToken.decimals))
 
         const maticPerDay = vault.rewarder?new BigNumber(43200).times(new BigNumber(vault.rewardEmission)).times(vault.poolWeight).times(new BigNumber(vault.emissionMultiplier)).div(BIG_TEN.pow(18)) : BIG_ZERO
-
-        const maticPerDayUsdc=vault.rewarder? new BigNumber(maticPerDay).times(wmaticPriceUsdc) : BIG_ZERO
+        
+        let rewarderTokenPrice = wmaticPriceUsdc;
+        if(vault.rewarder && vault.rewarderToken){
+          const quotePrice = new BigNumber(vault.quoteToken.usdcPrice);
+          let tokenPrice = new BigNumber(vault.token.usdcPrice);
+          if(quotePrice && vault.token.usdcPrice==='NaN')
+          {
+            tokenPrice = quotePrice.times(vault.quoteTokenAmountTotal).div(vault.tokenAmountTotal);
+          }
+          const tp = tokenPrice.toJSON()
+            rewarderTokenPrice = getAddress(vault.quoteToken.address) === vault.rewarderToken? quotePrice: tokenPrice;
+        }
+        const maticPerDayUsdc=vault.rewarder? new BigNumber(maticPerDay).times(rewarderTokenPrice) : BIG_ZERO
 
         const { siriusRewardsApr, lpRewardsApr } = isActive
           ? getVaultApr(new BigNumber(vault.poolWeight), rewardTokenPrice, totalLiquidity, vault.lpAddresses[ChainId.MAINNET], rewardPerBlock, vault.lpRewardsApr, maticPerDayUsdc)

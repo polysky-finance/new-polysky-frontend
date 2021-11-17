@@ -564,8 +564,16 @@ export const useUserTotalVaultValue = (): BigNumber => {
     {
       const vault = vaultsLP[i]
       if (vaultsLP[i].lpTotalInQuoteToken && vaultsLP[i].quoteToken.usdcPrice) {
-        const totalLiquidity =  new BigNumber(vault.lpTotalInQuoteToken).times(vault.quoteToken.usdcPrice)
-          vaultTotal = vaultTotal.plus(new BigNumber(vault.userData.currentBalance).times(totalLiquidity).div(vault.lpTokenBalanceMasterChef));
+        let lpPrice;
+        if (vault.lpTotalSupply &&  vault.quoteToken.usdcPrice) {
+          // Total value of base token in LP
+          const totalLiquidity =  new BigNumber(vault.quoteTokenAmountTotal).times(vault.quoteToken.usdcPrice)
+          // Divide total value of all tokens, by the number of LP tokens
+          const totalLpTokens = new BigNumber(vault.lpTotalSupply)
+          lpPrice = totalLiquidity.div(totalLpTokens)      
+        }
+     //   const totalLiquidity =  new BigNumber(vault.lpTotalInQuoteToken).times(vault.quoteToken.usdcPrice)
+          vaultTotal = vaultTotal.plus(new BigNumber(vault.userData.currentBalance).times(lpPrice)) // .div(vault.lpTokenBalanceMasterChef));
       }
       if(!vaultsLP[i].lpTotalInQuoteToken || !vaultsLP[i].quoteToken.usdcPrice)
       {

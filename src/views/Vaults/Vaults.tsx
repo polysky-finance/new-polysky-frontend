@@ -217,7 +217,7 @@ const Vaults: React.FC = () => {
   )
 
   const stakedArchivedVaults = archivedVaults.filter(
-    (vault) => vault.userData && new BigNumber(vault.userData.stakedBalance).isGreaterThan(0),
+    (vault) => vault.userData  && new BigNumber(vault.userData.stakedBalance).isGreaterThan(0),
   )
 
   const vaultsList = useCallback(

@@ -112,7 +112,7 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({
   }
   const symbol = lpSymbol
   if (isApproved) {
-    if (currentBalance.gt(0)) {
+    if (currentBalance && lpPrice && currentBalance.gt(0)) {
       return (
         <ActionContainer>
           <ActionTitles>

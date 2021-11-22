@@ -114,7 +114,7 @@ const getDisplayApr = (siriusRewardsApr?: number, lpRewardsApr?: number) => {
 const getApy = (siriusRewardsApr?: number, lpRewardsApr?: number) => {
   if (siriusRewardsApr && lpRewardsApr) {
     const exponent = (1+(siriusRewardsApr + lpRewardsApr)/36500)**365;
-    const apy = (exponent -1)*100;
+    const apy = (exponent-1)*100;
     return apy
   }
   if (siriusRewardsApr) {
@@ -151,7 +151,6 @@ const Vaults: React.FC = () => {
   const { path } = useRouteMatch()
   const { pathname } = useLocation()
   const { t } = useTranslation()
-// const { data: farmsLP} = useFarms()
   const { data: vaultsLP, userDataLoaded } = useVaults()
   const siriusPrice = usePriceSiriusUsdc()  
   const [query, setQuery] = useState('')
@@ -286,7 +285,7 @@ const Vaults: React.FC = () => {
         case 'apy':
           return orderBy(
             vaults,
-            (vault: VaultWithStakedValue) => (vault.apr ? getApy(vault.apr, vault.lpRewardsApr) : 0),
+            (vault: VaultWithStakedValue) => (vault.apr ? getApy(vault.apr, vault.fetchedLPAPR !== '0' ? new BigNumber(vault.fetchedLPAPR).toNumber(): vault.lpRewardsApr) : 0),
             'desc',
           )
         case 'liquidity':

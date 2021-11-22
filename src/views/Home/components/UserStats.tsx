@@ -9,7 +9,6 @@ import { useTotalSupply, useBurnedBalance } from 'hooks/useTokenBalance'
 import { useTranslation } from 'contexts/Localization'
 import { getSiriusAddress } from 'utils/addressHelpers'
 import { BIG_ZERO } from 'utils/bigNumber'
-import { usePollFarmsData, useVaults, usePollVaultsData, usePriceSiriusUsdc, usePools, useFetchPublicPoolsData } from 'state/hooks'
 import { useWeb3React } from '@web3-react/core'
 import CardValue from './CardValue'
 

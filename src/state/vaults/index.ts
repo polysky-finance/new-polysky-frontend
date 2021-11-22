@@ -1,6 +1,5 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import BigNumber from 'bignumber.js'
 import vaultsConfig from 'config/constants/vaults'
 import farmsConfig from 'config/constants/farms'
 import priceHelperLpsConfig from 'config/constants/priceHelperLps'

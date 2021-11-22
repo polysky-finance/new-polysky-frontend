@@ -1,7 +1,6 @@
 import { VaultConfig } from 'config/constants/types'
 import { getAddress} from 'utils/addressHelpers'
 import multicall from 'utils/multicall'
-import BigNumber from 'bignumber.js'
 import erc20 from 'config/abi/erc20.json'
 import gravity from 'config/abi/gravity.json'
 import {fetchVaultLP, fetchVaultSingle, fetchVaultQuick, fetchVaultGravity, fetchVaultSingleGravity} from './fetchPublicVaultData'
@@ -147,7 +146,7 @@ export const lpTokenBalanceMasterChefs = async (vaultsToFetch: VaultConfig[]) =>
 }
 
 export const quickPer10000dQuicks = async (vaultsToFetch: VaultConfig[]) => {
-  const calls = vaultsToFetch.map((vault) => {
+  const calls = vaultsToFetch.map(() => {
     return { address: '0xf28164A485B0B2C90639E47b0f377b4a438a16B1', name: 'dQUICKForQUICK', params: [10000] }
   })
 

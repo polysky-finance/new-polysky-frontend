@@ -154,7 +154,7 @@ const Vaults: React.FC = () => {
   const siriusPrice = usePriceSiriusUsdc()  
   const [query, setQuery] = useState('')
   const { account } = useWeb3React()
-  const [sortOption, setSortOption] = useState('hot')
+  const [sortOption, setSortOption] = useState('liquidity')
   const [platformOption, setPlatformOption] = useState('All')
   const [typeOption, setTypeOption] = useState('All')
   const [showBurning, setShowBurning] = useState(false)
@@ -579,6 +579,10 @@ const Vaults: React.FC = () => {
               <Select
                 options={[
                   {
+                    label: t('TVL'),
+                    value: 'liquidity',
+                  },
+                  {
                     label: t('Hot'),
                     value: 'hot',
                   },
@@ -590,10 +594,7 @@ const Vaults: React.FC = () => {
                     label: t('Platform'),
                     value: 'platform',
                   },
-                  {
-                    label: t('TVL'),
-                    value: 'liquidity',
-                  },
+                 
                   {
                     label: t('Staked'),
                     value: 'staked',

@@ -577,14 +577,14 @@ const Vaults: React.FC = () => {
             <LabelWrapper>
               <Text textTransform="uppercase">{t('Sort by')}</Text>
               <Select
-                options={[
-                  {
-                    label: t('TVL'),
-                    value: 'liquidity',
-                  },
+                options={[                  
                   {
                     label: t('Hot'),
                     value: 'hot',
+                  },
+				  {
+                    label: t('TVL'),
+                    value: 'liquidity',
                   },
                   {
                     label: t('APY'),

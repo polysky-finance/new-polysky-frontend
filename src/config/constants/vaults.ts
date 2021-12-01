@@ -3443,6 +3443,37 @@ const vaults: VaultConfig[] = [
 	platform: 'Quickswap',
 	rewarder:'0xd26E16f5a9dfb9Fe32dB7F6386402B8AAe1a5dd7',
   },
+  {
+    pid: 121,
+    lpSymbol: 'SUSHI',  
+	exchange: 'Gravity LP',
+	baseLiquidityUrl: 'https://app.sushi.com/swap?outputCurrency=0x0b3f868e0be5597d5db7feb59e1cadbb0fdda50a',
+	strategyAddress:{
+		137: '0xa12662e982646b4e076fa6d2213d65d1a87977e0',
+		80001: '',
+	},
+    lpAddresses: {
+      137: '0x0b3f868e0be5597d5db7feb59e1cadbb0fdda50a',
+      80001: '',
+    },
+	masterChefAddress:{
+		137: '0x0Dbe8999Cde32164340411897a7DD73654F82571',
+		80001: '',
+	},
+	spid: 0,
+    token: tokens.sushi,
+    quoteToken: tokens.sushi,
+	rewardToken: tokens.gfi,
+	emissionFunctionName: 'farmInfo',
+	emissionMultiplier: 1,
+	isArchived: false,
+	isSingle:true,
+	isBurning:false,
+	isStable: false,
+	allocPointName:'totalAmountStaked',
+	lpRewardsApr:0,
+	platform: 'Gravity',
+  },
 ]
 
 export default vaults

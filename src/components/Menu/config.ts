@@ -51,10 +51,6 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
     icon: 'InfoIcon',
     items: [
       {
-        label: t('Quickchart chart'),
-        href: 'https://quickchart.app/token/0xb1289f48e8d8ad1532e83a8961f6e8b5a134661d?pairedWith=WMATIC',
-      },
-      {
         label: t('Poocoin chart'),
         href: 'https://polygon.poocoin.app/tokens/0xb1289f48e8d8ad1532e83a8961f6e8b5a134661d',
       },
@@ -73,7 +69,10 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
     label: t('More'),
     icon: 'MoreIcon',
     items: [
-      
+      {
+        label: t('Vaults (Old)'),
+        href: 'https://old.polysky.finance/vaults',
+      },
       {
         label: t('Github'),
         href: 'https://github.com/polysky-finance/polysky-contracts',
@@ -86,10 +85,11 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
         label: t('Polygon explorer'),
         href: 'https://polygonscan.com/token/0xb1289f48e8d8ad1532e83a8961f6e8b5a134661d',
       },
-	  {
+	    {
         label: t('vfat tools'),
         href: 'https://vfat.tools/polygon/polysky/',
       },
+      
     ],
   },
 

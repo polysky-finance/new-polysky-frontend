@@ -45,7 +45,11 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
     icon: 'PoolIcon',
     href: '/pools',
   },
-  
+  {
+    label: t('Audit (Certik)'),
+    icon: 'VerifiedIcon',
+    href: 'https://www.certik.org/projects/polysky-finance',
+  },  
   {
     label: t('Charts'),
     icon: 'InfoIcon',

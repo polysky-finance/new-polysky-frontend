@@ -1600,6 +1600,24 @@ const tokens = {
     decimals: 18,
     projectLink: 'https://zerogoki.org/#/',
   },
+  cro: {
+    symbol: 'CRO',
+    address: {
+      137: '0xf2d8124b8f9267dad61351c7ad252362880c6638',
+      80001: '',
+    },
+    decimals: 18,
+    projectLink: 'https://crypto.com/price/crypto-com-coin',
+  },
+  one: {
+    symbol: 'ONE',
+    address: {
+      137: '0x80c0cbdb8d0b190238795d376f0bd57fd40525f2',
+      80001: '',
+    },
+    decimals: 18,
+    projectLink: 'https://www.harmony.one/',
+  },
 }
 
 export default tokens

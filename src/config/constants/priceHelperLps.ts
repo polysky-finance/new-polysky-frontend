@@ -892,6 +892,34 @@ const priceHelperLps: FarmConfig[] = [
     token: tokens.genesis,
     quoteToken: tokens.quick,
   },
+  {
+    pid: null,
+    lpSymbol: 'CRO-MATIC',
+	exchange: 'Quick',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0xfd168748dd07a32a401e800240aec8ec6efc706f',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.cro,
+    quoteToken: tokens.wmatic,
+  },
+  {
+    pid: null,
+    lpSymbol: 'ONE-MATIC',
+	exchange: 'Quick',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0x28c5367d8a4e85f8d7b41a0ca2579e66a58fccb6',
+      80001: '',
+    },
+	multiplier:'0X',
+	harvest: true,
+    token: tokens.one,
+    quoteToken: tokens.wmatic,
+  },
 ]
 
 export default priceHelperLps

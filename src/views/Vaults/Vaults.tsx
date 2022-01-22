@@ -467,7 +467,7 @@ const Vaults: React.FC = () => {
                {t('Vaults')}
            </Heading>
 	          <Heading scale="md" color="text">
-             {t('Polysky helps you earn the highest yield by auto-compounding with only ')} <u><a href="https://docs.polysky.finance/tokenomics/fees" target="_blank" rel="noreferrer">1%</a></u> {t(' performance fees.')} <u><a color="blue" href="https://www.certik.org/projects/polysky-finance" target="_blank" rel="noreferrer">Audited by Certik.</a></u>
+             {t('Polysky helps you earn the highest yield by auto-compounding with only ')} <u><a href="https://docs.polysky.finance/tokenomics/fees" target="_blank" rel="noreferrer">4%</a></u> {t(' performance fees.')} <u><a color="blue" href="https://www.certik.org/projects/polysky-finance" target="_blank" rel="noreferrer">Audited by Certik.</a></u>
             </Heading>    
             <br/>
             <Heading scale="md" color="#8B0000">

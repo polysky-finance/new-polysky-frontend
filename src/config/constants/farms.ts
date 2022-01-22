@@ -63,6 +63,34 @@ const farms: FarmConfig[] = [
     token: tokens.sirius,
     quoteToken: tokens.wmatic,
   },
+  {
+    pid: 32,
+    lpSymbol: 'SIRIUS - FTM',
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0x728161Fdea6517641Ff5eF2C0e4d8D35D3ba48fb',
+      80001: '',
+    },
+	multiplier:'25X',
+	harvest: true,
+    token: tokens.sirius,
+    quoteToken: tokens.ftm,
+  },
+  {
+    pid: 33,
+    lpSymbol: 'SIRIUS - ONE',
+	exchange: 'Quickswap',
+	baseLiquidityUrl: 'https://quickswap.exchange/#',
+    lpAddresses: {
+      137: '0x76AbB14d5967196988CC6cd88f9dF88cE54db3a3',
+      80001: '',
+    },
+	multiplier:'25X',
+	harvest: true,
+    token: tokens.sirius,
+    quoteToken: tokens.one,
+  },
 ]
 
 export default farms

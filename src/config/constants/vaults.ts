@@ -3151,7 +3151,7 @@ const vaults: VaultConfig[] = [
 	rewardToken: tokens.gfi,
 	emissionFunctionName: 'farmInfo',
 	emissionMultiplier: 1,
-	isArchived: false,
+	isArchived: true,
 	isSingle:false,
 	isBurning:false,
 	isStable: false,

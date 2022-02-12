@@ -1135,7 +1135,7 @@ const vaults: VaultConfig[] = [
 	rewardToken: tokens.quick,
 	emissionFunctionName: 'rewardRate',
 	emissionMultiplier: 2,
-	isArchived: false,
+	isArchived: true,
 	isSingle:false,
 	isBurning:false,
 	allocPointName: 'lastRewardTime',
